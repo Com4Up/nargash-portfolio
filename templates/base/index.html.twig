@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Accueil
+{% endblock %}
+
+{% block css %}
+<link type="text/css" rel="stylesheet" href={{asset("css/index.css")}} />
+{% endblock %}
+
+{% block body %}
+<div id="pagination">
+  <hr id="pag-1" class="pag barActive" onclick="setPag(2)" />
+  <hr id="pag-2" class="pag" onclick="setPag(3)" />
+  <hr id="pag-3" class="pag" onclick="setPag(4)" />
+  <hr id="pag-4" class="pag" onclick="setPag(5)" />
+</div>
+
+<i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)"></i>
+<div class="wrapper wrapper-1">
+</div>
+
+<div class="wrapper wrapper-2 pagActive">
+  <div id="timeline">
+    <hr/>
+    </div>
+    <div id="timeline-content">
+        <h2>Titre</h2>
+        <p class="timeline-content-date">date</p>
+        <hr/>
+        <img src={{asset("images/Faeriths_PressStart_Blanc.png")}} alt="Logo de Faerith's">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+</div>
+
+<div class="wrapper wrapper-3 pagActive">
+  <h2>Compétences</h2>
+  <hr />
+  <div id="flip-content">
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <span class="name"><i class="fab fa-html5"></i></span>
+        </div>
+        <div class="back">
+          <div class="back-logo"><i class="fab fa-html5"></i></div>
+          <p>Mozilla Web Developer, MooTools & jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <span class="name"><i class="fab fa-css3-alt"></i></span>
+        </div>
+        <div class="back">
+          <div class="back-logo"><i class="fab fa-css3-alt"></i></div>
+          <p>Mozilla Web Developer, MooTools & jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="flipper">
+        <div class="front">
+          <span class="name"><i class="fab fa-js-square"></i></span>
+        </div>
+        <div class="back">
+          <div class="back-logo"><i class="fab fa-js-square"></i></div>
+          <p>Mozilla Web Developer, MooTools & jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper wrapper-4 pagActive">
+  <h2>Retrouvez-moi sur :</h2>
+  <div id="wrap-4-content">
+    <a href="https://com4up.fr" id="com4up">
+      <img src={{asset("images/Com4up.png")}} alt="Logo de Com4Up">
+    </a>
+    <hr />
+    <a href="#" id="faeriths">
+      <img src={{asset("images/Faeriths_PressStart_Blanc.png")}} alt="Logo de Faerith's">
+    </a>
+  </div>
+</div>
+<i class="far fa-chevron-double-down chevron-down" onclick="setPag(0)"></i>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+  var pag = 1;
+
+  function setPag(number) {
+    if (number == 0) {
+      pag++;
+    } else if (number == 1) {
+      pag--;
+    } else if (number == 2) {
+      pag = 1;
+    } else if (number == 3) {
+      pag = 2;
+    } else if (number == 4) {
+      pag = 3;
+    } else if (number == 5) {
+      pag = 4;
+    }
+
+    if (pag < 1) {
+      pag = 1;
+    } else if (pag > 4) {
+      pag = 4;
+    }
+    $('.chevron-up').removeClass('chevron-ghost');
+    $('.chevron-down').removeClass('chevron-ghost');
+    $('.pag').removeClass('barActive');
+    $('.wrapper').addClass('pagActive');
+    $('.footer-trait-central').addClass('footer-trait-active');
+
+
+    if (pag == 1) {
+      $('.chevron-up').addClass('chevron-ghost');
+      $('#pag-1').addClass('barActive');
+      $('.wrapper-1').removeClass('pagActive');
+    } else if (pag == 2) {
+      $('#pag-2').addClass('barActive');
+      $('.wrapper-2').removeClass('pagActive');
+    } else if (pag == 3) {
+      $('#pag-3').addClass('barActive');
+      $('.wrapper-3').removeClass('pagActive');
+    } else if (pag == 4) {
+      $('.chevron-down').addClass('chevron-ghost');
+      $('#pag-4').addClass('barActive');
+      $('.wrapper-4').removeClass('pagActive');
+      $('.footer-trait-central').removeClass('footer-trait-active');
+    }
+  }
+</script>
+{% endblock %}

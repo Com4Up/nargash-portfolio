@@ -1,0 +1,116 @@
+#wrapper {
+  width: 62%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5em;
+  width: 100%;
+  height: 3.5em;
+  border-top: solid 2px #ff1822;
+  border-bottom: solid 2px #ff1822;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#sort button {
+  font-weight: normal;
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  color: white;
+  margin: 1em;
+  font-family: "orbitron";
+  font-size: 1.3em;
+}
+
+#sort button:hover {
+  cursor: pointer;
+  text-shadow: 0 0 2px white;
+}
+
+#sort button:focus {
+  outline: none;
+}
+
+#sort button i {
+  margin-right: 0.5em;
+}
+
+#container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 2em 0 0 0;
+}
+
+#container>.article-case {
+  width: 350px;
+  height: 250px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1.5em 0;
+  border: solid white 2px;
+}
+
+#container>.article-case:hover {
+  cursor: pointer;
+  border: solid #2fc08c 2px;
+}
+
+.article-case img {
+  width: 100%;
+  height: 100%;
+}
+
+.article-case a {
+  opacity: 0;
+  position: relative;
+  bottom: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 350px;
+  min-height: 250px;
+  text-decoration: none;
+  color: white;
+  font-family: "orbitron";
+    font-size: 1.5em;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition-duration: 500ms;
+}
+
+.article-case a:hover {
+  opacity: 1;
+  transform: opacity(1);
+}
+
+
+.article-case a:hover {
+  width: 100%;
+  height: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+  margin: 0;
+  height: 0;
+}
+
+@media screen and (max-width:1280px) {
+
+}

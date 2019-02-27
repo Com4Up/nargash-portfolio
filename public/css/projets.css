@@ -1,0 +1,110 @@
+#wrapper {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1.5em;
+  width: 100%;
+  height: 3.5em;
+  border-top: solid 2px #ff1822;
+  border-bottom: solid 2px #ff1822;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#sort button {
+  font-weight: normal;
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  color: white;
+  margin: 1em;
+  font-family: "orbitron";
+  font-size: 1.3em;
+}
+
+#sort button:hover {
+  cursor: pointer;
+  text-shadow: 0 0 2px white;
+}
+
+#sort button:focus {
+  outline: none;
+}
+
+#sort button i {
+  margin-right: 0.5em;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 1em;
+  width: 100%;
+  height: 43em;
+}
+
+.projet-content {
+  height: 12.5em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 2px  #650c0c;
+  background-image: url("../../Images/1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  text-decoration: none;
+}
+
+.projet-content img {
+  height: 100%;
+  width: 12.5em;
+  border-right: solid 1px #ff1822;
+}
+
+.projet-info {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+
+}
+
+.projet-title {
+font-family: "orbitron";
+margin: 0.3em 0 0 0;
+}
+
+.projet-hr {
+  border: none;
+  height: 1px;
+  width: 20%;
+  background-color: #ff1822;
+}
+
+.projet-description {
+  margin: 0.2em 0.7em 0 0.7em;
+  overflow-y: hidden;
+}
+@media screen and (max-width:1280px) {
+  #wrapper {
+    width: 90%;
+  }
+}

@@ -1,0 +1,75 @@
+#wrapper {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactLabel {
+  margin-top: 2em;
+  color: white;
+  font-family: "orbitron";
+  font-size: 1.3em;
+}
+
+input, textarea {
+  border: none;
+  background: none;
+  background-image: url("../../Images/Background-Clair.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border: solid 1px #ff1822;
+  margin-top: 1em;
+  color: white;
+  font-family: arial;
+  font-size: 1em;
+  width: 100%;
+  padding: 0.3em;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input {
+  height: 2em;
+}
+
+textarea {
+  height: 15em;
+  resize: none;
+}
+
+button {
+  border: none;
+  background: none;
+  background-image: url("../../Images/Background-Clair.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border: solid 1px #ff1822;
+  margin-top: 1em;
+  color: white;
+  font-family: "orbitron";
+  font-size: 1.3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  padding: 0.3em;
+}
+
+button:hover{
+  cursor: pointer;
+  text-shadow: 0 0 5px white;
+  box-shadow: 0 0 5px 1px #ff1822;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width:1280px) {
+
+  #wrapper {
+    width: 80%;
+  }
+}

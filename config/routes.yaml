@@ -1,0 +1,55 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+contact:
+    path: /contact
+    controller: App\Controller\DefaultController::contact
+
+projets:
+    path: /projets
+    controller: App\Controller\DefaultController::projets
+
+hobbies:
+    path: /hobbies
+    controller: App\Controller\DefaultController::hobbies
+
+blog:
+    path: /blog
+    controller: App\Controller\DefaultController::blog
+
+login:
+    path: /login
+    controller: App\Controller\UserController::login
+
+account:
+    path: /account
+    controller: App\Controller\UserController::account
+
+edit_info:
+    path: /edit_info
+    controller: App\Controller\UserController::edit_info
+
+check_mail:
+    path: /check_mail/{confirmationtoken}
+    controller: App\Controller\UserController::checkmail
+
+register:
+    path: /register
+    controller: App\Controller\UserController::register
+
+
+reset_password_ask:
+    path: /reset_password
+    controller: App\Controller\UserController::reset_password_ask
+
+change_password:
+    path: /change_password
+    controller: App\Controller\UserController::change_password
+
+reset_password_check:
+    path: /reset_password_check/{confirmationResetPasswordToken}
+    controller: App\Controller\UserController::reset_password_check
+
+logout:
+    path: /logout

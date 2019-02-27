@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Projets
+{% endblock %}
+
+{% block css %}
+  <link type="text/css" rel="stylesheet" href={{asset("css/projets.css")}}/>
+{% endblock %}
+
+{% block body%}
+  <div id="wrapper">
+    <div id="sort">
+      <button>
+        <i class="fal fa-browser"></i>Sites internet</button>
+      <button>
+        <i class="fal fa-video"></i>Vidéo</button>
+      <button>
+        <i class="fal fa-ellipsis-h-alt"></i>Autres</button>
+    </div>
+    <div id="container">
+      <a href="" class="projet-content">
+        <img src="https://via.placeholder.com/250x250.png">
+        <div class="projet-info">
+          <h1 class="projet-title">titre</h1>
+          <hr class="projet-hr"/>
+          <p class="projet-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </a>
+      <a href="" class="projet-content">
+        <img src="https://via.placeholder.com/250x250.png">
+        <div class="projet-info">
+          <h1 class="projet-title">titre</h1>
+          <hr class="projet-hr"/>
+          <p class="projet-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </a>
+      <a href="" class="projet-content">
+        <img src="https://via.placeholder.com/250x250.png">
+        <div class="projet-info">
+          <h1 class="projet-title">titre</h1>
+          <hr class="projet-hr"/>
+          <p class="projet-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+{% endblock %}

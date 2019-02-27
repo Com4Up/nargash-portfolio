@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Contact
+{% endblock %}
+
+{% block css %}
+  <link type="text/css" rel="stylesheet" href={{asset("css/contact.css")}} />
+{% endblock %}
+
+{% block body%}
+<div id="wrapper">
+<label class="contactLabel">E-Mail</label>
+<input></input>
+<label class="contactLabel">Nom</label>
+<input></input>
+<label class="contactLabel">Objet</label>
+<input></input>
+<label class="contactLabel">Message</label>
+<textarea></textarea>
+<button>Envoyer</button>
+</div>
+{% endblock %}

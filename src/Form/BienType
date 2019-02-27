@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Bien;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\BooleanType;
+
+
+class BienType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('libelle',TextType::class)
+            ->add('texte_annonce',TextType::class)
+            ->add('montant',IntegerType::class)
+            ->add('charge',IntegerType::class)
+            ->add('taxe_fonciere',IntegerType::class)
+            ->add('etat',TextType::class)
+           // ->add('date_disponibilite',DateType::class)
+            ->add('numero_rue',IntegerType::class)
+            ->add('adresse',TextType::class)
+            ->add('adresse2',TextType::class)
+            ->add('cp',TextType::class)
+            ->add('ville',TextType::class)
+            ->add('superficie',IntegerType::class)
+            ->add('loi_carrez',TextType::class)
+            ->add('commentaire_interne',TextType::class)
+            ->add('latitude',IntegerType::class)
+            ->add('longitude',IntegerType::class)
+            //->add('created_at',DateTimeType::class)
+            -//>add('updated_at',DateTimeType::class)
+            ->add('point_qualiter',IntegerType::class)
+            ->add('description',TextType::class)
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            // uncomment if you want to bind to a class
+            'data_class' => Bien::class,
+        ]);
+    }
+}

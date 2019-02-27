@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Blog
+{% endblock %}
+
+{% block css %}
+  <link type="text/css" rel="stylesheet" href={{asset("css/blog.css")}} />
+{% endblock %}
+
+{% block body%}
+<div id="wrapper">
+  <div id="sort">
+    <button>Tout <i class="far fa-chevron-down"></i></button>
+    <button>News <i class="far fa-chevron-down"></i></button>
+    <button>Hobbies <i class="far fa-chevron-down"></i></button>
+    <button>Autres <i class="far fa-chevron-down"></i></button>
+  </div>
+  <div id="search">
+    <input placeholder="Recherche"></input>
+    <button><i class="far fa-search"></i></button>
+  </div>
+
+  <div id="container">
+							<div class="article-case">
+              <img src="https://via.placeholder.com/450x250.png">
+								<a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
+							</div>
+
+              <div class="article-case">
+              <img src="https://via.placeholder.com/450x250.png">
+								<a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
+							</div>
+
+              <div class="article-case">
+              <img src="https://via.placeholder.com/450x250.png">
+								<a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
+							</div>
+
+              <div class="article-case">
+              <img src="https://via.placeholder.com/450x250.png">
+								<a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
+							</div>             
+
+							<div class="article-case hidden">
+							</div>
+
+							<div class="article-case hidden">
+							</div>
+    </div>
+  </div>
+  <div id="pagination">
+  </div>
+</div>
+{% endblock %}
