@@ -21,15 +21,15 @@ body {
   padding: 0;
   height: 2px;
   border: none;
-  background-color: #ff1822;
-  box-shadow: 0 0 5px 1px #ff1822;
   box-sizing: border-box;
+  background-color: #ff1822;
 }
 
 .pag:hover {
   cursor: pointer;
   box-shadow: none;
   box-sizing: border-box;
+  box-shadow: 0 0 10px 4px #650c0c;
 }
 
 .barActive {
@@ -37,8 +37,13 @@ body {
   height: 2px;
   border: none;
   background-color: #77c8ae;
-  box-shadow: 0 0 5px 1px #77c8ae;
+  box-shadow: 0 0 10px 2px #13865d;
   box-sizing: border-box;
+}
+
+.barActive:hover {
+  background-color: #77c8ae;
+  box-shadow: 0 0 10px 2px #13865d;
 }
 
 @keyframes chevronup {
@@ -299,13 +304,13 @@ body {
 
 .front {
   z-index: 2;
-  background: rgba(33, 33, 33, 0.9);
+  background: #131313;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   border: solid 1px #ff1822;
-  box-shadow: 0 0 5px #ff1822;
+  box-shadow: 0 0 5px 1.5px #ff1822;
 }
 
 .back {
@@ -317,7 +322,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  border: solid 1px #2fc08c;
+  box-shadow: 0 0 5px 1.5px #2fc08c;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -340,7 +345,7 @@ body {
   -moz-transform: rotatey(7deg);
   -o-transform: rotatez(7deg);
   transform: rotatez(7deg);
-  background: rgba(33, 33, 33, 0.9);
+  background: #131313;
   text-align: center;
   display: flex;
   flex-direction: column;

@@ -24,7 +24,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-image: url("../../Images/Background.png");
+  background-image: url("../../Images/Background-Web.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -111,7 +111,7 @@ header ul li:hover > a {
 #Selection > #neon
 {
   min-width: 100%;
-  min-height: 3px;
+  min-height: 2px;
   background-color: #ff1822;
   box-shadow: 0 0 5px 1px #ff1822;
   box-sizing: border-box;
