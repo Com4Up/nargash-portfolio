@@ -358,9 +358,10 @@ body {
   border-bottom: solid black 1px;
 }
 
-.back-logo i {
+.back-logo p {
   position: relative;
-  top: 10%;
+  top: 0.5em;
+  font-size: 0.5em;
   -webkit-transform: rotatez(-7deg);
   -moz-transform: rotatez(-7deg);
   -o-transform: rotatez(-7deg);
@@ -409,10 +410,10 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  -webkit-transform: skew(-20deg);
-  -moz-transform: skew(-20deg);
-  -o-transform: skew(-20deg);
-  tranform: skew(-20deg);
+  -webkit-transform: skew(-30deg);
+  -moz-transform: skew(-30deg);
+  -o-transform: skew(-30deg);
+  tranform: skew(-30deg);
 }
 
 #com4up {
@@ -460,19 +461,19 @@ body {
 #faeriths img {
   height: 80%;
   width: auto;
-  -webkit-transform: skew(20deg);
-  -moz-transform: skew(20deg);
-  -o-transform: skew(20deg);
-  tranform: skew(20deg);
+  -webkit-transform: skew(30deg);
+  -moz-transform: skew(30deg);
+  -o-transform: skew(30deg);
+  tranform: skew(30deg);
 }
 
 #com4up img {
   height: 40%;
   width: auto;
-  -webkit-transform: skew(20deg);
-  -moz-transform: skew(20deg);
-  -o-transform: skew(20deg);
-  tranform: skew(20deg);
+  -webkit-transform: skew(30deg);
+  -moz-transform: skew(30deg);
+  -o-transform: skew(30deg);
+  tranform: skew(30deg);
 }
 
 .pagActive {
