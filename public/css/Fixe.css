@@ -14,7 +14,6 @@
   src: url("../fonts/orbitron/Orbitron-Regular.ttf");
 }
 
-
 body {
   display: flex;
   flex-direction: row;
@@ -80,10 +79,9 @@ header ul {
   align-items: center;
   width: 40%;
   height: 100%;
-  margin: 0;
+  margin: 0 1em auto auto;
   padding: 0;
   list-style-type: none;
-  margin-right: 1em;
 }
 
 header ul li, header ul li a  {
@@ -404,8 +402,7 @@ text-shadow: 0 0 5px #77c8ae;
   }
 
   #Site_content {
-    margin: 0;
-    margin-top: 3em;
+    margin: 3em 0 0 0;
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.3);

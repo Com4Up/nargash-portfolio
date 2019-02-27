@@ -1,7 +1,6 @@
 #wrapper {
   width: 40%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -50,12 +49,10 @@ button {
   background-repeat: no-repeat;
   background-attachment: fixed;
   border: solid 1px #ff1822;
-  margin-top: 1em;
   color: white;
   font-family: "orbitron";
   font-size: 1.3em;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1em auto 0 auto;
   width: 25%;
   padding: 0.3em;
 }

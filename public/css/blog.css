@@ -1,7 +1,6 @@
 #wrapper {
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -59,16 +58,16 @@
 }
 
 #search input {
-border: none;
-background: none;
-height: 70%;
-width: 95%;
-padding: 0.5em;
-color: white;
+  border: none;
+  background: none;
+  height: 70%;
+  width: 95%;
+  padding: 0.5em;
+  color: white;
 }
 
 #search input:focus {
-outline: none;
+  outline: none;
 }
 
 #search button {
@@ -76,15 +75,15 @@ outline: none;
   background: none;
 }
 
- #search button i {
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   align-items: center;
-   font-size: 1.5em;
-   width: 5%;
-   color: #77c8ae;
- }
+#search button i {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  width: 5%;
+  color: #77c8ae;
+}
 
 #container {
   width: 100%;
@@ -149,9 +148,9 @@ outline: none;
 
 .title {
   font-family: "orbitron";
-    width: 100%;
-    text-align: center;
-    font-size: 1.5em;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 .date {
@@ -171,6 +170,4 @@ outline: none;
   height: 0;
 }
 
-@media screen and (max-width:1280px) {
-
-}
+@media screen and (max-width:1280px) {}

@@ -1,6 +1,7 @@
 body {
-overflow:hidden;
+  overflow: hidden;
 }
+
 #pagination {
   position: fixed;
   top: 50%;
@@ -26,9 +27,9 @@ overflow:hidden;
 }
 
 .pag:hover {
-cursor: pointer;
-box-shadow: none;
-box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: none;
+  box-sizing: border-box;
 }
 
 .barActive {
@@ -41,17 +42,32 @@ box-sizing: border-box;
 }
 
 @keyframes chevronup {
-  0% {top: 9.2%;}
-  50% {top: 10%;}
-  100% {top: 9.2%;}
+  0% {
+    top: 9.2%;
+  }
+
+  50% {
+    top: 10%;
+  }
+
+  100% {
+    top: 9.2%;
+  }
 }
 
 @keyframes chevrondown {
-  0% {bottom: 1.2%;}
-  50% {bottom: 2%;}
-  100% {bottom: 1.2%;}
-}
+  0% {
+    bottom: 1.2%;
+  }
 
+  50% {
+    bottom: 2%;
+  }
+
+  100% {
+    bottom: 1.2%;
+  }
+}
 
 .chevron-up {
   position: fixed;
@@ -89,8 +105,6 @@ box-sizing: border-box;
   animation-iteration-count: infinite;
 }
 
-
-
 .chevron-down:hover {
   cursor: pointer;
   text-shadow: 0 0 5px #2fc08c;
@@ -102,11 +116,11 @@ box-sizing: border-box;
 }
 
 .chevron-ghost {
-opacity: 0;
+  opacity: 0;
 }
 
 .chevron-ghost:hover {
-cursor: default;
+  cursor: default;
 }
 
 .footer-trait-central {
@@ -182,7 +196,7 @@ cursor: default;
   margin: 0;
   font-family: "lato";
   text-align: center;
-    font-size: 1.4em;
+  font-size: 1.4em;
   border: none;
   color: white;
   width: 90%;
@@ -223,6 +237,7 @@ cursor: default;
   color: white;
   margin: 0 0 0.4em 0;
 }
+
 .wrapper-3 hr {
   background-color: #ff1822;
   border: none;
@@ -239,6 +254,7 @@ cursor: default;
   justify-content: space-between;
   align-items: center;
 }
+
 .flip-container {
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
@@ -246,48 +262,43 @@ cursor: default;
   perspective: 1000;
 }
 
-	.flip-container:hover .flipper,
-  .flip-container.hover .flipper {
-		-webkit-transform: rotateY(180deg);
-		-moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-		transform: rotateY(180deg);
-	}
+.flip-container:hover .flipper,
+.flip-container.hover .flipper {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
 
 .flip-container, .front, .back {
-	width: 320px;
-	height: 427px;
+  width: 320px;
+  height: 427px;
 }
 
 .flipper {
-	-webkit-transition: 0.6s;
-	-webkit-transform-style: preserve-3d;
-
-	-moz-transition: 0.6s;
-	-moz-transform-style: preserve-3d;
-
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 0.6s;
+  -moz-transform-style: preserve-3d;
   -o-transition: 0.6s;
-	-o-transform-style: preserve-3d;
-
-	transition: 0.6s;
-	transform-style: preserve-3d;
-
-	position: relative;
+  -o-transform-style: preserve-3d;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
 }
 
 .front, .back {
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
-	backface-visibility: hidden;
-
-	position: absolute;
-	top: 0;
-	left: 0;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .front {
-	z-index: 2;
+  z-index: 2;
   background: rgba(33, 33, 33, 0.9);
   display: flex;
   flex-direction: row;
@@ -298,10 +309,10 @@ cursor: default;
 }
 
 .back {
-	-webkit-transform: rotateY(180deg);
-	-moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
-	transform: rotateY(180deg);
+  transform: rotateY(180deg);
   background-image: url("../../Images/1.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -315,20 +326,20 @@ cursor: default;
 }
 
 .front .name {
-	font-size: 15em;
-	color: #f8f8f8;
+  font-size: 15em;
+  color: #f8f8f8;
   margin: auto;
   text-align: center;
-	text-shadow: 0.1em 0.1em 0.05em #333;
+  text-shadow: 0.1em 0.1em 0.05em #333;
 }
 
 .back-logo {
   position: relative;
   top: -10%;
   -webkit-transform: rotatez(7deg);
-	-moz-transform: rotatey(7deg);
+  -moz-transform: rotatey(7deg);
   -o-transform: rotatez(7deg);
-	transform: rotatez(7deg);
+  transform: rotatez(7deg);
   background: rgba(33, 33, 33, 0.9);
   text-align: center;
   display: flex;
@@ -339,29 +350,28 @@ cursor: default;
   height: 35%;
   font-size: 5em;
   color: #f8f8f8;
-    border-bottom: solid black 1px;
+  border-bottom: solid black 1px;
 }
 
 .back-logo i {
   position: relative;
   top: 10%;
   -webkit-transform: rotatez(-7deg);
-	-moz-transform: rotatez(-7deg);
+  -moz-transform: rotatez(-7deg);
   -o-transform: rotatez(-7deg);
-	transform: rotatez(-7deg);
+  transform: rotatez(-7deg);
 }
 
-
 .back p {
-	position: absolute;
-	bottom: 40px;
-	left: 0;
-	right: 0;
-	text-align: center;
-	padding: 0 20px;
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 20px;
   font-family: "lato";
   line-height: 2em;
-    color: #f8f8f8;
+  color: #f8f8f8;
 }
 
 .wrapper-4 {
@@ -406,11 +416,11 @@ cursor: default;
   height: 100%;
   width: 40%;
   padding: 0.5em 2em 0.5em 2em;
-border: solid 1px #ff1822;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
+  border: solid 1px #ff1822;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 0 5px #ff1822;
 }
 
@@ -420,27 +430,27 @@ align-items: center;
   background-color: #77c8ae;
   box-shadow: 0 0 5px 1px #77c8ae;
   box-sizing: border-box;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin: 0 1em 0 1em;
 }
+
 #faeriths {
   text-decoration: none;
   background-image: url("../../Images/1.png");
   height: 100%;
   width: 40%;
   padding: 0.5em 2em 0.5em 2em;
-border: solid 1px #ff1822;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
+  border: solid 1px #ff1822;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 0 5px #ff1822;
 }
 
 #faeriths:hover, #com4up:hover {
-  box-shadow: none;;
+  box-shadow: none;
+  ;
 }
-
 
 #faeriths img {
   height: 80%;
@@ -463,6 +473,5 @@ align-items: center;
 .pagActive {
   display: none;
 }
-
 
 @media screen and (max-width:1280px) {}
