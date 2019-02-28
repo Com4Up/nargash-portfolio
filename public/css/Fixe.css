@@ -82,6 +82,7 @@ header {
 #Title:hover {
   cursor: pointer;
 }
+
 header ul {
   display: flex;
   flex-direction: row;

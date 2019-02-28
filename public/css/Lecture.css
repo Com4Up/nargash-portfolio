@@ -1,0 +1,128 @@
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border: 2px solid #650c0c;
+  width: 60%;
+  margin: 2em auto 2em auto;
+  background-image: url("../images/Etoile.jpg");
+  padding: 2em;
+  overflow: auto;
+  max-height: 45em;
+}
+
+#Haut {
+  border-bottom: 2px solid #ff1822;
+}
+
+#Haut h1 {
+  font-family: "orbitron";
+  margin: 0;
+  padding: 0;
+}
+
+#Haut h2, #Haut h3 {
+  font-family: "lato_light";
+}
+
+#Seconde_Ligne {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#Seconde_Ligne h2 {
+  display: flex;
+  width: 50%;
+  justify-content: flex-start;
+}
+
+#Seconde_Ligne h3 {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
+
+#Seconde_Ligne h3 span {
+  margin: 0 0.25em 0 0.25em;
+}
+
+#Contenu {
+  font-family: "lato_light";
+  font-size: 1.3em;
+}
+
+#Partage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: 2px solid #13865d;
+  border-bottom: 2px solid #13865d;
+  border-left: 0;
+  border-right: 0;
+  min-height: 4em;
+}
+
+#Partage h4 {
+  font-weight: normal;
+  font-size: 1.3em;
+  font-family: "orbitron";
+  justify-content: flex-start;
+  width: 50%;
+}
+
+#Social_Icones {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  font-size: 2em;
+}
+
+#Social_Icones i {
+  margin: 0 0.5em 0 0.5em;
+}
+
+#Commentaires {
+  font-weight: normal;
+  font-size: 1.3em;
+  font-family: "orbitron";
+  margin: 1em 0 1em 0;
+  padding: 0;
+}
+
+#Poster_Commentaire {
+  display: flex;
+  flex-direction: column;
+}
+
+#Poster_Commentaire textarea {
+  border: 1px solid #ff1822;
+  background-image: url("../images/Etoile-Clair.jpg");
+}
+
+#Poster_Commentaire p {
+  font-family: "orbitron";
+}
+
+#Poster_Commentaire button {
+  color: white;
+  font-family: "orbitron";
+  border: 1px solid #ff1822;
+  background-image: url("../images/Etoile-Clair.jpg");
+}
+
+.Pseudo_Commentaire {
+  font-weight: normal;
+  font-size: 1.2em;
+  font-family: "orbitron";
+  color: #13865d;
+  margin: 0;
+  padding: 0;
+}
+
+.Paragraphe_Commentaire {
+  font-family: "lato_light";
+  font-size: 1.2em;
+  margin: 0.5em 0 0 0;
+  padding: 0;
+}

@@ -14,6 +14,11 @@
   src: url("../fonts/orbitron/Orbitron-Regular.ttf");
 }
 
+@font-face {
+  font-family: "lato_light";
+  src: url("../fonts/lato/Lato-Light.ttf");
+}
+
 body {
   display: flex;
   flex-direction: row;
