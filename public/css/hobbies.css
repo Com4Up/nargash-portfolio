@@ -88,8 +88,15 @@
   text-decoration: none;
   color: white;
   font-family: "orbitron";
-    font-size: 1.5em;
-  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 1.5em;
+  background: rgba(101,12,12,0.80);
+  background: -moz-linear-gradient(left, rgba(101,12,12,0.80) 0%, rgba(19,134,94,0.80) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(101,12,12,1)), color-stop(100%, rgba(19,134,94,0.80)));
+  background: -webkit-linear-gradient(left, rgba(101,12,12,0.80) 0%, rgba(19,134,94,0.80) 100%);
+  background: -o-linear-gradient(left, rgba(101, 12, 12, 0.80) 0%, rgba(19, 134, 94, 0.80) 100%);
+  background: -ms-linear-gradient(left, rgba(101, 12, 12, 0.80) 0%, rgba(19, 134, 94, 0.80) 100%);
+  background: linear-gradient(to right, rgba(101, 12, 12, 0.80) 0%, rgba(19, 134, 94, 0.80) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#650c0c', endColorstr='#13865e', GradientType=1 );
   transition-duration: 500ms;
 }
 
