@@ -88,13 +88,14 @@
 
 .projet-title {
 font-family: "orbitron";
+font-size: 1.5em;
 margin: 0.3em 0 0 0;
 }
 
 .projet-hr {
   border: none;
   height: 1px;
-  width: 20%;
+  width: 30%;
   background-color: #ff1822;
 }
 
