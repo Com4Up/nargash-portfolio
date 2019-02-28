@@ -16,7 +16,7 @@ Accueil
 </div>
 
 <i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)"></i>
-<div class="wrapper wrapper-1">
+<div class="wrapper wrapper-1" onwheel="myScript">
   <div id="Presentation">
     <div id="Image_Profil">
       <img src={{asset("images/Profil_Sebastien.png")}} />
@@ -36,36 +36,46 @@ Accueil
       DERNIERS ARTICLES
     </h2>
     <div id="Contenu_Accueil">
+
       <div class="Contenu_Classe">
-        <a href="">
-          <img src="https://via.placeholder.com/420x240.png" />
-          <div class="Gradiant"></div>
-          <h3 class="Titre_Contenu">Let's Play #4 - Bioshock 2</h3>
-          <h4 class="Date_Contenu">19 Octobre 2019</h4>
-        </a>
+      <div class="article-case">
+        <img src="https://via.placeholder.com/420x240.png">
+        <a href=""></a>
       </div>
+      <a href="">
+      <h3 class="Titre_Contenu">Let's Play #4 - Bioshock 2</h3>
+      <h4 class="Date_Contenu">19 Octobre 2019</h4>
+      </a>
+      </div>
+
       <div class="Contenu_Classe">
-        <a href="">
-          <img src="https://via.placeholder.com/420x240.png" />
-          <div class="Gradiant"></div>
-          <h3 class="Titre_Contenu">Rétrospective - Mirror's Edge</h3>
-          <h4 class="Date_Contenu">17 Octobre 2019</h4>
-        </a>
+      <div class="article-case">
+        <img src="https://via.placeholder.com/420x240.png">
+        <a href=""></a>
       </div>
+      <a href="">
+      <h3 class="Titre_Contenu">Rétrospective - Mirror's Edge</h3>
+      <h4 class="Date_Contenu">17 Octobre 2019</h4>
+      </a>
+      </div>
+
       <div class="Contenu_Classe">
-        <a href="">
-          <img src="https://via.placeholder.com/420x240.png" />
-          <div class="Gradiant"></div>
-          <h3 class="Titre_Contenu">Expédition Nocturne</h3>
-          <h4 class="Date_Contenu">22 Septembre 2019</h4>
-        </a>
+      <div class="article-case">
+        <img src="https://via.placeholder.com/420x240.png">
+        <a href=""></a>
       </div>
+      <a href="">
+      <h3 class="Titre_Contenu">Expédition Nocturne</h3>
+      <h4 class="Date_Contenu">22 Septembre 2019</h4>
+      </a>
+      </div>
+
     </div>
   </div>
 </div>
 
 
-<div class="wrapper wrapper-2 pagActive">
+<div class="wrapper wrapper-2 pagActive" onwheel="myScript">
   <div id="timeline">
     <hr />
   </div>
@@ -79,7 +89,7 @@ Accueil
   </div>
 </div>
 
-<div class="wrapper wrapper-3 pagActive">
+<div class="wrapper wrapper-3 pagActive" onwheel="myScript">
   <h2>Compétences</h2>
   <hr />
   <div id="flip-content">
@@ -127,7 +137,7 @@ Accueil
   </div>
 </div>
 
-<div class="wrapper wrapper-4 pagActive">
+<div class="wrapper wrapper-4 pagActive" onwheel="myScript">
   <h2>Retrouvez-moi sur :</h2>
   <div id="wrap-4-content">
     <a href="https://com4up.fr" id="com4up">
@@ -190,5 +200,9 @@ Accueil
       $('.footer-trait-central').removeClass('footer-trait-active');
     }
   }
+</script>
+<script>
+object.onwheel = function myScript(){alert("test");};
+
 </script>
 {% endblock %}
