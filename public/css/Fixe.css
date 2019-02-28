@@ -10,8 +10,18 @@
 }
 
 @font-face {
+  font-family: "lato_light";
+  src: url("../fonts/lato/Lato-Light.ttf");
+}
+
+@font-face {
   font-family: "orbitron";
   src: url("../fonts/orbitron/Orbitron-Regular.ttf");
+}
+
+@font-face {
+  font-family: "KozGo";
+  src: url("../fonts/KozGoPr6N-Regular.otf")
 }
 
 body {
