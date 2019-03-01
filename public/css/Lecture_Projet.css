@@ -62,19 +62,77 @@
   justify-content: flex-start;
 }
 
-#Seconde_Ligne h3 {
+#Categorie_Projet {
   display: flex;
+  flex-direction: row;
   width: 50%;
   justify-content: flex-end;
+  align-items: center;
+  text-align: center;
 }
 
-#Seconde_Ligne h3 span {
-  margin: 0 0.25em 0 0.25em;
+#Categorie_Projet i {
+  font-size: 1.5em;
+}
+
+#Categorie_Projet h3 {
+  font-family: "orbitron";
+  margin: 0 0.5em 0 0.5em;
 }
 
 #Contenu {
   font-family: "lato_light";
-  font-size: 1.3em;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#Contenu h3 {
+  font-family: "orbitron";
+  color: #13865d;
+}
+
+#Contenu h3 span {
+  font-family: "lato_light";
+  color: white;
+}
+
+#Contenu h3 a {
+  text-decoration: none;
+  font-family: "lato_light";
+  color: white;
+}
+
+#Contenu h3 a:hover {
+  color: #ff1822;
+}
+
+#Role, #Client, #Langages, #Logiciels, #Lien {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#Description {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#Apercu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#Apercu img {
+  margin: 2em;
 }
 
 #Partage {
