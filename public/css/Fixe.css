@@ -46,7 +46,6 @@ h1, h2, h3 {
 }
 
 /* MENU */
-
 header {
   z-index: 1000;
   display: flex;
@@ -56,14 +55,15 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 4.5em;
+  height: 5em;
+  min-height: 5em;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 #header-neon {
   position: fixed;
-  top: 4.1em;
+  top: 4.5em;
   background-color: #77c8ae;
   box-shadow: 0 0 5px 2px #13865d;
   width: 100%;
@@ -88,21 +88,20 @@ header ul {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 40%;
+  width: 47em;
   height: 100%;
   margin: 0 1em auto auto;
   padding: 0;
   list-style-type: none;
 }
 
-header ul li, header ul li a  {
+header ul li, header ul li a {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   height: 100%;
-  width: auto;
   margin: 0;
   padding: 0;
   color: white;
@@ -111,7 +110,7 @@ header ul li, header ul li a  {
   font-size: 1.2em;
 }
 
-header ul li:hover > a {
+header ul li:hover>a {
   color: #ff1822;
 }
 
@@ -119,8 +118,7 @@ header ul li:hover > a {
   display: none;
 }
 
-#Selection > #neon
-{
+#Selection>#neon {
   min-width: 100%;
   min-height: 2px;
   background-color: #ff1822;
@@ -133,7 +131,6 @@ header ul li:hover > a {
   color: #ff1822;
   text-shadow: 0 0 5px #ff1822;
 }
-
 
 #cssmenu {
   display: none;
@@ -208,7 +205,7 @@ text-shadow: 0 0 5px #77c8ae;
   color: #2fc08c;
 }
 
-@media screen and (max-width:1280px) {
+@media screen and (max-width:1024px) {
   header {
     display: none;
   }
@@ -217,11 +214,22 @@ text-shadow: 0 0 5px #77c8ae;
     position: fixed;
     z-index: 1000;
     width: 100%;
-    height: 3em;
+    height: 5em;
     display: block;
     background-color: rgba(0, 0, 0, 0.8);
     border-bottom: 2px solid #77c8ae;
   }
+ body {
+   overflow: scroll;
+   max-height: none;
+   height: auto;
+ }
+
+ main {
+   overflow: none;
+   max-height: none;
+   height: auto;
+ }
 
   #header-neon {
     display: none;
