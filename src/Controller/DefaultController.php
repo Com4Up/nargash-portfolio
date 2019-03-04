@@ -45,6 +45,24 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/lecture", name="lecture")
+     */
+    public function lecture()
+    {
+        // replace this line with your own code!
+        return $this->render('base/lecture.html.twig');
+    }
+
+    /**
+     * @Route("/lecture-projet", name="lecture_projet")
+     */
+    public function lecture_projet()
+    {
+        // replace this line with your own code!
+        return $this->render('base/lecture_projet.html.twig');
+    }
+
+    /**
      * @Route("/contact", name="contact")
      */
     public function contact()

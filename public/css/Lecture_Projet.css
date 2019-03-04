@@ -5,7 +5,7 @@
   border: 2px solid #650c0c;
   width: 60%;
   margin: 3em auto 3em auto;
-  background-image: url("../images/Etoile.jpg");
+  background-image: url("../../images/Etoile.jpg");
   overflow: auto;
   max-height: 45em;
 }
@@ -213,7 +213,7 @@
 
 #Poster_Commentaire textarea {
   border: 1px solid #ff1822;
-  background-image: url("../images/Etoile-Clair.jpg");
+  background-image: url("../../images/Etoile-Clair.jpg");
   min-height: 10em;
   margin-bottom: 2em;
   color: white;
@@ -232,7 +232,7 @@
   font-family: "orbitron";
   font-size: 1.4em;
   border: 1px solid #ff1822;
-  background-image: url("../images/Etoile-Clair.jpg");
+  background-image: url("../../images/Etoile-Clair.jpg");
   min-height: 2em;
   margin: 0em auto 1em auto;
   min-width: 10em;
@@ -268,7 +268,7 @@
     border: 0px solid #650c0c;
     width: 100%;
     margin: 0em auto 0em auto;
-    background-image: url("../images/Etoile.jpg");
+    background-image: url("../../images/Etoile.jpg");
     overflow: auto;
     max-height: 100%;
   }
