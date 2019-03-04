@@ -26,11 +26,8 @@
 
 body {
   display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  max-height: 100%;
-  max-width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -39,21 +36,20 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "lato";
+  min-height: 100%;
+  height: 100%;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
 /* MENU */
 header {
-  z-index: 1000;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
   width: 100%;
   height: 5em;
   min-height: 5em;
@@ -62,8 +58,9 @@ header {
 }
 
 #header-neon {
-  position: fixed;
-  top: 4.5em;
+  display: flex;
+  margin: 0;
+  padding: 0;
   background-color: #77c8ae;
   box-shadow: 0 0 5px 2px #13865d;
   width: 100%;
@@ -77,6 +74,7 @@ header {
   font-family: "earth_orbiter";
   color: white;
   text-decoration: none;
+  min-width: 25em;
 }
 
 #Title:hover {
@@ -137,42 +135,48 @@ header ul li:hover>a {
 }
 
 main {
-  position: absolute;
-  top: 4.5em;
-  margin-top: 2px;
-  width: 100%;
-  height: 86%;
+  display: flex;
+  flex-direction: column;
+  min-height: 84vh;
+  height: 100%;
+  flex-wrap: wrap;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
+#Footer_Desktop {
+  display: flex;
   height: 7%;
   width: 100%;
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   color: #2fc08c;
   font-size: 2em;
+  margin: 0.5em 0 0.5em 0;
 }
 
-footer i:hover {
-cursor: pointer;
-text-shadow: 0 0 5px #77c8ae;
+#Footer_Desktop i:hover {
+  cursor: pointer;
+  text-shadow: 0 0 5px #77c8ae;
+}
+
+#Footer_Mobile {
+  display: none;
 }
 
 #social {
   height: 100%;
-  width: 12.5%;
+  width: 20%;
+  min-width: 11em;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-#social i {
-  margin: 0.3em;
+#social a {
+  margin: 0 0.4em 0 0.4em;
+  color: #2fc08c;
+  text-decoration: none;
 }
 
 .footer-trait-1 {
@@ -188,7 +192,6 @@ text-shadow: 0 0 5px #77c8ae;
 }
 
 .footer-trait-central {
-
   height: 2px;
   width: 5%;
   background-color: #650c0c;
@@ -197,217 +200,13 @@ text-shadow: 0 0 5px #77c8ae;
 
 #envelope {
   width: 5%;
+  min-width: 2.5em;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   color: #2fc08c;
-}
-
-@media screen and (max-width:1024px) {
-  header {
-    display: none;
-  }
-
-  #cssmenu {
-    position: fixed;
-    z-index: 1000;
-    width: 100%;
-    height: 5em;
-    display: block;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid #77c8ae;
-  }
- body {
-   overflow: scroll;
-   max-height: none;
-   height: auto;
- }
-
- main {
-   overflow: none;
-   max-height: none;
-   height: auto;
- }
-
-  #header-neon {
-    display: none;
-  }
-  #cssmenu ul {
-    width: 100%;
-    height: 100%;
-    display: none;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  #cssmenu.align-center > ul {
-    text-align: center;
-  }
-  #cssmenu ul li {
-    width: 100%;
-    height: 4.54em;
-    margin: 0;
-    border-top: 1px solid rgba(120, 120, 120, 0.2);
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #cssmenu ul li a,
-  #cssmenu ul ul li a {
-    width: 100%;
-    border-bottom: 0;
-    color: white;
-    text-decoration: none;
-      text-align: center;
-  }
-  #cssmenu > ul > li {
-    float: none;
-  }
-  #cssmenu ul ul li a {
-    padding-left: 25px;
-  }
-  #cssmenu ul ul ul li a {
-    padding-left: 35px;
-  }
-  #cssmenu ul ul li a {
-    color: white;
-    background: none;
-  }
-  #cssmenu ul ul li:hover > a,
-  #cssmenu ul ul li.active > a {
-    color: #ffffff;
-  }
-  #cssmenu ul ul,
-  #cssmenu ul ul ul,
-  #cssmenu.align-right ul ul {
-    position: relative;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    text-align: left;
-  }
-  #cssmenu > ul > li.has-sub > a:after,
-  #cssmenu > ul > li.has-sub > a:before,
-  #cssmenu ul ul > li.has-sub > a:after,
-  #cssmenu ul ul > li.has-sub > a:before {
-    display: none;
-  }
-  #cssmenu #menu-button {
-    display: block;
-    padding: 17px;
-    color: #dddddd;
-    cursor: pointer;
-    font-size: 12px;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  #cssmenu #menu-button:after {
-    position: absolute;
-    top: 22px;
-    right: 17px;
-    display: block;
-    height: 4px;
-    width: 20px;
-    border-top: 2px solid #dddddd;
-    border-bottom: 2px solid #dddddd;
-    content: '';
-  }
-  #cssmenu #menu-button:before {
-    position: absolute;
-    top: 16px;
-    right: 17px;
-    display: block;
-    height: 2px;
-    width: 20px;
-    background: #dddddd;
-    content: '';
-  }
-  #cssmenu #menu-button.menu-opened:after {
-    top: 23px;
-    border: 0;
-    height: 2px;
-    width: 15px;
-    background: #ffffff;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-  #cssmenu #menu-button.menu-opened:before {
-    top: 23px;
-    background: #ffffff;
-    width: 15px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-  #cssmenu .submenu-button {
-    position: absolute;
-    z-index: 99;
-    right: 0;
-    top: 0;
-    display: block;
-    border-left: 1px solid rgba(120, 120, 120, 0.2);
-    height: 46px;
-    width: 46px;
-    cursor: pointer;
-  }
-  #cssmenu .submenu-button.submenu-opened {
-    background: #262626;
-  }
-  #cssmenu ul ul .submenu-button {
-    height: 34px;
-    width: 34px;
-  }
-  #cssmenu .submenu-button:after {
-    position: absolute;
-    top: 22px;
-    right: 19px;
-    width: 8px;
-    height: 2px;
-    display: block;
-    background: #dddddd;
-    content: '';
-  }
-  #cssmenu ul ul .submenu-button:after {
-    top: 15px;
-    right: 13px;
-  }
-  #cssmenu .submenu-button.submenu-opened:after {
-    background: #ffffff;
-  }
-  #cssmenu .submenu-button:before {
-    position: absolute;
-    top: 19px;
-    right: 22px;
-    display: block;
-    width: 2px;
-    height: 8px;
-    background: #dddddd;
-    content: '';
-  }
-  #cssmenu ul ul .submenu-button:before {
-    top: 12px;
-    right: 16px;
-  }
-  #cssmenu .submenu-button.submenu-opened:before {
-    display: none;
-  }
-}
-
-
-@media screen and (max-height:925px) {
-  #Mention {
-    background-color: rgba(5, 5, 5, 0.9);
-  }
 }
 
 /* POUR LES ECRANS INFERIEURS A 1280px DE LARGE */
@@ -459,5 +258,244 @@ text-shadow: 0 0 5px #77c8ae;
     font-size: 2em;
     width: 50%;
     margin-right: 1em;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  header {
+    display: none;
+  }
+
+  #cssmenu {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 5em;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #77c8ae;
+  }
+
+  body {
+    overflow: scroll;
+    max-height: none;
+    height: auto;
+  }
+
+  main {
+    overflow: none;
+    max-height: none;
+    height: auto;
+  }
+
+  #header-neon {
+    display: none;
+  }
+
+  #cssmenu ul {
+    width: 100%;
+    height: 100%;
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #cssmenu.align-center>ul {
+    text-align: center;
+  }
+
+  #cssmenu ul li {
+    width: 100%;
+    height: 4.54em;
+    margin: 0;
+    border-top: 1px solid rgba(120, 120, 120, 0.2);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #cssmenu ul li a,
+  #cssmenu ul ul li a {
+    width: 100%;
+    border-bottom: 0;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  #cssmenu>ul>li {
+    float: none;
+  }
+
+  #cssmenu ul ul li a {
+    padding-left: 25px;
+  }
+
+  #cssmenu ul ul ul li a {
+    padding-left: 35px;
+  }
+
+  #cssmenu ul ul li a {
+    color: white;
+    background: none;
+  }
+
+  #cssmenu ul ul li:hover>a,
+  #cssmenu ul ul li.active>a {
+    color: #ffffff;
+  }
+
+  #cssmenu ul ul,
+  #cssmenu ul ul ul,
+  #cssmenu.align-right ul ul {
+    position: relative;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+
+  #cssmenu>ul>li.has-sub>a:after,
+  #cssmenu>ul>li.has-sub>a:before,
+  #cssmenu ul ul>li.has-sub>a:after,
+  #cssmenu ul ul>li.has-sub>a:before {
+    display: none;
+  }
+
+  #cssmenu #menu-button {
+    display: block;
+    padding: 17px;
+    color: #dddddd;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  #cssmenu #menu-button:after {
+    position: absolute;
+    top: 22px;
+    right: 17px;
+    display: block;
+    height: 4px;
+    width: 20px;
+    border-top: 2px solid #dddddd;
+    border-bottom: 2px solid #dddddd;
+    content: '';
+  }
+
+  #cssmenu #menu-button:before {
+    position: absolute;
+    top: 16px;
+    right: 17px;
+    display: block;
+    height: 2px;
+    width: 20px;
+    background: #dddddd;
+    content: '';
+  }
+
+  #cssmenu #menu-button.menu-opened:after {
+    top: 23px;
+    border: 0;
+    height: 2px;
+    width: 15px;
+    background: #ffffff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  #cssmenu #menu-button.menu-opened:before {
+    top: 23px;
+    background: #ffffff;
+    width: 15px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  #cssmenu .submenu-button {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    top: 0;
+    display: block;
+    border-left: 1px solid rgba(120, 120, 120, 0.2);
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+  }
+
+  #cssmenu .submenu-button.submenu-opened {
+    background: #262626;
+  }
+
+  #cssmenu ul ul .submenu-button {
+    height: 34px;
+    width: 34px;
+  }
+
+  #cssmenu .submenu-button:after {
+    position: absolute;
+    top: 22px;
+    right: 19px;
+    width: 8px;
+    height: 2px;
+    display: block;
+    background: #dddddd;
+    content: '';
+  }
+
+  #cssmenu ul ul .submenu-button:after {
+    top: 15px;
+    right: 13px;
+  }
+
+  #cssmenu .submenu-button.submenu-opened:after {
+    background: #ffffff;
+  }
+
+  #cssmenu .submenu-button:before {
+    position: absolute;
+    top: 19px;
+    right: 22px;
+    display: block;
+    width: 2px;
+    height: 8px;
+    background: #dddddd;
+    content: '';
+  }
+
+  #cssmenu ul ul .submenu-button:before {
+    top: 12px;
+    right: 16px;
+  }
+
+  #cssmenu .submenu-button.submenu-opened:before {
+    display: none;
+  }
+
+  #Footer_Desktop {
+    display: none;
+  }
+
+  #Footer_Mobile {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-height:925px) {
+  #Mention {
+    background-color: rgba(5, 5, 5, 0.9);
   }
 }

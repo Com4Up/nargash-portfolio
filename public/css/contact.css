@@ -1,8 +1,8 @@
 #wrapper {
-  width: 40%;
-  margin: 0 auto 0 auto;
   display: flex;
   flex-direction: column;
+  width: 40%;
+  margin: 0 auto 0 auto;
 }
 
 .contactLabel {
@@ -10,6 +10,10 @@
   color: white;
   font-family: "orbitron";
   font-size: 1.3em;
+}
+
+body {
+  overflow: auto;
 }
 
 input, textarea {
@@ -37,7 +41,7 @@ input {
 }
 
 textarea {
-  height: 15em;
+  min-height: 15em;
   resize: none;
 }
 
@@ -54,6 +58,7 @@ button {
   font-size: 1.3em;
   margin: 1em auto 0 auto;
   width: 25%;
+  min-width: 10em;
   padding: 0.3em;
 }
 
