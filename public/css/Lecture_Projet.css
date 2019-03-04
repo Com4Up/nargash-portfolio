@@ -127,12 +127,22 @@
   justify-content: center;
   text-align: center;
   width: 100%;
-  margin: 0;
+  margin: 1.5em 0 1.5em 0;
   padding: 0;
 }
 
+.Image_Responsive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
 #Apercu img {
-  margin: 2em;
+  width: 27.5%;
+  height: auto;
+  margin: 0 1em 0 1em;
+  padding: 0;
 }
 
 #Partage {
