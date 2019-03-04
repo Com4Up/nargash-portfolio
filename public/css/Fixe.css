@@ -489,8 +489,39 @@ main {
 
   #Footer_Mobile {
     display: flex;
-    position: fixed;
-    bottom: 0;
+    border-top: 2px solid #650c0c;
+    width: 100%;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    flex-wrap: wrap;
+  }
+
+  #Footer_Mobile i:hover {
+    cursor: pointer;
+    text-shadow: 0 0 5px #77c8ae;
+  }
+
+  #social_mobile {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  #social_mobile a {
+    margin: 0;
+    color: #2fc08c;
+    text-decoration: none;
+  }
+
+  #social_mobile a i {
+    font-size: 1.5em;
+    margin: 1em 0 1em 0;
   }
 }
 

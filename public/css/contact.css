@@ -1,7 +1,7 @@
 #wrapper {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 50em;
   margin: 0 auto 0 auto;
 }
 
@@ -69,8 +69,7 @@ button:hover{
   box-sizing: border-box;
 }
 
-@media screen and (max-width:1280px) {
-
+@media screen and (max-width:1024px) {
   #wrapper {
     width: 80%;
   }
