@@ -492,6 +492,7 @@ main {
   #Footer_Mobile {
     display: flex;
     border-top: 2px solid #650c0c;
+    margin-top: 2em;
     width: 100%;
   }
 
