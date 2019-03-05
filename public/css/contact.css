@@ -1,3 +1,7 @@
+body {
+  overflow: auto;
+}
+
 #wrapper {
   display: flex;
   flex-direction: column;
@@ -10,10 +14,6 @@
   color: white;
   font-family: "orbitron";
   font-size: 1.3em;
-}
-
-body {
-  overflow: auto;
 }
 
 input, textarea {
