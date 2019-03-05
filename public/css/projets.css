@@ -73,7 +73,7 @@
 .projet-content img {
   height: 100%;
   width: 12.5em;
-  border-right: solid 1px #ff1822;
+  border-right: solid 2px #650c0c;
 }
 
 .projet-info {
@@ -83,7 +83,6 @@
   flex-direction: column;
   align-items: center;
   color: white;
-
 }
 
 .projet-title {
@@ -103,8 +102,26 @@ margin: 0.3em 0 0 0;
   margin: 0.2em 0.7em 0 0.7em;
   overflow-y: hidden;
 }
+
 @media screen and (max-width:1280px) {
   #wrapper {
     width: 90%;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  #sort {
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (max-width:660px) {
+  #sort button {
+    font-size: 1em;
+  }
+
+  .projet-title {
+    font-size: 1.2em;
   }
 }
