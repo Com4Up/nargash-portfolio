@@ -197,6 +197,10 @@ body {
     display: none;
   }
 
+  #Footer_Mobile {
+    margin-top: 0em;
+  }
+
   #wrapper {
     display: flex;
     flex-direction: column;

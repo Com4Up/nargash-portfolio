@@ -145,6 +145,6 @@ body {
     position: relative;
     bottom: auto;
     min-width: auto;
-    min-height: 100%;
+    min-height: auto;
   }
 }
