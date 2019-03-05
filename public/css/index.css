@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 
 #pagination {
   position: fixed;
@@ -79,12 +76,14 @@ body {
   z-index: 1001;
   left: 47.5%;
   right: 47.5%;
-  width: 5%;
+  width: 2.5em;
+  min-width: 2.5em;
   top: 9.5%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+    text-align: center;
   color: #2fc08c;
   font-size: 2em;
   animation-name: chevronup;
@@ -98,16 +97,22 @@ body {
   bottom: 1.5%;
   left: 47.5%;
   right: 47.5%;
-  width: 5%;
+  width: 2.5em;
+  min-width: 2.5em;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-align: center;
   color: #2fc08c;
   font-size: 2em;
   animation-name: chevrondown;
   animation-duration: 0.75s;
   animation-iteration-count: infinite;
+  background-image: url("../../Images/Background-Web.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .chevron-down:hover {
@@ -128,9 +133,24 @@ body {
   cursor: default;
 }
 
+.footer-trait-1 {
+  height: 2px;
+  width: 100%;
+  background-color: #650c0c;
+}
+
+.footer-trait-2 {
+  display: none;
+}
+
+#envelope {
+  position: relative;
+  right: 1em;
+}
 .footer-trait-central {
   height: 2px;
-  width: 5%;
+  width: 1.5em;
+  min-width: 1.5em;
   background-color: #650c0c;
   margin: 0;
 }
@@ -139,11 +159,14 @@ body {
   background: none;
 }
 
+.wrapper {
+  margin-right: 2%;
+}
 .wrapper-1 {
   width: 75%;
-  height: 80%;
+  height: 50%;
   display: flex;
-  margin: 5% auto auto auto;
+  margin: 0 auto 0 auto;
   flex-direction: column;
 }
 
@@ -528,7 +551,7 @@ body {
 
 #wrap-4-content {
   width: 100%;
-  height: 30%;
+  height: 12em;
   margin: 3% auto auto auto;
   display: flex;
   flex-direction: row;
@@ -579,12 +602,11 @@ body {
 
 #faeriths:hover, #com4up:hover {
   box-shadow: none;
-  ;
 }
 
 #faeriths img {
-  height: 80%;
-  width: auto;
+  height: auto;
+width: 90%;
   -webkit-transform: skew(30deg);
   -moz-transform: skew(30deg);
   -o-transform: skew(30deg);
@@ -592,8 +614,8 @@ body {
 }
 
 #com4up img {
-  height: 40%;
-  width: auto;
+  height: auto;
+  width: 90%;
   -webkit-transform: skew(30deg);
   -moz-transform: skew(30deg);
   -o-transform: skew(30deg);
@@ -604,4 +626,49 @@ body {
   display: none;
 }
 
-@media screen and (max-width:1280px) {}
+@media screen and (max-width:1400px) {
+#Presentation {
+  width: 100%;
+}
+
+.new_3 {
+  display: none;
+}
+}
+@media screen and (max-width:1024px) {
+  body {
+    overflow: auto;
+  }
+  .wrapper {
+    height: auto;
+    margin-top: 5em;
+  }
+
+  #Presentation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+
+  #Image_Profil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2em;
+    margin-top: 1em;
+  }
+
+  #Description {
+    color: white;
+    font-family: "lato_light";
+    font-size: 1.5em;
+    border: none;
+    border-top : 6px solid #ff1822;
+    padding: 1em;
+  }
+
+}

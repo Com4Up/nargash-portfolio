@@ -30,7 +30,7 @@ body {
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
   background-image: url("../../Images/Background-Web.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -138,7 +138,6 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 84vh;
-  height: 100%;
   flex-wrap: wrap;
 }
 
@@ -147,7 +146,7 @@ main {
   height: 7%;
   width: 100%;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #2fc08c;
   font-size: 2em;
@@ -165,7 +164,6 @@ main {
 
 #social {
   height: 100%;
-  width: 20%;
   min-width: 11em;
   display: flex;
   flex-direction: row;
@@ -199,7 +197,6 @@ main {
 }
 
 #envelope {
-  width: 5%;
   min-width: 2.5em;
   display: flex;
   flex-direction: row;
@@ -262,7 +259,6 @@ main {
 }
 
 @media screen and (max-width:1024px) {
-
   header {
     display: none;
   }
