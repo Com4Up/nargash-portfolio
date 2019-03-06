@@ -154,15 +154,6 @@ Accueil
 
 {% block javascripts %}
 <script>
-
-function wait(ms)
-{
-var d = new Date();
-var d2 = null;
-do { d2 = new Date(); }
-while(d2-d < ms);
-}
-
   var pag = 1;
 
   function setPag(number) {
@@ -220,6 +211,7 @@ if (myimage.addEventListener) {
 // IE 6/7/8
 else myimage.attachEvent("onmousewheel", MouseWheelHandler);
 
+
 function MouseWheelHandler(e) {
 
 	// cross-browser wheel delta
@@ -232,7 +224,6 @@ function MouseWheelHandler(e) {
   else if (delta < 0) {
   setPag(0);
   }
-  wait(1000);
 return false;
 }
 </script>
