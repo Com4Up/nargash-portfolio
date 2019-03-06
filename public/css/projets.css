@@ -66,7 +66,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: solid 2px  #650c0c;
+  border: solid 2px #650c0c;
   background-image: url("../../Images/1.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -90,9 +90,9 @@ body {
 }
 
 .projet-title {
-font-family: "orbitron";
-font-size: 1.5em;
-margin: 0.3em 0 0 0;
+  font-family: "orbitron";
+  font-size: 1.5em;
+  margin: 0.3em 0 0 0;
 }
 
 .projet-hr {
@@ -107,6 +107,10 @@ margin: 0.3em 0 0 0;
   overflow-y: hidden;
 }
 
+#Selector_Menu {
+  display: none;
+}
+
 @media screen and (max-width:1280px) {
   #wrapper {
     width: 90%;
@@ -115,9 +119,45 @@ margin: 0.3em 0 0 0;
 
 @media screen and (max-width:1024px) {
   #sort {
-    margin-top: 2.5em;
-    margin-bottom: 1em;
+    display: none;
   }
+
+  #Selector_Menu {
+    display: flex;
+    border-bottom: 2px solid #ff1822;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #Selector_Menu select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 3em;
+    font-family: "orbitron";
+    font-size: 1.4em;
+    color: #13865d;
+    border: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    padding-left: 1em;
+    cursor: pointer;
+  }
+}
+
+.icone_selector {
+  position: absolute;
+  color: #13865d;
+  font-size: 2em;
+}
+
+.icone_selection {
+  position: absolute;
+  color: white;
+  font-size: 1.5em;
+  right: 1em;
+  top: 4em;
 }
 
 @media screen and (max-width:660px) {
