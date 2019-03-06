@@ -200,9 +200,31 @@ Accueil
       $('.footer-trait-central').removeClass('footer-trait-active');
     }
   }
-</script>
-<script>
-object.onwheel = function myScript(){alert("test");};
 
+var myimage = document.getElementById("main-content");
+if (myimage.addEventListener) {
+	// IE9, Chrome, Safari, Opera
+	myimage.addEventListener("mousewheel", MouseWheelHandler, false);
+	// Firefox
+	myimage.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+}
+// IE 6/7/8
+else myimage.attachEvent("onmousewheel", MouseWheelHandler);
+
+function MouseWheelHandler(e) {
+
+	// cross-browser wheel delta
+	var e = window.event || e; // old IE support
+	var delta = (e.wheelDelta || -e.detail);
+
+  if (delta > 0) {
+  setPag(1);
+  }
+  else {
+  setPag(0);
+  }
+
+return false;
+}
 </script>
 {% endblock %}
