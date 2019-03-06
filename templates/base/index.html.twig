@@ -154,6 +154,15 @@ Accueil
 
 {% block javascripts %}
 <script>
+
+function wait(ms)
+{
+var d = new Date();
+var d2 = null;
+do { d2 = new Date(); }
+while(d2-d < ms);
+}
+
   var pag = 1;
 
   function setPag(number) {
@@ -200,7 +209,7 @@ Accueil
       $('.footer-trait-central').removeClass('footer-trait-active');
     }
   }
-
+var i = 0;
 var myimage = document.getElementById("main-content");
 if (myimage.addEventListener) {
 	// IE9, Chrome, Safari, Opera
@@ -220,10 +229,10 @@ function MouseWheelHandler(e) {
   if (delta > 0) {
   setPag(1);
   }
-  else {
+  else if (delta < 0) {
   setPag(0);
   }
-
+  wait(1000);
 return false;
 }
 </script>
