@@ -567,7 +567,7 @@
   text-decoration: none;
   background-image: url("../../Images/1.png");
   height: 100%;
-  width: 40%;
+  width: 37.5%;
   padding: 0.5em 2em 0.5em 2em;
   border: solid 1px #ff1822;
   display: flex;
@@ -590,7 +590,7 @@
   text-decoration: none;
   background-image: url("../../Images/1.png");
   height: 100%;
-  width: 40%;
+  width: 37.5%;
   padding: 0.5em 2em 0.5em 2em;
   border: solid 1px #ff1822;
   display: flex;
@@ -615,7 +615,7 @@ width: 90%;
 
 #com4up img {
   height: auto;
-  width: 90%;
+  width: 65%;
   -webkit-transform: skew(30deg);
   -moz-transform: skew(30deg);
   -o-transform: skew(30deg);
