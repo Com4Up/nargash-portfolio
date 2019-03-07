@@ -178,22 +178,31 @@ body {
     border: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
-    padding-left: 1em;
+    padding-left: 2.3em;
     cursor: pointer;
   }
-}
 
 .icone_selector {
+  visibility: hidden;
   position: absolute;
   color: #13865d;
   font-size: 2em;
+  top: 3em;
+  left: 0.3em;
+  width: 1em;
 }
 
 .icone_selection {
+  display: none;
   position: absolute;
   color: white;
   font-size: 1.5em;
   right: 1em;
   top: 4em;
 }
+
+.active {
+  visibility: visible;
+}
+
 }

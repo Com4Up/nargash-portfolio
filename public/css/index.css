@@ -184,8 +184,7 @@
   display: flex;
   flex-direction: row;
   width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2.5em auto 0 auto;
   align-items: center;
 }
 
@@ -212,7 +211,7 @@
 }
 
 #Derniers_Articles {
-  margin-top: 4em;
+  margin-top: 2.5em;
 }
 
 #Derniers_Articles h2 {
