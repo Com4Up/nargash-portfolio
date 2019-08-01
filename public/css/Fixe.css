@@ -137,7 +137,7 @@ header ul li:hover>a {
 main {
   display: flex;
   flex-direction: column;
-  min-height: 84vh;
+  height: 84vh;
   flex-wrap: wrap;
 }
 

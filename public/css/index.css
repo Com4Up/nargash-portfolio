@@ -161,6 +161,8 @@
 
 .wrapper {
   margin-right: 2%;
+  height: 90%;
+  min-height: 90%;
 }
 .wrapper-1 {
   width: 75%;
@@ -305,11 +307,93 @@
   font-size: 1em;
 }
 
-#timeline {
-  width: 10%;
+
+#app {
+  display: flex;
+  width: 100%;
+  height: 90%;
+  min-height: 90%;
+}
+
+#arrow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#arrow i {
+color: white;
+font-size: 1.2em;
+margin: 0;
+}
+
+#arrow i:hover {
+  cursor: pointer;
+}
+#timelineBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  margin: 0;
+  max-height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.TimelineLoop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bar {
+  position: relative;
+  width: 0.2em;
+  min-width: 0.2em;
+  max-width: 0.2em;
+  height: 4em;
+  min-height: 4em;
+  max-height: 4em;
+  background-color: #ff1822;
+}
+
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: white;
+  height: 28px;
+  max-height: 28px;
+  min-height: 28px;
+  width: 28px;
+  max-width: 28px;
+  min-width: 28px;
+  border-radius: 100%;
+  transition-duration: 0.5s;
+  margin: 0.8em;
   padding: 0;
+}
+
+.circle:hover {
+cursor: pointer;
+}
+
+
+.insideCircle {
+  position: relative;
+  background-color: #650c0c;
+  height: 24px;
+  max-height: 24px;
+  min-height: 24px;
+  width: 24px;
+  max-width: 24px;
+  min-width: 24px;
+    border-radius: 100%;
+    transition-duration: 0.5s;
 }
 
 #timeline hr {
@@ -332,6 +416,8 @@
   border: solid 2px #650c0c;
   width: 90%;
   height: 100%;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 #timeline-content h2 {
@@ -528,12 +614,12 @@
 
 .wrapper-4 {
   width: 60%;
-  height: 80%;
+  height: 100%;
   display: flex;
-  margin: 14% auto auto auto;
+  margin: auto auto auto auto;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .wrapper-4 h2 {
@@ -543,7 +629,7 @@
   font-size: 1.5em;
   font-family: "orbitron";
   color: white;
-  margin: 0 0 0.4em 0;
+  margin: 25% 0 0.4em 0;
   padding: 0.2em 0 0.2em 0.3em;
   text-transform: uppercase;
 }
