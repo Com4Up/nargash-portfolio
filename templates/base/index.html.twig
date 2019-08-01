@@ -1,228 +1,250 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-Accueil
+    Accueil
 {% endblock %}
 
 {% block css %}
-<link type="text/css" rel="stylesheet" href={{asset("css/index.css")}} />
+    <link type="text/css" rel="stylesheet" href={{asset("css/index.css")}}/>
 {% endblock %}
 
 {% block body %}
-<div id="pagination">
-  <hr id="pag-1" class="pag barActive" onclick="setPag(2)" />
-  <hr id="pag-2" class="pag" onclick="setPag(3)" />
-  <hr id="pag-3" class="pag" onclick="setPag(4)" />
-  <hr id="pag-4" class="pag" onclick="setPag(5)" />
-</div>
-
-<i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)"></i>
-<div class="wrapper wrapper-1" onwheel="myScript">
-  <div id="Presentation">
-    <div id="Image_Profil">
-      <img src={{asset("images/Profil_Sebastien.png")}} />
-      <h1>
-        セバスチャン
-      </h1>
-    </div>
-    <p id="Description">
-      Développeur Web (Full Stack) et Vidéaste.
-      <br />
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-    </p>
-  </div>
-  <div id="Derniers_Articles">
-    <h2>
-      DERNIERS ARTICLES
-    </h2>
-    <div id="Contenu_Accueil">
-
-      <div class="Contenu_Classe">
-      <div class="article-case">
-        <img src="https://via.placeholder.com/420x240.png">
-        <a href=""></a>
-      </div>
-      <a href="">
-      <h3 class="Titre_Contenu">Let's Play #4 - Bioshock 2</h3>
-      <h4 class="Date_Contenu">19 Octobre 2019</h4>
-      </a>
-      </div>
-
-      <div class="Contenu_Classe">
-      <div class="article-case">
-        <img src="https://via.placeholder.com/420x240.png">
-        <a href=""></a>
-      </div>
-      <a href="">
-      <h3 class="Titre_Contenu">Rétrospective - Mirror's Edge</h3>
-      <h4 class="Date_Contenu">17 Octobre 2019</h4>
-      </a>
-      </div>
-
-      <div class="Contenu_Classe new_3">
-      <div class="article-case">
-        <img src="https://via.placeholder.com/420x240.png">
-        <a href=""></a>
-      </div>
-      <a href="">
-      <h3 class="Titre_Contenu">Expédition Nocturne</h3>
-      <h4 class="Date_Contenu">22 Septembre 2019</h4>
-      </a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<div class="wrapper wrapper-2 pagActive" onwheel="myScript">
-  <div id="timeline">
-    <hr />
-  </div>
-  <div id="timeline-content">
-    <h2>Titre</h2>
-    <p class="timeline-content-date">date</p>
-    <hr />
-    <img src={{asset("images/Faeriths_PressStart_Blanc.png")}} alt="Logo de Faerith's">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  </div>
-</div>
-
-<div class="wrapper wrapper-3 pagActive" onwheel="myScript">
-  <h2>Compétences</h2>
-  <hr />
-  <div id="flip-content">
-    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-      <div class="flipper">
-        <div class="front">
-          <span class="name"><i class="fab fa-html5"></i></span>
-        </div>
-        <div class="back">
-          <div class="back-logo">
-            <p>HTML</p>
-          </div>
-          <p>Mozilla Web Developer, MooTools & jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
-        </div>
-      </div>
+    <div id="pagination">
+        <hr class="pag barActive" id="pag-1" onclick="setPag(2)"/>
+        <hr class="pag" id="pag-2" onclick="setPag(3)"/>
+        <hr class="pag" id="pag-3" onclick="setPag(4)"/>
+        <hr class="pag" id="pag-4" onclick="setPag(5)"/>
     </div>
 
-    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-      <div class="flipper">
-        <div class="front">
-          <span class="name"><i class="fab fa-css3-alt"></i></span>
+    <i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)"></i>
+    <div class="wrapper wrapper-1" onwheel="myScript">
+        <div id="Presentation">
+            <div id="Image_Profil">
+                <img src={{asset("images/Profil_Sebastien.png")}}/>
+                <h1>
+                    セバスチャン
+                </h1>
+            </div>
+            <p id="Description">
+                Développeur Web (Full Stack) et Vidéaste.
+                <br/>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                                                                                                                                                                                                                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
         </div>
-        <div class="back">
-          <div class="back-logo">
-            <p>CSS</p>
-          </div>
-          <p>Mozilla Web Developer, MooTools & jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
+        <div id="Derniers_Articles">
+            <h2>
+                DERNIERS ARTICLES
+            </h2>
+            <div id="Contenu_Accueil">
+
+                <div class="Contenu_Classe">
+                    <div class="article-case">
+                        <img src="https://via.placeholder.com/420x240.png">
+                        <a href=""></a>
+                    </div>
+                    <a href="">
+                        <h3 class="Titre_Contenu">Let's Play #4 - Bioshock 2</h3>
+                        <h4 class="Date_Contenu">19 Octobre 2019</h4>
+                    </a>
+                </div>
+
+                <div class="Contenu_Classe">
+                    <div class="article-case">
+                        <img src="https://via.placeholder.com/420x240.png">
+                        <a href=""></a>
+                    </div>
+                    <a href="">
+                        <h3 class="Titre_Contenu">Rétrospective - Mirror's Edge</h3>
+                        <h4 class="Date_Contenu">17 Octobre 2019</h4>
+                    </a>
+                </div>
+
+                <div class="Contenu_Classe new_3">
+                    <div class="article-case">
+                        <img src="https://via.placeholder.com/420x240.png">
+                        <a href=""></a>
+                    </div>
+                    <a href="">
+                        <h3 class="Titre_Contenu">Expédition Nocturne</h3>
+                        <h4 class="Date_Contenu">22 Septembre 2019</h4>
+                    </a>
+                </div>
+
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-      <div class="flipper">
-        <div class="front">
-          <span class="name"><i class="fab fa-js-square"></i></span>
-        </div>
-        <div class="back">
-          <div class="back-logo">
-            <p>JavaScript</p>
-          </div>
-          <p>Mozilla Web Developer, MooTools & jQuery Consultant, MooTools Core Developer, Javascript Fanatic, CSS Tinkerer, PHP Hacker, and web lover.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="wrapper wrapper-2 pagActive" onwheel="myScript">
+        <div id="app" v-if="timeline">
 
-<div class="wrapper wrapper-4 pagActive" onwheel="myScript">
-  <h2>Retrouvez-moi sur :</h2>
-  <div id="wrap-4-content">
-    <a href="https://com4up.fr" id="com4up">
-      <img src={{asset("images/Com4up.png")}} alt="Logo de Com4Up">
-    </a>
-    <hr />
-    <a href="#" id="faeriths">
-      <img src={{asset("images/Faeriths_PressStart_Blanc.png")}} alt="Logo de Faerith's">
-    </a>
-  </div>
-</div>
-<i class="far fa-chevron-double-down chevron-down" onclick="setPag(0)"></i>
+            <div id="timeline">
+                <hr/>
+            </div>
+            <div id="timeline-content">
+                <h2>{timeline[key].titre}</h2>
+                <p class="timeline-content-date">date</p>
+                <hr/>
+                <img src={{asset("images/Faeriths_PressStart_Blanc.png")}} alt="Logo de Faerith's">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                                                                                                                                                                                                                                                                                          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div v-for="(event,key) in timeline">
+                <button v-on:click="setKey(key)">
+                    { event.id }
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wrapper wrapper-3 pagActive" onwheel="myScript">
+        <h2>Compétences</h2>
+        <hr/>
+        <div id="flip-content">
+            {% for skill  in skills %}
+                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front">
+                            <span class="name">
+                                <i class="{{skill.icone}}"></i>
+                            </span>
+                        </div>
+                        <div class="back">
+                            <div class="back-logo">
+                                <p>{{skill.name}}</p>
+                            </div>
+                            <p>{{skill.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-4 pagActive" onwheel="myScript">
+        <h2>Retrouvez-moi sur :</h2>
+        <div id="wrap-4-content">
+            <a href="https://com4up.fr" id="com4up">
+                <img src={{asset("images/Com4up.png")}} alt="Logo de Com4Up">
+            </a>
+            <hr/>
+            <a href="#" id="faeriths">
+                <img src={{asset("images/Faeriths_PressStart_Blanc.png")}} alt="Logo de Faerith's">
+            </a>
+        </div>
+    </div>
+    <i class="far fa-chevron-double-down chevron-down" onclick="setPag(0)"></i>
 {% endblock %}
 
 {% block javascripts %}
-<script>
-  var pag = 1;
+    <script>
+        var pag = 1;
 
-  function setPag(number) {
-    if (number == 0) {
-      pag++;
-    } else if (number == 1) {
-      pag--;
-    } else if (number == 2) {
-      pag = 1;
-    } else if (number == 3) {
-      pag = 2;
-    } else if (number == 4) {
-      pag = 3;
-    } else if (number == 5) {
-      pag = 4;
-    }
+        function setPag(number) {
+            if (number == 0) {
+                pag++;
+            } else if (number == 1) {
+                pag--;
+            } else if (number == 2) {
+                pag = 1;
+            } else if (number == 3) {
+                pag = 2;
+            } else if (number == 4) {
+                pag = 3;
+            } else if (number == 5) {
+                pag = 4;
+            }
 
-    if (pag < 1) {
-      pag = 1;
-    } else if (pag > 4) {
-      pag = 4;
-    }
-    $('.chevron-up').removeClass('chevron-ghost');
-    $('.chevron-down').removeClass('chevron-ghost');
-    $('.pag').removeClass('barActive');
-    $('.wrapper').addClass('pagActive');
-
-
-    if (pag == 1) {
-      $('.chevron-up').addClass('chevron-ghost');
-      $('#pag-1').addClass('barActive');
-      $('.wrapper-1').removeClass('pagActive');
-    } else if (pag == 2) {
-      $('#pag-2').addClass('barActive');
-      $('.wrapper-2').removeClass('pagActive');
-    } else if (pag == 3) {
-      $('#pag-3').addClass('barActive');
-      $('.wrapper-3').removeClass('pagActive');
-    } else if (pag == 4) {
-      $('.chevron-down').addClass('chevron-ghost');
-      $('#pag-4').addClass('barActive');
-      $('.wrapper-4').removeClass('pagActive');
-    }
-  }
-var i = 0;
-var myimage = document.getElementById("main-content");
-if (myimage.addEventListener) {
-	// IE9, Chrome, Safari, Opera
-	myimage.addEventListener("mousewheel", MouseWheelHandler, false);
-	// Firefox
-	myimage.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
-}
-// IE 6/7/8
-else myimage.attachEvent("onmousewheel", MouseWheelHandler);
+            if (pag < 1) {
+                pag = 1;
+            } else if (pag > 4) {
+                pag = 4;
+            }
+            $('.chevron-up').removeClass('chevron-ghost');
+            $('.chevron-down').removeClass('chevron-ghost');
+            $('.pag').removeClass('barActive');
+            $('.wrapper').addClass('pagActive');
 
 
-function MouseWheelHandler(e) {
+            if (pag == 1) {
+                $('.chevron-up').addClass('chevron-ghost');
+                $('#pag-1').addClass('barActive');
+                $('.wrapper-1').removeClass('pagActive');
+            } else if (pag == 2) {
+                $('#pag-2').addClass('barActive');
+                $('.wrapper-2').removeClass('pagActive');
+            } else if (pag == 3) {
+                $('#pag-3').addClass('barActive');
+                $('.wrapper-3').removeClass('pagActive');
+            } else if (pag == 4) {
+                $('.chevron-down').addClass('chevron-ghost');
+                $('#pag-4').addClass('barActive');
+                $('.wrapper-4').removeClass('pagActive');
+            }
+        }
+        var i = 0;
+        var myimage = document.getElementById("main-content");
+        if (myimage.addEventListener) { // IE9, Chrome, Safari, Opera
+            myimage.addEventListener("mousewheel", MouseWheelHandler, false);
+            // Firefox
+            myimage.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+        }
+        // IE 6/7/8 else
+        myimage.attachEvent("onmousewheel", MouseWheelHandler);
 
-	// cross-browser wheel delta
-	var e = window.event || e; // old IE support
-	var delta = (e.wheelDelta || -e.detail);
 
-  if (delta > 0) {
-  setPag(1);
-  }
-  else if (delta < 0) {
-  setPag(0);
-  }
-return false;
-}
-</script>
+        function MouseWheelHandler(e) { // cross-browser wheel delta
+            var e = window.event || e; // old IE support
+            var delta = (e.wheelDelta || - e.detail);
+
+            if (delta > 0) {
+                setPag(1);
+            } else if (delta < 0) {
+                setPag(0);
+            }
+            return false;
+        }
+    </script>
+    <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src={{asset("js/vue.js") }}></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            delimiters: [
+                '{', '}'
+            ],
+            data: {
+                timeline: [],
+                key: 0
+            },
+            methods: {
+                sayHello() {
+                    alert("hello");
+                },
+                setKey(key) {
+                    this.key = key;
+                },
+                getTimeline() {
+                    axios({method: 'POST', url: '/get-timeline'}).then(response => {
+                        var getUrl = window.location;
+                        var json = JSON.parse(response.data);
+                        var object = this;
+                        this.timeline = [];
+
+                        $.each(json, function (key, value) {
+                            console.log(value);
+                            object.timeline.push({"titre": value.titre, "description": value.description, "date": value.date});
+                        });
+
+                    })
+                }
+            },
+            mounted: function () {
+                this.getTimeline();
+            }
+        })
+    </script>
 {% endblock %}

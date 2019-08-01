@@ -1,75 +1,237 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-Projets
+    Projets
 {% endblock %}
 
 {% block css %}
-<link type="text/css" rel="stylesheet" href={{asset("css/projets.css")}} />
+    <link type="text/css" rel="stylesheet" href={{asset("css/projets.css")}}/>
 {% endblock %}
 
 {% block body%}
-<div id="Selector_Menu">
-  <select  onchange="change(this.value)">
-    <option value="1">Sites Internet</option>
-    <option value="2">Vidéo</option>
-    <option value="3">Autres</option>
-  </select>
-  <i class="fal fa-browser  icone_selector active"  id="icone_1"></i>
-  <i class="fal fa-video icone_selector"  id="icone_2"></i>
-  <i class="fal fa-ellipsis-h-alt icone_selector"  id="icone_3"></i>
-  <i class="fas fa-sort-down icone_selection" aria-hidden></i>
-</div>
-<div id="wrapper">
-  <div id="sort">
-    <button>
-      <i class="fal fa-browser"></i>Sites internet</button>
-    <button>
-      <i class="fal fa-video"></i>Vidéo</button>
-    <button>
-      <i class="fal fa-ellipsis-h-alt"></i>Autres</button>
-  </div>
-  <div id="container">
-    <a href="" class="projet-content">
-      <img src={{asset("images/projets/logo_faeriths_projet.jpg")}} alt="Logo de Faerith's">
-      <div class="projet-info">
-        <h1 class="projet-title">Faerith's</h1>
-        <hr class="projet-hr" />
-        <p class="projet-description">Faerith’s est un collectif de créateurs de contenus sur internet (vidéos, lives, dossiers, articles …), principalement axé sur le jeux vidéo ainsi que la culture geek.</p>
-      </div>
-    </a>
-    <a href="" class="projet-content">
-      <img src={{asset("images/projets/logo_streamingschool_projet.jpg")}} alt="Logo de Streaming School">
-      <div class="projet-info">
-        <h1 class="projet-title">Streaming School</h1>
-        <hr class="projet-hr" />
-        <p class="projet-description">Formations / Tutoriels / Astuces concernant le domaine de l'Audiovisuel sur Internet.</p>
-      </div>
-    </a>
-    <a href="" class="projet-content">
-      <img src={{asset("images/projets/logo_esuria_projet.jpg")}} alt="Logo de Esuria">
-      <div class="projet-info">
-        <h1 class="projet-title">Esuria</h1>
-        <hr class="projet-hr" />
-        <p class="projet-description">Site personnel de Esuria, créateur de contenus sur Internet.</p>
-      </div>
-    </a>
-  </div>
-</div>
+    <div id="app" style="display: flex;flex-direction: column;">
+
+        <div id="Selector_Menu">
+            <select v-on:change="setSelectChange($event)">
+                <option value="All">Tout</option>
+                <option value="web">Sites Internet</option>
+                <option value="video">Vidéo</option>
+                <option value="autre">Autres</option>
+            </select>
+            <i class="fal fa-browser  icone_selector active" id="icone_1"></i>
+            <i class="fal fa-video icone_selector" id="icone_2"></i>
+            <i class="fal fa-ellipsis-h-alt icone_selector" id="icone_3"></i>
+            <i aria-hidden class="fas fa-sort-down icone_selection"></i>
+        </div>
+        <div id="wrapper">
+            <div id="sort">
+                <button v-on:click="setSelect('All')">
+                    <i class="fal fa-browser"></i>Tout</button>
+                <button v-on:click="setSelect('web')">
+                    <i class="fal fa-browser"></i>Sites internet</button>
+                <button v-on:click="setSelect('video')">
+                    <i class="fal fa-video"></i>Vidéo</button>
+                <button v-on:click="setSelect('autres')">
+                    <i class="fal fa-ellipsis-h-alt"></i>Autres</button>
+            </div>
+            <div id="container">
+                <a class="projet-content" href="">
+                    <img src={{asset("images/projets/logo_faeriths_projet.jpg")}} alt="Logo de Faerith's">
+                    <div class="projet-info">
+                        <h1 class="projet-title">Faerith's</h1>
+                        <hr class="projet-hr"/>
+                        <p class="projet-description">Faerith’s est un collectif de créateurs de contenus sur internet (vidéos, lives, dossiers, articles …), principalement axé sur le jeux vidéo ainsi que la culture geek.</p>
+                    </div>
+                </a>
+                <a class="projet-content" href="">
+                    <img src={{asset("images/projets/logo_streamingschool_projet.jpg")}} alt="Logo de Streaming School">
+                    <div class="projet-info">
+                        <h1 class="projet-title">Streaming School</h1>
+                        <hr class="projet-hr"/>
+                        <p class="projet-description">Formations / Tutoriels / Astuces concernant le domaine de l'Audiovisuel sur Internet.</p>
+                    </div>
+                </a>
+                <a class="projet-content" href="">
+                    <img src={{asset("images/projets/logo_esuria_projet.jpg")}} alt="Logo de Esuria">
+                    <div class="projet-info">
+                        <h1 class="projet-title">Esuria</h1>
+                        <hr class="projet-hr"/>
+                        <p class="projet-description">Site personnel de Esuria, créateur de contenus sur Internet.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
-<script>
-  function change(num) {
-    if (num == 1) {
-      $('.icone_selector').removeClass('active');
-      $('#icone_1').addClass('active');
-    } else if (num == 2) {
-      $('.icone_selector').removeClass('active');
-      $('#icone_2').addClass('active');
-    } else if (num == 3) {
-      $('.icone_selector').removeClass('active');
-      $('#icone_3').addClass('active');
-    } 
-  }
-  </script>
+    <script>
+        function change(num) {
+            if (num == 1) {
+                $('.icone_selector').removeClass('active');
+                $('#icone_1').addClass('active');
+            } else if (num == 2) {
+                $('.icone_selector').removeClass('active');
+                $('#icone_2').addClass('active');
+            } else if (num == 3) {
+                $('.icone_selector').removeClass('active');
+                $('#icone_3').addClass('active');
+            }
+        }
+    </script>
+    <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            delimiters: [
+                '{', '}'
+            ],
+            data: {
+                projets: [],
+                select: "All",
+                page: 1,
+                count: 0,
+                searchText: "",
+                nbrPage: 0,
+                onLoad: false
+            },
+            mounted() {
+                this.getProject();
+                this.getCount();
+            },
+            methods: {
+                setSelect(selection) {
+                    console.log("set Selection");
+                    this.page = 1;
+                    this.select = selection;
+                    console.log(this.select);
+                    this.getArticleSelection();
+                },
+                setSelectChange(event) {
+                    console.log("set Selection");
+                    this.page = 1;
+                    this.select = event.target.value;
+                    console.log(this.select);
+                    this.getArticleSelection();
+                },
+                setPage(page) {
+                    console.log('Set page');
+                    if (this.page != page) {
+                        this.page = page;
+                        console.log(this.page);
+
+                        if (this.select == 'All') {
+                            this.getArticle();
+                            this.getArticle();
+                        } else {
+                            this.getArticleSelection();
+                            this.getArticleSelection();
+                        }
+                    }
+                },
+                setLoad() {
+                    console.log('Set load');
+                    if (this.onLoad == false) {
+                        this.onLoad = true;
+                    } else {
+                        this.onLoad = false;
+                    }
+
+                },
+                getProject() {
+                    console.log("get Article");
+                    this.onLoad = true;
+                    axios({
+                        method: 'POST',
+                        url: '/get-projet',
+                        data: {
+                            page: this.page
+                        }
+                    }).then(response => {
+                        var getUrl = window.location;
+                        var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                        baseUrl = baseUrl.replace("annonce", "");
+
+                        var json = JSON.parse(response.data);
+                        var object = this;
+                        this.projets = [];
+
+                        $.each(json, function (key, value) {
+                            object.projets.push({"titre": value.titre, "texte": value.texte, "date": value.date, "path": value.path});
+                        });
+                        this.onLoad = false;
+
+                    })
+                },
+                search() {
+                    console.log("search");
+                    axios({
+                        method: 'POST',
+                        url: '/search-projet',
+                        data: {
+                            searchText: this.searchText
+                        }
+                    }).then(response => {
+                        var getUrl = window.location;
+                        var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                        baseUrl = baseUrl.replace("annonce", "");
+                        var json = JSON.parse(response.data);
+                        var object = this;
+                        this.projets = [];
+                        $.each(json, function (key, value) {
+                            object.projets.push({"titre": value.titre, "texte": value.texte, "date": value.date});
+                        });
+                    })
+                },
+                getArticleSelection() {
+                    console.log("get Article Selection");
+                    axios({
+                        method: 'POST',
+                        url: '/get-projet-selection',
+                        data: { // id :this.biens[0],
+                            selection: this.select,
+                            page: this.page
+                        }
+                    }).then(response => {
+                        var getUrl = window.location;
+                        var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                        baseUrl = baseUrl.replace("annonce", "");
+                        var json = JSON.parse(response.data);
+                        var object = this;
+                        console.log(json);
+                        this.projets = [];
+                        $.each(json, function (key, value) {
+                            object.projets.push({"titre": value.titre, "texte": value.texte, "date": value.date});
+                        });
+                        this.getCount();
+                    })
+                },
+                getCount() {
+                    console.log("get Count");
+                    axios({
+                        method: 'POST',
+                        url: '/count-projet',
+                        data: { // id :this.biens[0],
+                            selection: this.select
+                        }
+                    }).then(response => {
+                        var getUrl = window.location;
+                        var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                        baseUrl = baseUrl.replace("annonce", "");
+                        var json = JSON.parse(response.data);
+                        var object = this;
+                        console.log(json);
+                        this.count = json;
+                        this.nbrPage = Math.ceil(this.count / 6)
+                        // this.projets = [];
+                        // $.each(json,function(key,value){
+                        // object.projets.push({"titre" : value.titre,"texte" : value.texte,"date" : value.date });
+                        // });
+                    })
+                }
+            }
+        })
+    </script>
 {% endblock %}

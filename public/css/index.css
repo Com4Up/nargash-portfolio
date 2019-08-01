@@ -109,7 +109,7 @@
   animation-name: chevrondown;
   animation-duration: 0.75s;
   animation-iteration-count: infinite;
-  background-image: url("../../Images/Background-Web.jpg");
+  background-image: url("../../images/Background-Web.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
