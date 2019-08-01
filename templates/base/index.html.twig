@@ -28,7 +28,7 @@
                 Développeur Web (Full Stack) et Vidéaste.
                 <br/>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                                                                                                                                                                                                                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                                                                                                                                                                                                                                                                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
         </div>
         <div id="Derniers_Articles">
@@ -76,19 +76,19 @@
 
     <div class="wrapper wrapper-2 pagActive" onwheel="myScript">
         <div id="app" v-if="timeline">
-<div id="arrow">
-          <i class="fas fa-sort-up" id="chevron_post"></i>
-        <div id="timelineBar">
-        <div class="TimelineLoop"  v-for="(event,key) in timeline">
-        <div class="bar"></div>
-            <div class="circle" v-on:click="setKey(key)">
-                { event.id }
-                <div class="insideCircle"></div>
+            <div id="arrow">
+                <i class="fas fa-sort-up" id="chevron_post" v-on:click="direction('top')"></i>
+                <div id="timelineBar">
+                    <div class="TimelineLoop" v-for="(event,key) in timeline">
+                        <div class="bar"></div>
+                        <div class="circle" v-on:click="setKey(key)">
+                            { event.id }
+                            <div class="insideCircle"></div>
+                        </div>
+                    </div>
+                </div>
+                <i class="fas fa-sort-down" id="chevron_past" v-on:click="direction('bottom')"></i>
             </div>
-        </div>
-        </div>
-        <i class="fas fa-sort-down"  id="chevron_past"></i>
-        </div>
             <div id="timeline-content">
                 <h2>{timeline[key].titre}</h2>
                 <p class="timeline-content-date">date</p>
@@ -221,11 +221,24 @@
             ],
             data: {
                 timeline: [],
-                key: 0
+                key: 0,
+                c: 1
             },
             methods: {
                 sayHello() {
                     alert("hello");
+                },
+                direction(direction) {
+                    if (direction == "bottom") 
+                        this.c ++;
+                     else if (direction == "top") 
+                        this.c --
+                    $('#timelineBar>div').css({
+                        top: 'calc(9% * ' + this.c + ')'
+                    });
+
+                    // $('#timelineBar>div').css( { left: '20px' } );
+                    // alert(direction);
                 },
                 setKey(key) {
                     this.key = key;
@@ -252,8 +265,8 @@
     </script>
 
     <script>
-document.getElementById('chevron_past').onclick = function() {
-  alert('test');
-};
-</script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            console.log(document.getElementById('chevron_past'))
+        });
+    </script>
 {% endblock %}
