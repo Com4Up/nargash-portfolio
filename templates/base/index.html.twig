@@ -28,7 +28,7 @@
                 Développeur Web (Full Stack) et Vidéaste.
                 <br/>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                                                                                                                                                                                                                                                                                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                                                                                                                                                                                                                                                                                                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
         </div>
         <div id="Derniers_Articles">
@@ -81,7 +81,7 @@
                 <div id="timelineBar">
                     <div class="TimelineLoop" v-for="(event,key) in timeline">
                         <div class="bar"></div>
-                        <div class="circle" v-on:click="setKey(key)">
+                        <div class="circle" v-bind:style=" event.isActive ? 'background: red;' : 'background: white;' "  v-on:click="setKey(key)">
                             { event.id }
                             <div class="insideCircle"></div>
                         </div>
@@ -229,11 +229,10 @@
                     alert("hello");
                 },
                 direction(direction) {
-                    if (direction == "bottom")
+                    if (direction == "bottom") 
                         this.c ++;
-                     else if (direction == "top")
-                        this.c --
-
+                     else if (direction == "top") 
+                        this.c --;
                     $('#timelineBar>div').css({
                         top: 'calc(7.35em * ' + this.c + ')'
                     });
@@ -242,10 +241,9 @@
                     // alert(direction);
                 },
                 setKey(key) {
+                    this.timeline[this.key].isActive = false;
                     this.key = key;
-                    this.css({
-                        background: 'red'
-                    });
+                    this.timeline[this.key].isActive = true;
                 },
                 getTimeline() {
                     axios({method: 'POST', url: '/get-timeline'}).then(response => {
@@ -255,8 +253,10 @@
                         this.timeline = [];
 
                         $.each(json, function (key, value) {
-                            console.log(value);
-                            object.timeline.push({"titre": value.titre, "description": value.description, "date": value.date});
+                            isActive = false;
+                            if(key == 0)
+                                isActive = true;
+                            object.timeline.push({"titre": value.titre, "description": value.description, "date": value.date, "isActive": isActive});
                         });
 
                     })
