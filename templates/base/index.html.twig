@@ -229,12 +229,13 @@
                     alert("hello");
                 },
                 direction(direction) {
-                    if (direction == "bottom") 
+                    if (direction == "bottom")
                         this.c ++;
-                     else if (direction == "top") 
+                     else if (direction == "top")
                         this.c --
+
                     $('#timelineBar>div').css({
-                        top: 'calc(9% * ' + this.c + ')'
+                        top: 'calc(7.35em * ' + this.c + ')'
                     });
 
                     // $('#timelineBar>div').css( { left: '20px' } );
@@ -242,6 +243,9 @@
                 },
                 setKey(key) {
                     this.key = key;
+                    this.css({
+                        background: 'red'
+                    });
                 },
                 getTimeline() {
                     axios({method: 'POST', url: '/get-timeline'}).then(response => {
