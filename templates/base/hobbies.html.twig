@@ -1,83 +1,232 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-  Hobbies
+    Hobbies
 {% endblock %}
 
 {% block css %}
-  <link type="text/css" rel="stylesheet" href={{asset("css/hobbies.css")}}/>
+    <link type="text/css" rel="stylesheet" href={{asset("css/hobbies.css")}}/>
 {% endblock %}
 
-{% block body%}
-<div id="Selector_Menu">
-  <select onchange="change(this.value)">
-    <option value="1">Films / Séries / Animes</option>
-    <option value="2">Jeux Vidéo</option>
-    <option value="3">Livres</option>
-    <option value="4">Collections</option>
-  </select>
+{% block body %}
+    <div id="app">
+        <div id="Selector_Menu">
+            <select onchange="change(this.value)">
+                <option value="1">Films / Séries / Animes</option>
+                <option value="2">Jeux Vidéo</option>
+                <option value="3">Livres</option>
+                <option value="4">Collections</option>
+            </select>
 
-  <i class="fal fa-film icone_selector active" id="icone_1"></i>
-  <i class="fal fa-gamepad icone_selector" id="icone_2"></i>
-  <i class="fal fa-book icone_selector" id="icone_3"></i>
-  <i class="fal fa-treasure-chest icone_selector" id="icone_4"></i>
-  <i class="fas fa-sort-down icone_selection" aria-hidden></i>
-</div>
-  <div id="wrapper">
-    <div id="sort">
-      <button>
-        <i class="fal fa-film"></i>Films / Séries / Animes</button>
-      <button>
-        <i class="fal fa-gamepad"></i>Jeux Vidéo</button>
-      <button>
-        <i class="fal fa-book"></i>Livres</button>
-      <button>
-        <i class="fal fa-treasure-chest"></i>Collections</button>
+            <i class="fal fa-film icone_selector active" id="icone_1"></i>
+            <i class="fal fa-gamepad icone_selector" id="icone_2"></i>
+            <i class="fal fa-book icone_selector" id="icone_3"></i>
+            <i class="fal fa-treasure-chest icone_selector" id="icone_4"></i>
+            <i aria-hidden class="fas fa-sort-down icone_selection"></i>
+        </div>
+        <div id="wrapper">
+            <div id="sort">
+                <button v-on:click="setSelect('All')">
+                <i class="fal fa-browser"></i>Tout</button>
+                <button v-on:click="setSelect('video')">
+                    <i class="fal fa-film"></i>Films / Séries / Animes</button>
+                <button v-on:click="setSelect('jeu')">
+                    <i class="fal fa-gamepad"></i>Jeux Vidéo</button>
+                <button v-on:click="setSelect('livre')">
+                    <i class="fal fa-book"></i>Livres</button>
+                <button v-on:click="setSelect('collection')">
+                    <i class="fal fa-treasure-chest"></i>Collections</button>
+            </div>
+
+            <div id="container">
+                <div class="article-case" v-for="hobbie in hobbies">
+                    <img v-bind:src=hobbie.miniature>
+                    <a :href="hobbie.link">{hobbie.titre}</a>
+                </div>
+
+                <div class="article-case hidden"></div>
+                <div class="article-case hidden"></div>
+
+            </div>
+        </div>
     </div>
-
-    <div id="container">
-      <div class="article-case">
-        <img src="https://via.placeholder.com/350x250.png">
-        <a href="">Titre</a>
-      </div>
-
-      <div class="article-case">
-        <img src="https://via.placeholder.com/350x250.png">
-        <a href="">Titre</a>
-      </div>
-
-      <div class="article-case">
-        <img src="https://via.placeholder.com/350x250.png">
-        <a href="">Titre</a>
-      </div>
-
-      <div class="article-case">
-        <img src="https://via.placeholder.com/350x250.png">
-        <a href="">Titre</a>
-      </div>
-
-      <div class="article-case hidden"></div>
-      <div class="article-case hidden"></div>
-
-    </div>
-  </div>
-</div>
-{% endblock %}
-{% block javascripts %}
+</div>{% endblock %}{% block javascripts %}
 <script>
-  function change(num) {
-    if (num == 1) {
-      $('.icone_selector').removeClass('active');
-      $('#icone_1').addClass('active');
-    } else if (num == 2) {
-      $('.icone_selector').removeClass('active');
-      $('#icone_2').addClass('active');
-    } else if (num == 3) {
-      $('.icone_selector').removeClass('active');
-      $('#icone_3').addClass('active');
-    } else if (num == 4) {
-      $('.icone_selector').removeClass('active');
-      $('#icone_4').addClass('active');
+    function change(num) {
+        if (num == 1) {
+            $('.icone_selector').removeClass('active');
+            $('#icone_1').addClass('active');
+        } else if (num == 2) {
+            $('.icone_selector').removeClass('active');
+            $('#icone_2').addClass('active');
+        } else if (num == 3) {
+            $('.icone_selector').removeClass('active');
+            $('#icone_3').addClass('active');
+        } else if (num == 4) {
+            $('.icone_selector').removeClass('active');
+            $('#icone_4').addClass('active');
+        }
     }
-  }
-  </script>
-{% endblock %}
+</script>
+<script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{{asset('js/vue.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        delimiters: [
+            '{', '}'
+        ],
+        data: {
+            hobbies: [],
+            select: "All",
+            page: 1,
+            count: 0,
+            nbrPage: 0,
+            onLoad: false
+        },
+        mounted() { // this.sayHello();
+            this.getArticle();
+            this.getCount();
+        },
+        methods: {
+            setSelect(selection) {
+                this.page = 1;
+                this.select = selection;
+                this.getArticleSelection();
+            },
+            setPage(page) {
+                console.log('Set page');
+                if (this.page != page) {
+                    this.page = page;
+                    console.log(this.page);
+
+                    if (this.select == 'All') {
+                        this.getArticle();
+                    } else {
+                        this.getArticleSelection();
+                    }
+                }
+            },
+            setLoad() {
+                console.log('Set load');
+                if (this.onLoad == false) {
+                    this.onLoad = true;
+                } else {
+                    this.onLoad = false;
+                }
+
+            },
+            getArticle() {
+                console.log("get Article");
+                this.onLoad = true;
+                axios({
+                    method: 'POST',
+                    url: '/get-hobbie',
+                    data: {
+                        page: this.page
+                    }
+                }).then(response => {
+                    var json = JSON.parse(response.data);
+                    console.log(json);
+
+                    var object = this;
+                    this.hobbies = [];
+
+                    $.each(json, function (key, value) {
+                        object.hobbies.push({"id": value.id, "miniature": value.miniature.path, "titre": value.titre, "link": value.link});
+                    });
+                    this.onLoad = false;
+
+                })
+            },
+            getArticleSelection() {
+                console.log("get Article Selection");
+                axios({
+                    method: 'POST',
+                    url: '/get-hobbie-selection',
+                    data: { // id :this.biens[0],
+                        selection: this.select,
+                        page: this.page
+                    }
+                }).then(response => {
+                    var json = JSON.parse(response.data);
+                    var object = this;
+                    this.hobbies = [];
+                    $.each(json, function (key, value) {
+                        object.hobbies.push({"id": value.id, "miniature": value.miniature.path, "titre": value.titre, "link": value.link});
+                    });
+                    this.getCount();
+                })
+            },
+            getCount() {
+                console.log("get Count");
+                axios({
+                    method: 'POST',
+                    url: '/count-hobbie',
+                    data: { // id :this.biens[0],
+                        selection: this.select
+                    }
+                }).then(response => {
+                    var json = JSON.parse(response.data);
+                    this.count = json;
+                    this.nbrPage = Math.ceil(this.count / 6)
+                })
+            }
+        }
+    })
+</script>
+
+<script>
+    let cards = Array.from(document.querySelectorAll('.card'))
+
+    cards.forEach((card) => {
+        card.addEventListener('click', function () {
+            let flip = new Flip()
+            flip.read(cards)
+            card.parentNode.removeChild(card)
+            cards = cards.filter(c => c !== card)
+            flip.play(cards)
+        })
+    })
+
+    class Flip {
+        constructor() {
+            this.duration = 300
+            this.positions = {}
+        }
+
+
+        read(elements) {
+            elements.forEach(element => {
+                const id = element.getAttribute('id')
+                this.positions[id] = element.getBoundingClientRect()
+            })
+        }
+
+        play(elements) {
+            elements.forEach(element => {
+                const id = element.getAttribute('id')
+                const newPosition = element.getBoundingClientRect()
+                const oldPosition = this.positions[id]
+                const deltaX = oldPosition.x - newPosition.x
+                const deltaY = oldPosition.y - newPosition.y
+                const deltaW = oldPosition.width / newPosition.width
+                const deltaH = oldPosition.height / newPosition.height
+                element.animate([
+                    {
+                        transform: `translate(${deltaX}px, ${deltaY}px) scale(${deltaW}, ${deltaH})`
+                    }, {
+                        transform: 'none'
+                    }
+                ], {
+                    duration: this.duration,
+                    easing: 'ease-in-out',
+                    fill: 'both'
+                })
+                element.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${deltaW}, ${deltaH})`
+            })
+        }
+    }
+</script>{% endblock %}

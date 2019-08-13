@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Timeline;
 use App\Entity\Skill;
+use App\Entity\Hobbie;
+use App\Form\HobbieType;
+use App\Repository\HobbieRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
@@ -74,6 +77,109 @@ class DefaultController extends Controller
     {
         // replace this line with your own code!
         return $this->render('base/hobbies.html.twig');
+    }
+
+
+    /**
+     * @Route("/get-hobbie",name="getHobbie")
+     */
+
+    public function gethobbie(Request $request, RegistryInterface $doctrine)
+    {
+        $user1 = $this->getUser();
+        $request_stack = $this->container->get('request_stack');
+        $request = $request_stack->getCurrentRequest();
+        $content = $request->getContent();
+        $contentDecode = json_decode($content);
+        $page = $contentDecode->page;
+        $biens = $doctrine->getRepository(hobbie::class)->myGetProjet($page);
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        // Add Circular reference handler
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($biens, 'json');
+
+        $response = new JsonResponse();
+        $response->setData($jsonContent);
+        // dump($response);
+
+        return $response;
+    }
+    /**
+     * @Route("/get-hobbie-selection",name="getHobbieSelection")
+     */
+    public function getHobbieBYType(Request $request, RegistryInterface $doctrine)
+    {
+        $request_stack = $this->container->get('request_stack');
+        $request = $request_stack->getCurrentRequest();
+        $content = $request->getContent();
+        $contentDecode = json_decode($content);
+        // var_dump($content);
+        $type = $contentDecode->selection;
+        $page = $contentDecode->page;
+        if ($type != "All") {
+            $selection = $doctrine->getRepository(Hobbie::class)->myGetProjetByType($type, intval($page));
+        } else {
+            $selection = $doctrine->getRepository(Hobbie::class)->myGetProjet(intval($page));
+         }
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        // Add Circular reference handler
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($selection, 'json');
+
+        $response = new JsonResponse();
+        $response->setData($jsonContent);
+        // dump($response);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/count-hobbie",name="getCountHobbie")
+     */
+
+    public function countHobbie(Request $request, RegistryInterface $doctrine)
+    {
+        $user1 = $this->getUser();
+        $request_stack = $this->container->get('request_stack');
+        $request = $request_stack->getCurrentRequest();
+        $content = $request->getContent();
+        $contentDecode = json_decode($content);
+        $type = $contentDecode->selection;
+        if ($type != 'All')
+            $count = $doctrine->getRepository(Hobbie::class)->myCountByTri($type);
+        else
+            $count = $doctrine->getRepository(Hobbie::class)->myCount();
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        // Add Circular reference handler
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($count, 'json');
+
+        $response = new JsonResponse();
+        $response->setData($jsonContent);
+        // dump($response);
+
+        return $response;
     }
 
     /**

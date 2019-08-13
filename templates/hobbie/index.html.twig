@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobbie index{% endblock %}
+
+{% block body %}
+    <h1 style="color:white;">Hobbie index</h1>
+
+    <table class="table" style="color:white;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Link</th>
+                <th>Type</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hobbie in hobbies %}
+            <tr>
+                <td>{{ hobbie.id }}</td>
+                <td>{{ hobbie.titre }}</td>
+                <td>{{ hobbie.link }}</td>
+                <td>{{ hobbie.type }}</td>
+                <td><img src="{{ asset(hobbie.miniature.path) }}"></td>
+                <td>
+                    <a href="{{ path('hobbie_show', {'id': hobbie.id}) }}">show</a>
+                    <a href="{{ path('hobbie_edit', {'id': hobbie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hobbie_new') }}">Create new</a>
+{% endblock %}

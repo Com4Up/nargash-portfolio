@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobbie{% endblock %}
+
+{% block body %}
+    <h1 style="color:white;">Hobbie</h1>
+
+    <table style="color:white;" class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hobbie.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ hobbie.titre }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ hobbie.link }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ hobbie.type }}</td>
+            </tr>
+            <tr>
+                <th>Miniature</th>
+                <td><img src={{asset(hobbie.miniature.path) }}></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('hobbie_index') }}">back to list</a>
+
+    <a href="{{ path('hobbie_edit', {'id': hobbie.id}) }}">edit</a>
+
+    {{ include('hobbie/_delete_form.html.twig') }}
+{% endblock %}
