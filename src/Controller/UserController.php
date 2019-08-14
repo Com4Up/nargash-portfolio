@@ -29,35 +29,36 @@ class UserController extends Controller
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             // 3) Encode the password (you could also do this via Doctrine listener)
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
-            $user->setEnabled(false);
-            $role = ['ROLE_USER'];
-            $user->setRoles($role);
+            $user->setEnabled(1);
+            $userRole = ['ROLE_USER','ROLE_ADMIN'];
+            $user->setRoles($userRole);
+            // $user->addRole($admin);
             $user->setUsername();
             $user->setConfirmationToken(base64_encode($user->getEmail()));
-
+            
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
             
-            $url = $this->generateUrl('check_mail',array('confirmationtoken' => $user->getConfirmationToken()));
+        //     $url = $this->generateUrl('check_mail',array('confirmationtoken' => $user->getConfirmationToken()));
 
-           $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('tnpcclqp@netcourrier.com')
-            ->setTo($user->getEmail())
-            ->setBody(
-                $this->renderView(
-                    // templates/emails/registration.html.twig
-                    'email/registration.html.twig',
-                    array('url' => $url)
-                ),
-                'text/html'
-            );
-            $result = $mailer->send($message);
+        //    $message = (new \Swift_Message('Hello Email'))
+        //     ->setFrom('tnpcclqp@netcourrier.com')
+        //     ->setTo($user->getEmail())
+        //     ->setBody(
+        //         $this->renderView(
+        //             // templates/emails/registration.html.twig
+        //             'email/registration.html.twig',
+        //             array('url' => $url)
+        //         ),
+        //         'text/html'
+        //     );
+        //     $result = $mailer->send($message);
            return $this->redirectToRoute('index');
         }
 

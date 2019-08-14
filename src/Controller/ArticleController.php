@@ -24,6 +24,16 @@ use Symfony\Component\HttpFoundation\File\File;
 class ArticleController extends Controller
 {
 
+
+    /**
+     * @Route("/blog", name="blog")
+     */
+    public function blog()
+    {
+        // replace this line with your own code!
+        return $this->render('base/blog/blog.html.twig');
+    }
+
     /**
      * @Route("/lecture-article/{path}", name="lecture-article")
      */
@@ -41,7 +51,7 @@ class ArticleController extends Controller
             $em->flush();
             return $this->redirectToRoute('lecture-article', ["path" => $path]);
         }
-        return $this->render('base/lecture_article.html.twig', array(
+        return $this->render('base/blog/lecture.html.twig', array(
             "article" => $article,
             'form' => $form->createView()
         ));
@@ -51,7 +61,6 @@ class ArticleController extends Controller
      */
     public function new_article(RegistryInterface $doctrine, Request $request)
     {
-
         $article = new Article();
         $form = $this->createForm(BlogType::class, $article);
         $form->handleRequest($request);
@@ -67,7 +76,7 @@ class ArticleController extends Controller
         ));
     }
     /**
-     * @Route("/edit-article/{id}",name="edit-article")
+     * @Route("cms/edit-article/{id}",name="edit-article")
      */
 
     public function edit_article(RegistryInterface $doctrine, Request $request, $id)
@@ -77,7 +86,7 @@ class ArticleController extends Controller
         $form = $this->createForm(BlogType::class, $article);
         $saveArticle = $article->getImage()->getFilename();
         $form->handleRequest($request);
-      
+
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
@@ -97,7 +106,6 @@ class ArticleController extends Controller
     /**
      * @Route("/get-article",name="getArticle")
      */
-
     public function getArticle(Request $request, RegistryInterface $doctrine)
     {
         $user1 = $this->getUser();
@@ -187,8 +195,6 @@ class ArticleController extends Controller
 
         $response = new JsonResponse();
         $response->setData($jsonContent);
-        // dump($response);
-
         return $response;
     }
 
@@ -249,7 +255,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/delete-comment/{id}", name="delete-comment")
+     * @Route("cms/delete-comment/{id}", name="delete-comment")
      */
     public function delete_comment($id, RegistryInterface $doctrine, Request $request)
     {
@@ -286,7 +292,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/cms-blog", name="cms-blog")
+     * @Route("cms/blog", name="cms-blog")
      */
     public function cms_blog(RegistryInterface $doctrine)
     {
@@ -296,8 +302,8 @@ class ArticleController extends Controller
         ]);
     }
 
-     /**
-     * @Route("/article-delete/{id}", name="article-delete")
+    /**
+     * @Route("cms/article-delete/{id}", name="article-delete")
      */
     public function delete_article(RegistryInterface $doctrine, $id)
     {

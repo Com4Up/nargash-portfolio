@@ -14,9 +14,9 @@ hobbies:
     path: /hobbies
     controller: App\Controller\DefaultController::hobbies
 
-blog:
-    path: /blog
-    controller: App\Controller\DefaultController::blog
+# blog:
+#     path: /blog
+#     controller: App\Controller\DefaultController::blog
 
 lecture:
     path: /lecture

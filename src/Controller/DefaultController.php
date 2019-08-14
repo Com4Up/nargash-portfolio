@@ -182,23 +182,8 @@ class DefaultController extends Controller
         return $response;
     }
 
-    /**
-     * @Route("/blog", name="blog")
-     */
-    public function blog()
-    {
-        // replace this line with your own code!
-        return $this->render('base/blog.html.twig');
-    }
 
-    /**
-     * @Route("/lecture", name="lecture")
-     */
-    public function lecture()
-    {
-        // replace this line with your own code!
-        return $this->render('base/lecture.html.twig');
-    }
+    
 
     /**
      * @Route("/lecture-projet", name="lecture_projet")
