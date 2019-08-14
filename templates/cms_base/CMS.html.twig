@@ -1,0 +1,488 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+<title>Esuria // CMS</title>
+{% endblock %}
+{% block css %}
+<link type="text/css" rel="stylesheet" href={{asset("css/CMS.css")}} />
+{% endblock %}
+{% block content %}
+		<!-- CONTENU -->
+		<div id="Zone">
+			<select id="Nav_cms" onchange="change(this.value)">
+				<option value="1">Présentation</option>
+				<option value="2">Projets</option>
+				<option value="3">Hobbies</option>
+				<option value="4">Blog</option>
+				<option value="5">Agenda</option>
+			</select>
+			<div id="Zone_haut">
+				<div class="CMS_wrap active" id="Presentation_cms">
+					<p><i class="fal fa-upload"></i> Tenue 1</p>
+					<p><i class="fal fa-upload"></i> Tenue 2</p>
+					<p><i class="fal fa-upload"></i> Tenue 3</p>
+				</div>
+
+				<div class="CMS_wrap" id="Projets_cms">
+					<div id="Projets_Switch">
+						<a href="Projet_web.html"><i class="fal fa-desktop"></i></a>
+						<a href="Projet_Photo.html"><i class="fal fa-camera-alt"></i></a>
+						<a href="Projet_video.html"><i class="fal fa-video"></i></a>
+						<a href="Projet_Wrench.html"><i class="fal fa-wrench"></i></a>
+						<a href="Projet_Map.html"><i class="fal fa-map"></i></a>
+					</div>
+					<hr class="cms_hr" />
+					<div id="Sort_Select">
+						<p>-</p>
+						<p class="Sort_Select">Tout</p>
+						<p>/</p>
+						<p class="sort">Réalisation</p>
+						<p>/</p>
+						<p class="sort">Ecriture</p>
+						<p>/</p>
+						<p class="sort">Personnel</p>
+						<p>/</p>
+						<p class="sort">Professionnel</p>
+						<p>-</p>
+					</div>
+					<div class="Article_list">
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="CMS_wrap" id="Hobbies_cms">
+					<div id="Hobbies_Switch">
+						<a onclick="switch_hobbies(1)"><i class="fal fa-music Hobbies_Switch Coloractive"></i></a>
+						<a onclick="switch_hobbies(2)"><i class="fal fa-gamepad Hobbies_Switch"></i></a>
+						<a onclick="switch_hobbies(3)"><i class="fal fa-film-alt Hobbies_Switch"></i></a>
+						<a onclick="switch_hobbies(4)"><i class="fal fa-book Hobbies_Switch"></i></a>
+					</div>
+						<hr class="cms_hr" />
+						<div id="CMS_Hobbies_Musique"  class="CMS_Hobbies active">
+							<p class="CMS_Titre">Album du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Musique du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Album favoris</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Groupe favori</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+						</div>
+
+						<div id="CMS_Hobbies_Jeux"  class="CMS_Hobbies">
+							<p class="CMS_Titre">Jeux vidéo du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+
+							<p class="CMS_Titre">Jeux vidéo favoris</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+						</div>
+
+						<div id="CMS_Hobbies_Film" class="CMS_Hobbies">
+							<p class="CMS_Titre">Film du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Série du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Anime du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Films Favoris</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Séries favorites</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+
+							<p class="CMS_Titre">Animes favoris</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+						</div>
+
+						<div id="CMS_Hobbies_Livre"  class="CMS_Hobbies">
+							<p class="CMS_Titre">Livres du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">BD du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Manga du moment</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<p class="CMS_Titre">Livres favoris</p>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+							<div class="Hobbies_Line">
+								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
+							</div>
+						</div>
+				</div>
+
+				<div class="CMS_wrap" id="Blog_cms">
+					<div class="Article_list">
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="CMS_wrap" id="Agenda_cms">
+					<div class="Article_list">
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+						<div class="Article_line">
+							<p class="Article_date">14 Septembre 2017</p>
+							<p class="Article_nom">Site Web</p>
+							<div class="Article_Interaction">
+								<i class="fal fa-edit"></i>
+								<i class="fal fa-times"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    {% endblock %}
+    {% block js %}
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript" src="Fixe/javascript.js"></script>
+	<script>
+		function change(num) {
+			if (num == 1) {
+				$('.CMS_wrap').removeClass('active');
+				$('#Presentation_cms').addClass('active');
+			} else if (num == 2) {
+				$('.CMS_wrap').removeClass('active');
+				$('#Projets_cms').addClass('active');
+			} else if (num == 3) {
+				$('.CMS_wrap').removeClass('active');
+				$('#Hobbies_cms').addClass('active');
+			} else if (num == 4) {
+				$('.CMS_wrap').removeClass('active');
+				$('#Blog_cms').addClass('active');
+			} else if (num == 5) {
+				$('.CMS_wrap').removeClass('active');
+				$('#Agenda_cms').addClass('active');
+			}
+		}
+		function switch_hobbies(number)
+		{
+			if (number == 1)
+			{
+				$('.Hobbies_Switch').removeClass('Coloractive');
+				$('.fa-music').addClass('Coloractive');
+				$('.CMS_Hobbies').removeClass('active');
+				$('#CMS_Hobbies_Musique').addClass('active');
+			}
+			else if (number == 2)
+			{
+				$('.Hobbies_Switch').removeClass('Coloractive');
+				$('.fa-gamepad').addClass('Coloractive');
+				$('.CMS_Hobbies').removeClass('active');
+				$('#CMS_Hobbies_Jeux').addClass('active');
+			}
+			else if (number == 3)
+			{
+				$('.Hobbies_Switch').removeClass('Coloractive');
+				$('.fa-film-alt').addClass('Coloractive');
+				$('.CMS_Hobbies').removeClass('active');
+				$('#CMS_Hobbies_Film').addClass('active');
+			}
+			else if (number == 4)
+			{
+				$('.Hobbies_Switch').removeClass('Coloractive');
+				$('.fa-book').addClass('Coloractive');
+				$('.CMS_Hobbies').removeClass('active');
+				$('#CMS_Hobbies_Livre').addClass('active');
+			}
+		}
+	</script>
+{% endblock %}

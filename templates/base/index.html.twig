@@ -36,39 +36,18 @@
                 DERNIERS ARTICLES
             </h2>
             <div id="Contenu_Accueil">
-
+                {% for article in articles %}
                 <div class="Contenu_Classe">
                     <div class="article-case">
-                        <img src="https://via.placeholder.com/420x240.png">
-                        <a href=""></a>
+                        <img src="{{asset(article.image.path)}}">
+                        <a href="{{path('lecture-article',{"path": article.path} )}}"></a>
                     </div>
-                    <a href="">
-                        <h3 class="Titre_Contenu">Let's Play #4 - Bioshock 2</h3>
-                        <h4 class="Date_Contenu">19 Octobre 2019</h4>
+                    <a href="{{path('lecture-article',{"path": article.path} )}}">
+                        <h3 class="Titre_Contenu">{{article.titre}}</h3>
+                        <h4 class="Date_Contenu">{{article.date|localizeddate('none', 'none', null, null, 'EEEE d ')|capitalize }}</h4>
                     </a>
                 </div>
-
-                <div class="Contenu_Classe">
-                    <div class="article-case">
-                        <img src="https://via.placeholder.com/420x240.png">
-                        <a href=""></a>
-                    </div>
-                    <a href="">
-                        <h3 class="Titre_Contenu">Rétrospective - Mirror's Edge</h3>
-                        <h4 class="Date_Contenu">17 Octobre 2019</h4>
-                    </a>
-                </div>
-
-                <div class="Contenu_Classe new_3">
-                    <div class="article-case">
-                        <img src="https://via.placeholder.com/420x240.png">
-                        <a href=""></a>
-                    </div>
-                    <a href="">
-                        <h3 class="Titre_Contenu">Expédition Nocturne</h3>
-                        <h4 class="Date_Contenu">22 Septembre 2019</h4>
-                    </a>
-                </div>
+                {% endfor %}
 
             </div>
         </div>

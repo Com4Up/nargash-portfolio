@@ -1,0 +1,24 @@
+{% extends 'cms_base.html.twig' %}
+{% block title %}
+Esuria // CMS
+{% endblock %}
+{% block css %}
+<link type="text/css" rel="stylesheet" href={{asset("css/hobbies_edit.css")}} />
+{% endblock %}
+{% block content %}
+		<!-- CONTENU -->
+		<div id="Zone">
+			<div id="Zone_haut">
+				<div class="CMS_wrap" id="Hobbies_cms">
+							{{ form_start(form) }}
+								{{ form_widget(form)}}
+									{# {{ form_row(form.thumbnail) }} #}
+								<button>Confirm</button>
+							{{ form_end(form) }}
+
+				</div>
+		</div>
+
+    {% endblock %}
+    {% block js %}
+{% endblock %}

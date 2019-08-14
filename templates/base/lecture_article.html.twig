@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{parent()}}
+    {{article.path}}
+{% endblock %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href={{asset("css/Lecture_Article.css")}}/>
+{% endblock %}
+{% block body %}
+    <!-- CONTENU -->
+    <div id="Zone">
+        <a class="Lien_Photo" href="https://placeholder.com"><img class="Photo" src="http://via.placeholder.com/1280x200"></a>
+        <h1 id="Titre">
+            {{article.titre|raw}}
+        </h1>
+        <div id="Cat">
+            <h2 id="Categorie">
+                {{article.type}}
+            </h2>
+            <p id="Separation_Categorie">
+                |
+            </p>
+            <p id="Date">
+                Posté le
+                {{article.date|date("d/m/y")}}
+            </p>
+        </div>
+
+        <p id="Interieur">
+            {{article.texte|raw}}
+        </p>
+
+        <div id="After_Article">
+            <p id="Hashtag">
+                #Technologie #UX #Web
+            </p>
+            <div id="Social_share">
+                <i aria-hidden class="fab fa-facebook espace_icone"></i>
+                <i aria-hidden class="fab fa-twitter espace_icone"></i>
+                <i aria-hidden class="fab fa-tumblr-square espace_icone"></i>
+            </div>
+        </div>
+
+        <div id="Total_com">
+            <p id="Espace_Commentaire">
+                Commentaire
+            </p>
+            {% for comment in article.commentaires %}
+                <p>{{comment.username}}
+                    : le
+                    {{ comment.date|localizeddate('none', 'none', null, null, 'EEEE d ')|capitalize }}{{ comment.date|localizeddate('none', 'none', null, null, 'MMMM Y ')|capitalize }}</p>
+                <p id="Zone_com">{{comment.texte}}</p>
+            {% endfor %}
+            {{form_start(form)}}
+            {{form_widget(form.username)}}
+            {{form_widget(form.texte,  {'id': 'Zone_com'}) }}
+			<div id="Bouton_envoie">
+                <button>
+                    ENVOYER
+                </button>
+            </div>
+            {{form_end(form)}}
+            
+        </div>
+
+    </div>
+{% endblock %}

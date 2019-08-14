@@ -1,0 +1,204 @@
+{% extends 'cms_base.html.twig' %}
+{% block title %}
+    Esuria // CMS
+{% endblock %}
+{% block css %}
+<link type="text/css" rel="stylesheet" href={{asset("css//Index.css")}}/>
+    <link type="text/css" rel="stylesheet" href={{asset("css/CMS.css")}}/>
+
+
+{% endblock %}
+{% block content %}
+    <!-- CONTENU -->
+    <div id="Presentation" style="margin-top : 0em !important;">
+        <h1>- Présentation -</h1>
+        <div id="Presentation_cms">
+    {{form_start(form)}}
+    <div class="Presentation_cms_line">{{form_label(form.nom)}}
+    :
+    {{form_widget(form.nom)}}</div>
+<div class="Presentation_cms_line">
+{{form_label(form.prenom)}}
+:
+{{form_widget(form.prenom)}}</div><div class="Presentation_cms_line">{{form_label(form.presentation)}}:{{form_widget(form.presentation)}}</div></div><button type="submit">Edit</button>{{form_end(form)}}</div><div id="Parcours">
+<div id="app">
+    <h1>- Parcours -</h1>
+    <div id="Timeline">
+        <div id="Info">
+            <p class="Periode" id="Periode_2012_2015">2012 - 2015</p>
+            <p class="Titre_periode" id="Titre_lycee">Lycée Charles Jully</p>
+        </div>
+    </div>
+
+    <i class="far fa-chevron-double-left" id="chevron_past"></i>
+    <div id="Timeline_bar">
+        <template v-for="(events, tindex) in timeline">
+            <template v-for="(smallEvent, sindex) in events">
+                <template  class="Timeline_section"  v-if="smallEvent.event">
+                    <div class="Bar"></div>
+                    <div class="circle" v-on:click="changeInfo(tindex , sindex)" onclick="action_timeline()" >
+                        <div class="InsideCircle"></div>
+                    </div>
+                    <div class="timeline_action">
+                      <a v-bind:href="'/edit-event/' + smallEvent.event.id "><i class="fas fa-edit"></i></a>
+                      <a v-bind:href="'/delete-event/' + smallEvent.event.id "><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </template>
+
+
+                {# {smallEvent} #}
+                <template v-if="smallEvent.smallEvent">
+                    <div class="Bar"></div>
+                    <div class="LittleCircle" v-on:click="changeInfo(tindex , sindex)"  onclick="action_timeline()">
+                        <div class="InsideLittleCircle"></div>
+                    </div>
+                    <div class="timeline_action">
+                      <a v-bind:href="'/edit-small-event/' + smallEvent.smallEvent.id "><i class="fas fa-edit"></i></a>
+                      <a v-bind:href="'/delete-small-event/' + smallEvent.smallEvent.id "><i class="fas fa-trash-alt"></i></a>
+                    </div>
+                </template>
+
+                <template v-if="smallEvent.event">
+                <div class="Bar"></div>
+                    <a v-bind:href="'/new-smallEvent/' + smallEvent.event.id" class="LittleCircle" v-on:click="changeInfo(tindex , sindex)">
+                            <div class="InsideLittleCircle">  <i class="fas fa-plus"></i></div>
+                    </a>
+                </template>
+
+            </template>
+        </template>
+
+        <div class="Bar"></div>
+        <a href="{{path('new-event')}}" class="circle" v-on:click="changeInfo(tindex , sindex)">
+            <div class="InsideCircle"><i class="fas fa-plus"></i></div>
+        </a>
+    </template>
+</template>
+
+{# <div class="Bar"></div> #}</div><i class="far fa-chevron-double-right" id="chevron_post"></i>
+<div id="Competences">
+<h1>- Compétences -</h1>
+<div id="Competences_data">
+    {% for skill in skills %}
+        <div class="Competences_line">
+            <i class="{{skill.icone}}"></i>
+            <p>{{skill.name}}</p>
+            <a href="{{path('edit-skill',{"id" : skill.id})}}">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a href="{{path('delete-skill',{"id" : skill.id})}}">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </div>
+    {% endfor %}
+
+    <div class="Competences_line">
+        <a href="{{path('new-skill')}}" style="width: 100% !important;">
+            <i class="fas fa-plus"></i>
+            {# <p>Ajouter </p> #}
+        </a>
+    </div>
+
+</div></div>{% endblock %}{% block js %}<script>
+var c = 1;
+document.getElementById('chevron_past').onclick = function () {
+    c++;
+    $('#Timeline_bar>div').css({
+        left: 'calc(9% * ' + c + ')'
+    });
+};
+
+document.getElementById('chevron_post').onclick = function () {
+    c--;
+    $('#Timeline_bar>div').css({
+        left: 'calc(9% * ' + c + ')'
+    });
+};
+
+var timeline_action = 0;
+function action_timeline() {
+if (timeline_action == 0)
+{
+$('.timeline_action').addClass('timeline_action_active');
+timeline_action = 1;
+}
+else {
+$('.timeline_action').removeClass('timeline_action_active');
+timeline_action = 0;
+}
+};
+
+</script><script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src={{asset("js/vue.js") }}></script><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script><script>
+var app = new Vue({
+    el: '#app',
+    delimiters: [
+        '{', '}'
+    ],
+    data: {
+        timeline: [
+            []
+        ],
+        key: 0,
+        description: "coucou"
+    },
+    methods: {
+        sayHello() {
+            alert("hello");
+        },
+        setKey(key) {
+            this.key = key;
+        },
+        changeInfo(tindex, sindex) {
+            if (this.timeline[tindex][sindex].event != undefined)
+                this.description = this.timeline[tindex][sindex].event.description;
+             else
+                this.description = this.timeline[tindex][sindex].smallEvent.description;
+
+
+
+            // this.description = this.timeline[tindex][sindex].description;
+        },
+        getTimeline() {
+            axios({method: 'POST', url: '/get-timeline'}).then(response => {
+                var getUrl = window.location;
+                var json = JSON.parse(response.data);
+                var object = this;
+                this.timeline = [[]];
+
+                $.each(json, function (key, value) {
+                    value.smallEvent.sort(function (a, b) {
+                        // Turn your strings into dates, and then subtract them
+                        // to get a value that is either negative, positive, or zero.
+                        return a.date.timestamp - b.date.timestamp;
+                    });
+                    // console.log(this.timeline[key] == undefined);
+                    if (object.timeline[key] == undefined) {
+                        object.timeline[key] = [];
+                    }
+                    object.timeline[key].push({
+                        "event": {
+                            "titre": value.event.titre,
+                            "description": value.event.description,
+                            "date": value.event.date,
+                            "id": value.event.id
+                        }
+                    });
+                    value.smallEvent.forEach(function (value) {
+                        object.timeline[key].push({
+                            "smallEvent": {
+                                "titre": value.titre,
+                                "description": value.description,
+                                "date": value.date,
+                                "id": value.id
+                            }
+                        });
+                    })
+                });
+
+            })
+        }
+    },
+    mounted: function () {
+        this.getTimeline();
+    }
+})</script>{% endblock %}

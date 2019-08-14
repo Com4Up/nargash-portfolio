@@ -1,0 +1,368 @@
+{% extends 'cms_base.html.twig' %}
+{% block title %}
+Esuria // CMS
+{% endblock %}
+{% block css %}
+<link type="text/css" rel="stylesheet" href={{asset("css/CMS.css")}} />
+{% endblock %}
+{% block content %}
+		<!-- CONTENU -->
+		<div id="Zone">
+				<div class="CMS_wrap" id="Projets_cms">
+					<div id="Projets_Switch">
+						<a onclick="switch_hobbies(1)"><i class="fal fa-desktop Hobbies_Switch Coloractive"></i></a>
+						<a onclick="switch_hobbies(2)"><i class="fal fa-camera-alt Hobbies_Switch"></i></a>
+						<a onclick="switch_hobbies(3)"><i class="fal fa-video Hobbies_Switch"></i></a>
+						<a onclick="switch_hobbies(4)"><i class="fal fa-wrench Hobbies_Switch"></i></a>
+						<a onclick="switch_hobbies(5)"><i class="fal fa-map Hobbies_Switch"></i></a>
+					</div>
+					<hr class="cms_hr" />
+
+					<div id="cms_web"  class="CMS_Hobbies active">
+						<div id="Sort_Select">
+							<p>-</p>
+							<p class="Sort_Select">Tout</p>
+							<p>/</p>
+							<p class="sort">UX Design</p>
+							<p>/</p>
+							<p class="sort">UI Design</p>
+							<p>/</p>
+							<p class="sort">Front-End</p>
+							<p>-</p>
+						</div>
+						<div class="Article_list">
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web 1</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times" onclick="confirm_delete('projet_1', 1)"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="cms_photo"  class="CMS_Hobbies">
+						<div id="Sort_Select">
+							<p>-</p>
+							<p class="Sort_Select">Tout</p>
+							<p>/</p>
+							<p class="sort">Nuit</p>
+							<p>/</p>
+							<p class="sort">Jour</p>
+							<p>/</p>
+							<p class="sort">Portrait</p>
+							<p>/</p>
+							<p class="sort">Paysage</p>
+							<p>-</p>
+						</div>
+						<div class="Article_list">
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="cms_video"  class="CMS_Hobbies">
+						<div id="Sort_Select">
+							<p>-</p>
+							<p class="Sort_Select">Tout</p>
+							<p>/</p>
+							<p class="sort">Ecriture</p>
+							<p>/</p>
+							<p class="sort">Réalisation</p>
+							<p>/</p>
+							<p class="sort">Montage</p>
+							<p>/</p>
+							<p class="sort">Effets Spéciaux</p>
+							<p>-</p>
+						</div>
+						<div class="Article_list">
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="cms_diy"  class="CMS_Hobbies">
+					<p>DIY</p>
+						<div id="Sort_Select">
+							<p>-</p>
+							<p class="Sort_Select">Tout</p>
+							<p>/</p>
+							<p class="sort">Réalisation</p>
+							<p>/</p>
+							<p class="sort">Ecriture</p>
+							<p>/</p>
+							<p class="sort">Personnel</p>
+							<p>/</p>
+							<p class="sort">Professionnel</p>
+							<p>-</p>
+						</div>
+						<div class="Article_list">
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="cms_map"  class="CMS_Hobbies">
+					<p>MAP</p>
+						<div id="Sort_Select">
+							<p>-</p>
+							<p class="Sort_Select">Tout</p>
+							<p>/</p>
+							<p class="sort">Réalisation</p>
+							<p>/</p>
+							<p class="sort">Ecriture</p>
+							<p>/</p>
+							<p class="sort">Personnel</p>
+							<p>/</p>
+							<p class="sort">Professionnel</p>
+							<p>-</p>
+						</div>
+						<div class="Article_list">
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+							<div class="Article_line">
+								<p class="Article_date">14 Septembre 2017</p>
+								<p class="Article_nom">Site Web</p>
+								<div class="Article_Interaction">
+									<i class="fal fa-edit"></i>
+									<i class="fal fa-times"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+		</div>
+
+    {% endblock %}
+    {% block js %}
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script type="text/javascript" src="Fixe/javascript.js"></script>
+		<script>
+			function switch_hobbies(number)
+			{
+				if (number == 1)
+				{
+					$('.Hobbies_Switch').removeClass('Coloractive');
+					$('.fa-desktop').addClass('Coloractive');
+					$('.CMS_Hobbies').removeClass('active');
+					$('#cms_web').addClass('active');
+				}
+				else if (number == 2)
+				{
+					$('.Hobbies_Switch').removeClass('Coloractive');
+					$('.fa-camera-alt').addClass('Coloractive');
+					$('.CMS_Hobbies').removeClass('active');
+					$('#cms_photo').addClass('active');
+				}
+				else if (number == 3)
+				{
+					$('.Hobbies_Switch').removeClass('Coloractive');
+					$('.fa-video').addClass('Coloractive');
+					$('.CMS_Hobbies').removeClass('active');
+					$('#cms_video').addClass('active');
+				}
+				else if (number == 4)
+				{
+					$('.Hobbies_Switch').removeClass('Coloractive');
+					$('.fa-wrench').addClass('Coloractive');
+					$('.CMS_Hobbies').removeClass('active');
+					$('#cms_diy').addClass('active');
+				}
+				else if (number == 5)
+				{
+					$('.Hobbies_Switch').removeClass('Coloractive');
+					$('.fa-map').addClass('Coloractive');
+					$('.CMS_Hobbies').removeClass('active');
+					$('#cms_map').addClass('active');
+				}
+			}
+
+			function confirm_delete(nom, id) {
+			if (confirm('Voulez vous vraiment suprimmer le projet ' + nom + '?')) {
+				alert(nom + ' supprimé.')
+				delete(id);
+				}
+				else {
+				alert('ok')
+				}
+			}
+		</script>
+		{% endblock %}

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Timeline;
 use App\Entity\Skill;
 use App\Entity\Hobbie;
+use App\Entity\Article;
 use App\Form\HobbieType;
 use App\Repository\HobbieRepository;
 use Symfony\Component\Serializer\Serializer;
@@ -29,10 +30,12 @@ class DefaultController extends Controller
     public function index(Request $request, RegistryInterface $doctrine)
     {
         $skills = $doctrine->getRepository(Skill::class)->findAll();
+        $articles = $doctrine->getRepository(Article::class)->myLastArticle(3);
         // replace this line with your own code!
         // var_dump($timeline);
         return $this->render('base/index.html.twig', [
             "skills" => $skills,
+            "articles" => $articles,
         ]);
     }
 
@@ -120,7 +123,6 @@ class DefaultController extends Controller
         $request = $request_stack->getCurrentRequest();
         $content = $request->getContent();
         $contentDecode = json_decode($content);
-        // var_dump($content);
         $type = $contentDecode->selection;
         $page = $contentDecode->page;
         if ($type != "All") {
@@ -142,8 +144,6 @@ class DefaultController extends Controller
 
         $response = new JsonResponse();
         $response->setData($jsonContent);
-        // dump($response);
-
         return $response;
     }
 

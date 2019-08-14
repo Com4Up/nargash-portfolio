@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{parent()}}
+    new-article
+{% endblock %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{{asset("css/Blog.css")}}"/>{# <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/> #}
+    {# <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> #}
+    {# <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> #}<script src="http://cdn.ckeditor.com/4.6.2/standard-all/ckeditor.js"> </script>
+{% endblock %}
+{% block body %}
+    <h1 style="color:white">Ajout d'un nouvelle article</h1>
+    {{ form_start(form) }}
+    {{form_row(form.titre)}}
+    {# <textarea class="form-control ckeditor" id="content" name="content"> </textarea> #}
+
+    {{form_row(form.texte, {'id' : 'content'})}}
+    {{form_row(form.type)}}
+    {{form_row(form.path)}}
+    <button>
+        Confirm
+    </button>
+    {{ form_end(form) }}
+
+    {% if commentaires is defined %}
+        <div id="Total_com">
+            <p id="Espace_Commentaire">
+                Commentaire
+            </p>
+            {% for comment in commentaires %}
+
+                <p>{{comment.username}}
+                    : le
+                    {{ comment.date|localizeddate('none', 'none', null, null, 'EEEE d ')|capitalize }}{{ comment.date|localizeddate('none', 'none', null, null, 'MMMM Y ')|capitalize }}</p>
+                <p id="Zone_com">{{comment.texte}}</p>
+                <div class="timeline_action">
+                    <a href="{{path('delete-comment', {"id" : comment.id}) }}">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+{% block javascripts %}
+    {# <script src="{{asset('js/vue.js')}}"/> #}
+    <script>
+        CKEDITOR.replace('content', {
+            height: 300,
+            filebrowserUploadUrl: "/upload-image"
+        });
+    </script>
+{% endblock %}

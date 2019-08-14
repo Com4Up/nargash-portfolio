@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Esuria // CMS
+{% endblock %}
+{% block css %}
+<link type="text/css" rel="stylesheet" href={{asset("css/CMS.css")}} />
+{% endblock %}
+{% block body %}
+		<!-- CONTENU -->
+		<div id="Zone">
+			<div id="Zone_haut">
+				<div class="CMS_wrap" id="Blog_cms">
+				<a href="{{path('new-article')}}" ><button> Nouvelle article</button></a>
+					<div class="Article_list">
+						{% for article in articles %}
+						<div class="Article_line">
+							<p class="Article_date">{{ article.date|date() }}</p>
+							<p class="Article_nom">{{article.titre}} </p>
+							<div class="Article_Interaction">
+								<a href="{{path('edit-article',{id: article.id})}}"><i class="fal fa-edit"></i></a>
+								<a href="{{path('article-delete',{id: article.id})}}"><i class="fal fa-times"></i></a>
+							</div>
+						</div>	
+						{% endfor %}
+					</div>
+			</div>
+		</div>
+
+    {% endblock %}
+
+    {% block js %}
+		{% endblock %}

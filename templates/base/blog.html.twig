@@ -1,66 +1,234 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-Blog
+    Blog
 {% endblock %}
 
 {% block css %}
-<link type="text/css" rel="stylesheet" href={{asset("css/blog.css")}} />
+    <link type="text/css" rel="stylesheet" href={{asset("css/blog.css")}}/>
 {% endblock %}
 
-{% block body%}
-<div id="Selector_Menu">
-  <select>
-    <option value="1">Tout</option>
-    <option value="2">News</option>
-    <option value="3">Hobbies</option>
-    <option value="4">Autres</option>
-  </select>
-  <i class="fal fa-browser icone_selector"></i>
-  <i class="fal fa-video icone_selector"></i>
-  <i class="fal fa-ellipsis-h-alt icone_selector"></i>
-  <i class="fas fa-sort-down icone_selection" aria-hidden></i>
+{% block body %}
+    <div id="app" style="display: flex;flex-direction: column;">
+        <div id="Selector_Menu">
+            <select>
+                <option value="1">Tout</option>
+                <option value="2">News</option>
+                <option value="3">Hobbies</option>
+                <option value="4">Autres</option>
+            </select>
+            <i class="fal fa-browser icone_selector"></i>
+            <i class="fal fa-video icone_selector"></i>
+            <i class="fal fa-ellipsis-h-alt icone_selector"></i>
+            <i aria-hidden class="fas fa-sort-down icone_selection"></i>
+        </div>
+        <div id="wrapper">
+            <div id="sort">
+                <button v-bind:class="{Sort_Select : select=='All', Sort : select != 'All' }" v-on:click="setSelect('All')">Tout
+                    <i class="far fa-chevron-down"></i>
+                </button>
+                <button v-bind:class="{Sort_Select : select=='News', Sort : select != 'News' }" v-on:click="setSelect('News')">News
+                    <i class="far fa-chevron-down"></i>
+                </button>
+                <button v-bind:class="{Sort_Select : select=='Hobbies', Sort : select != 'Hobbies' }" v-on:click="setSelect('Hobbies')">Hobbies
+                    <i class="far fa-chevron-down"></i>
+                </button>
+                <button v-bind:class="{Sort_Select : select=='Autres', Sort : select != 'Autres' }" v-on:click="setSelect('Autres')">Autres
+                    <i class="far fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="search">
+                <input class="noselect" placeholder="Recherche" v-model="searchText" v-on:keyup="search()"></input>
+            <i class="far fa-search"></i>
+        </div>
+    </div>
+
+    <div id="container">
+        <div class="article-case" v-for="article in articles">
+            <img v-bind:src="article.image">
+            <a v-bind:href='"/lecture-article/" + article.path'>
+                <span class="tag">#{article.type}</span>
+                <span class="title-date">
+                    <span class="title">{article.titre}</span>
+                    <span class="date">{article.date | moment}</span>
+                </span>
+            </a>
+        </div>
+        <div class="article-case hidden"></div>
+
+        <div class="article-case hidden"></div>
+    </div>
 </div>
-<div id="wrapper">
-  <div id="sort">
-    <button>Tout <i class="far fa-chevron-down"></i></button>
-    <button>News <i class="far fa-chevron-down"></i></button>
-    <button>Hobbies <i class="far fa-chevron-down"></i></button>
-    <button>Autres <i class="far fa-chevron-down"></i></button>
-  </div>
-  <div id="search">
-    <input placeholder="Recherche"></input>
-    <button><i class="far fa-search"></i></button>
-  </div>
+<div id="pagination"></div></div></div>{% endblock %}{% block javascripts %}<script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="{{asset('js/moment.js')}}"></script><script src="{{asset('js/vue.js')}}"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script><script>var app = new Vue({
+    el: '#app',
+    delimiters: [
+        '{', '}'
+    ],
+    data: {
+        articles: [],
+        select: "All",
+        page: 1,
+        count: 0,
+        searchText: "",
+        nbrPage: 0,
+        onLoad: false
+    },
+    mounted() {
+        this.sayHello();
+        this.getArticle();
+        this.getCount();
+    },
+    filters: {
+        moment: function (date) {
+            return moment(date).lang("fr").format('LL');
+        }
+    },
+    methods: {
+        moment: function () {
+            return moment();
+        },
+        sayHello() {
+            console.log("Hello");
+        },
+        setSelect(selection) {
+            console.log("set Selection");
+            this.page = 1;
+            this.select = selection;
+            this.getArticleSelection();
+        },
+        setPage(page) {
+            console.log('Set page');
+            if (this.page != page) {
+                this.page = page;
+                console.log(this.page);
 
-  <div id="container">
-    <div class="article-case">
-      <img src="https://via.placeholder.com/450x250.png">
-      <a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
-    </div>
+                if (this.select == 'All') {
+                    this.getArticle();
+                } else {
+                    this.getArticleSelection();
+                }
+            }
+        },
+        setLoad() {
+            console.log('Set load');
+            if (this.onLoad == false) {
+                this.onLoad = true;
+            } else {
+                this.onLoad = false;
+            }
 
-    <div class="article-case">
-      <img src="https://via.placeholder.com/450x250.png">
-      <a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
-    </div>
+        },
+        getArticle() {
+            console.log("get Article");
+            this.onLoad = true;
+            axios({
+                method: 'POST',
+                url: '/get-article',
+                data: {
+                    page: this.page
+                }
+            }).then(response => { 
+                var getUrl = window.location;
+                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                baseUrl = baseUrl.replace("annonce", "");
+                var base_url = window.location.origin;
+                var json = JSON.parse(response.data);
+                var object = this;
+                this.articles = [];
+                console.log(baseUrl);
 
-    <div class="article-case">
-      <img src="https://via.placeholder.com/450x250.png">
-      <a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
-    </div>
+                $.each(json, function (key, value) {
+                    console.log(value);
+                    object.articles.push({
+                        "titre": value.titre,
+                        "description": value.texte,
+                        "date": value.date,
+                        "path": value.path,
+                        "image": base_url + "/" + value.image.path,
+                        "type": value.type
+                    });
+                });
+                this.onLoad = false;
 
-    <div class="article-case">
-      <img src="https://via.placeholder.com/450x250.png">
-      <a href=""><span class="tag">#TAG</span><span class="title-date"><span class="title">Titre</span><span class="date">Date</span></span></a>
-    </div>
+            })
+        },
+        search() {
+            console.log("search");
+            axios({
+                method: 'POST',
+                url: '/search-article',
+                data: {
+                    searchText: this.searchText
+                }
+            }).then(response => {
+                var getUrl = window.location;
+                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                baseUrl = baseUrl.replace("annonce", "");
+                var base_url = window.location.origin;
+                var json = JSON.parse(response.data);
+                var object = this;
+                this.articles = [];
+                $.each(json, function (key, value) {
+                    object.articles.push({
+                        "titre": value.titre,
+                        "description": value.texte,
+                        "date": value.date,
+                        "path": value.path,
+                        "type": value.type,
+                        "image": base_url + "/" + value.image.path
+                    });
+                });
+            })
+        },
+        getArticleSelection() {
+            console.log("get Article Selection");
+            axios({
+                method: 'POST',
+                url: '/get-article-selection',
+                data: { // id :this.biens[0],
+                    selection: this.select,
+                    page: this.page
+                }
+            }).then(response => {
+                var getUrl = window.location;
+                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                baseUrl = baseUrl.replace("annonce", "");
+                var base_url = window.location.origin;
 
-    <div class="article-case hidden">
-    </div>
-
-    <div class="article-case hidden">
-    </div>
-  </div>
-</div>
-<div id="pagination">
-</div>
-</div>
-{% endblock %}
+                var json = JSON.parse(response.data);
+                var object = this;
+                console.log(json);
+                this.articles = [];
+                $.each(json, function (key, value) {
+                    object.articles.push({
+                        "titre": value.titre,
+                        "description": value.texte,
+                        "date": value.date,
+                        "path": value.path,
+                        "type": value.type,
+                        "image": base_url + "/" + value.image.path
+                    });
+                });
+                this.getCount();
+            })
+        },
+        getCount() {
+            console.log("get Count");
+            axios({
+                method: 'POST',
+                url: '/count-article',
+                data: { // id :this.biens[0],
+                    selection: this.select
+                }
+            }).then(response => {
+                var getUrl = window.location;
+                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                baseUrl = baseUrl.replace("annonce", "");
+                var json = JSON.parse(response.data);
+                var object = this;
+                console.log(json);
+                this.count = json;
+                this.nbrPage = Math.ceil(this.count / 6)
+            })
+        }
+    }
+})</script>{% endblock %}
