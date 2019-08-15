@@ -15,7 +15,7 @@
         <hr class="pag" id="pag-4" onclick="setPag(5)"/>
     </div>
 
-    <i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)"></i>
+    <i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)" id="arrow_desktop_up"></i>
     <div class="wrapper wrapper-1" onwheel="myScript">
         <div id="Presentation">
             <div id="Image_Profil">
@@ -60,7 +60,7 @@
                 <div id="timelineBar">
                     <div class="TimelineLoop" v-for="(event,key) in timeline">
                         <div class="bar"></div>
-                        <div class="circle" v-bind:style=" event.isActive ? 'background: red;' : 'background: white;' "  v-on:click="setKey(key)">
+                        <div class="circle" v-bind:style=" event.isActive ? 'background: #37c8ae;' : 'background: white;' "  v-on:click="setKey(key)">
                             { event.id }
                             <div class="insideCircle"></div>
                         </div>
@@ -116,7 +116,7 @@
             </a>
         </div>
     </div>
-    <i class="far fa-chevron-double-down chevron-down" onclick="setPag(0)"></i>
+    <i class="far fa-chevron-double-down chevron-down" onclick="setPag(0)"  id="arrow_desktop_down"></i>
 {% endblock %}
 
 {% block javascripts %}
@@ -176,7 +176,9 @@
         myimage.attachEvent("onmousewheel", MouseWheelHandler);
 
 
-        function MouseWheelHandler(e) { // cross-browser wheel delta
+        function MouseWheelHandler(e) {
+          var larg = (window.innerWidth);
+          if (larg > 1024) {// cross-browser wheel delta
             var e = window.event || e; // old IE support
             var delta = (e.wheelDelta || - e.detail);
 
@@ -186,7 +188,10 @@
                 setPag(0);
             }
             return false;
+          }
         }
+
+
     </script>
     <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src={{asset("js/vue.js") }}></script>
@@ -208,9 +213,9 @@
                     alert("hello");
                 },
                 direction(direction) {
-                    if (direction == "bottom") 
+                    if (direction == "bottom")
                         this.c ++;
-                     else if (direction == "top") 
+                     else if (direction == "top")
                         this.c --;
                     $('#timelineBar>div').css({
                         top: 'calc(7.35em * ' + this.c + ')'

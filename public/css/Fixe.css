@@ -142,11 +142,13 @@ main {
 }
 
 #Footer_Desktop {
+  position: fixed;
+  bottom: -2%;
   display: flex;
   height: 7%;
   width: 100%;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   color: #2fc08c;
   font-size: 2em;
@@ -522,6 +524,10 @@ main {
   #social_mobile a i {
     font-size: 1.5em;
     margin: 1em 0 1em 0;
+  }
+
+  .arrow_desktop {
+    display: none;
   }
 }
 

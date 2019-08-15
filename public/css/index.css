@@ -59,17 +59,17 @@
 
 @keyframes chevrondown {
   0% {
-    bottom: 1.2%;
+    bottom: -0.6%;
   }
 
   50% {
-    bottom: 2%;
+      bottom: 0.2%;
   }
-
   100% {
-    bottom: 1.2%;
+      bottom: -0.6%;
   }
 }
+
 
 .chevron-up {
   position: fixed;
@@ -93,12 +93,11 @@
 
 .chevron-down {
   position: fixed;
-  z-index: 1001;
-  bottom: 1.5%;
   left: 47.5%;
-  right: 47.5%;
+  z-index: 1001;
   width: 2.5em;
   min-width: 2.5em;
+  height: 1.3em;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -109,7 +108,6 @@
   animation-name: chevrondown;
   animation-duration: 0.75s;
   animation-iteration-count: infinite;
-  background-image: url("../../images/Background-Web.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -134,8 +132,8 @@
 }
 
 .footer-trait-1 {
-  height: 2px;
   width: 100%;
+  height: 2px;
   background-color: #650c0c;
 }
 
@@ -188,6 +186,7 @@
   width: 70%;
   margin: 2.5em auto 0 auto;
   align-items: center;
+  height: 30%;
 }
 
 #Image_Profil {
@@ -214,6 +213,7 @@
 
 #Derniers_Articles {
   margin-top: 2.5em;
+
 }
 
 #Derniers_Articles h2 {
@@ -368,12 +368,12 @@ margin: 0;
   align-items: center;
   position: relative;
   background-color: white;
-  height: 28px;
-  max-height: 28px;
-  min-height: 28px;
-  width: 28px;
-  max-width: 28px;
-  min-width: 28px;
+  height: 30px;
+  max-height: 30px;
+  min-height: 30px;
+  width: 30px;
+  max-width: 30px;
+  min-width: 30px;
   border-radius: 100%;
   margin: 0.8em;
   padding: 0;
@@ -712,7 +712,7 @@ width: 90%;
   display: none;
 }
 
-@media screen and (max-width:1400px) {
+@media screen and (max-width:1600px) {
 #Presentation {
   width: 100%;
 }
@@ -721,13 +721,36 @@ width: 90%;
   display: none;
 }
 }
+
+@media screen and (max-width:1200px) {
+
+.article-case {
+
+}
+}
 @media screen and (max-width:1024px) {
   body {
     overflow: auto;
+      min-height: 755px;
   }
+
+  main {
+    overflow: visible;
+      min-height: 755px;
+  }
+
+  #pagination {
+    display: none;
+  }
+
+  #arrow_desktop_up, #arrow_desktop_down  {
+    display: none;
+  }
+
   .wrapper {
+    display: flex;
     height: auto;
-    margin-top: 5em;
+    min-height: auto;
   }
 
   #Presentation {
@@ -755,6 +778,95 @@ width: 90%;
     border: none;
     border-top : 6px solid #ff1822;
     padding: 1em;
+  }
+  #Contenu_Accueil {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #app {
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+  }
+
+
+  .wrapper-4 {
+  width: 90%;
+  }
+
+  #wrap-4-content {
+    width: 100%;
+    height: 12em;
+    margin: 3% auto auto auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    -webkit-transform: skew(0deg);
+    -moz-transform: skew(0deg);
+    -o-transform: skew(0deg);
+    tranform: skew(0deg);
+  }
+
+  #com4up {
+    text-decoration: none;
+    background-image: url("../../Images/1.png");
+    height: 100%;
+    width: 80%;
+    padding: 0.5em 2em 0.5em 2em;
+    border: solid 1px #ff1822;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px #ff1822;
+  }
+
+  #wrap-4-content hr {
+    height: 95%;
+    width: 2px;
+    background-color: #77c8ae;
+    box-shadow: 0 0 5px 1px #77c8ae;
+    box-sizing: border-box;
+    margin: 0 1em 0 1em;
+  }
+
+  #faeriths {
+    text-decoration: none;
+    background-image: url("../../Images/1.png");
+    height: 100%;
+    width: 80%;
+    padding: 0.5em 2em 0.5em 2em;
+    border: solid 1px #ff1822;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px #ff1822;
+  }
+
+  #faeriths:hover, #com4up:hover {
+    box-shadow: none;
+  }
+
+  #faeriths img {
+    height: auto;
+  width: 90%;
+    -webkit-transform: skew(0deg);
+    -moz-transform: skew(0deg);
+    -o-transform: skew(0deg);
+    tranform: skew(0deg);
+  }
+
+  #com4up img {
+    height: auto;
+    width: 65%;
+    -webkit-transform: skew(0deg);
+    -moz-transform: skew(0deg);
+    -o-transform: skew(0deg);
+    tranform: skew(0deg);
   }
 
 }
