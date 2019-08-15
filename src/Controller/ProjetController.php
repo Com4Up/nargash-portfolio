@@ -39,6 +39,9 @@ class ProjetController extends Controller
         ));
     }
 
+    /**
+     * @Route("/new-project", name="new-projet")
+     */
     public function new_projet(RegistryInterface $doctrine, Request $request)
     {
 
@@ -56,6 +59,11 @@ class ProjetController extends Controller
             "form" => $form->createView(),
         ));
     }
+
+
+    /**
+     * @Route("/edit-project", name="edit-projet")
+     */
     public function edit_projet(RegistryInterface $doctrine, Request $request, $id)
     {
         $projet = $doctrine->getRepository(Projet::class)->find($id);
