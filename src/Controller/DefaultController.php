@@ -65,6 +65,15 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/cms", name="cms")
+     */
+    public function cms()
+    {
+        // replace this line with your own code!
+        return $this->render('cms_base/CMS.html.twig');
+    }
+
+    /**
      * @Route("/projets", name="projets")
      */
     public function projets()
@@ -183,7 +192,7 @@ class DefaultController extends Controller
     }
 
 
-    
+
 
     /**
      * @Route("/lecture-projet", name="lecture_projet")

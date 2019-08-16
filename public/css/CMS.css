@@ -1,0 +1,344 @@
+
+#cmsSwitch {
+  width: 100%;
+  height: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 1.3em;
+  font-family: "orbitron";
+  border-bottom: solid white 1px;
+}
+
+#cmsSwitch p:hover{
+cursor: pointer;
+color: red;
+transition-duration: 0.5s;
+}
+
+
+.CMS_wrap {
+  display: none;
+}
+
+.CMS_Titre {
+  color: white;
+  font-size: 1.5em;
+  font-family: "orbitron";
+}
+
+.CMS_Titre_2 {
+  color: white;
+  font-size: 1.3em;
+  font-family: "orbitron";
+}
+
+.boutonAjout
+{
+  color: white;
+  font-size: 1.2em;
+  font-family: "orbitron";
+  margin-bottom: 1em;
+}
+
+.boutonAjout:hover{
+cursor: pointer;
+color: red;
+transition-duration: 0.5s;
+}
+{
+  color: white;
+  font-size: 1.2em;
+  font-family: "orbitron";
+}
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5em;
+  width: 100%;
+  height: 3.5em;
+  border-top: solid 2px #ff1822;
+  border-bottom: solid 2px #ff1822;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.sort button {
+  display: flex;
+  flex-direction: row;
+  font-weight: normal;
+  border: none;
+  background: none;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  margin: 1em 0 1em 0;
+  font-family: "orbitron";
+  font-size: 1.3em;
+}
+
+.sort button:hover {
+  cursor: pointer;
+  text-shadow: 0 0 2px white;
+}
+
+.sort button:focus {
+  outline: none;
+}
+
+.sort button i {
+  margin-right: 0.5em;
+}
+
+/* presentation */
+
+#Presentation_cms {
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+#Presentation_cms label {
+  color: white;
+  font-size: 1.2em;
+  font-family: "orbitron";
+}
+
+#Presentation_cms textarea {
+resize: none;
+width: 50%;
+height: 15em;
+}
+
+/* Compétences */
+
+#Skills_cms {
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.Skills_list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 70%;
+  max-height: 20em;
+}
+
+.Skills_list::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.Skills_list::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+.Skills_list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #bd7a00;
+}
+
+
+.Skills_Line {
+  color: white;
+  font-size: 1.2em;
+    min-height: 1.3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Skills_image {
+  cursor: pointer;
+}
+
+.Skills_Link {
+  cursor: pointer;
+  margin-left: 8em;
+}
+
+/* projet */
+
+#Projets_cms {
+  flex-direction: column;
+  align-items: center;
+  font-family: "Roboto Slab", serif;
+  color: white;
+}
+
+.cms_hr {
+  background-color: white;
+  width: 90%;
+  height: 1px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* hobbies */
+
+#Hobbies_cms {
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.Hobbies_list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 70%;
+  max-height: 20em;
+}
+
+.Hobbies_list::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.Hobbies_list::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+.Hobbies_list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #bd7a00;
+}
+
+
+.Hobbies_Line {
+  color: white;
+  font-size: 1.2em;
+    min-height: 1.3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Hobbies_image {
+  cursor: pointer;
+  font-family: "lato_light";
+}
+
+.Hobbies_Link {
+  cursor: pointer;
+  margin-left: 8em;
+  font-family: "lato_light";
+}
+
+.Hobbies_type {
+  font-family: "lato_light";
+}
+/* Blog */
+
+#Blog_cms {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Article_list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 70%;
+  max-height: 20em;
+}
+
+.Article_list::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.Article_list::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+.Article_list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #bd7a00;
+}
+
+.Article_line {
+  color: white;
+  font-size: 1.2em;
+    min-height: 1.3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Article_date {
+  font-family: "lato_light";
+}
+
+.Article_nom {
+  font-family: "lato_light";
+}
+
+.Article_Interaction i {
+  cursor: pointer;
+}
+
+/* Moderation */
+#Moderation_cms {
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.Commentaire_list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  width: 70%;
+  max-height: 20em;
+}
+
+.Commentaire_list::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.Commentaire_list::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+.Commentaire_list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #bd7a00;
+}
+
+
+.Commentaire_Line {
+  color: white;
+  font-size: 1.2em;
+    min-height: 1.3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Commentaire_image {
+  cursor: pointer;
+  font-family: "lato_light";
+}
+
+.Commentaire_Link {
+  cursor: pointer;
+  margin-left: 8em;
+  font-family: "lato_light";
+}
+
+.Commentaire_type {
+  font-family: "lato_light";
+}
+
+.active {
+  display: flex;
+}
