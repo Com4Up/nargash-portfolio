@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block css %}
-    <link type="text/css" rel="stylesheet" href={{asset("css/index.css")}}/>
+    <link type="text/css" rel="stylesheet" href="{{asset('css/index.css')}}"/>
 {% endblock %}
 
 {% block body %}
@@ -79,10 +79,13 @@
 
     </div>
 
-    <div class="wrapper wrapper-3 pagActive" onwheel="myScript">
+    <div class="wrapper wrapper-3 pagActive">
         <h2>Compétences</h2>
         <hr/>
-        <div id="flip-content">
+<div id="container">
+  <i class="far fa-angle-left icone-awesome button-prev" aria-hidden v-on:click="directionSkill('left')"></i>
+              <div id="flip-content">
+
             {% for skill  in skills %}
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                     <div class="flipper">
@@ -101,8 +104,11 @@
                 </div>
             {% endfor %}
 
-        </div>
-    </div>
+          </div>
+<i class="far fa-angle-right icone-awesome button-next" aria-hidden v-on:click="directionSkill('right')"></i>
+</div>
+      </div>
+
 
     <div class="wrapper wrapper-4 pagActive" onwheel="myScript">
         <h2>Retrouvez-moi sur :</h2>
@@ -120,6 +126,8 @@
 {% endblock %}
 
 {% block javascripts %}
+
+
     <script>
         var pag = 1;
 
@@ -206,7 +214,8 @@
             data: {
                 timeline: [],
                 key: 0,
-                c: 1
+                c: 1,
+                d: 1
             },
             methods: {
                 sayHello() {
@@ -249,6 +258,27 @@
             mounted: function () {
                 this.getTimeline();
             }
+        })
+
+        var flip = new Vue({
+            el: '#container',
+            delimiters: [
+                '{', '}'
+            ],
+            data: {
+                d: 1
+            },
+            methods: {
+              directionSkill(direction) {
+                if (direction == "left")
+                  this.d ++;
+               else if (direction == "right")
+                  this.d --;
+                $('#flip-content>div').css({
+                  right: 'calc(23em * ' + this.d + ')'
+              });
+            }
+          }
         })
     </script>
 

@@ -461,12 +461,17 @@ cursor: pointer;
 
 .wrapper-3 {
   width: 60%;
+  max-width: 60%;
+  min-width: 60%;
   height: 80%;
+  min-height: 80%;
+  max-height: 80%;
   display: flex;
+  margin: 0;
   margin: 7% auto auto auto;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper-3 h2 {
@@ -484,9 +489,35 @@ cursor: pointer;
   width: 11.5em;
 }
 
-#flip-content {
+#container {
   width: 100%;
-  margin: 3% auto auto auto;
+  max-width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.icone-awesome {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 1em;
+  color: white;
+  font-size: 3em;
+}
+
+
+#flip-content {
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -494,6 +525,9 @@ cursor: pointer;
 }
 
 .flip-container {
+  transition-duration: 0.5s;
+  position: relative;
+ margin: 1.5em;
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
   -o-perspective: 1000;
@@ -509,8 +543,9 @@ cursor: pointer;
 }
 
 .flip-container, .front, .back {
-  width: 320px;
-  height: 427px;
+  width: 20em;
+  min-width: 20em;
+  height: 25em;
 }
 
 .flipper {

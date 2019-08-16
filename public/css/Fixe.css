@@ -138,6 +138,7 @@ main {
   display: flex;
   flex-direction: column;
   height: 84vh;
+  max-width: 100%;
   flex-wrap: wrap;
 }
 
