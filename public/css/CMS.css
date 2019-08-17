@@ -147,7 +147,7 @@ justify-content: center;
 .Skills_Line {
   color: white;
   font-size: 1.2em;
-    min-height: 1.3em;
+    min-height: 1.5em;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -155,11 +155,10 @@ justify-content: center;
 }
 
 .Skills_image {
-  cursor: pointer;
+  font-size: 1.5em;
 }
 
 .Skills_Link {
-  cursor: pointer;
   margin-left: 8em;
 }
 
@@ -221,13 +220,10 @@ justify-content: center;
 }
 
 .Hobbies_image {
-  cursor: pointer;
   font-family: "lato_light";
 }
 
 .Hobbies_Link {
-  cursor: pointer;
-  margin-left: 8em;
   font-family: "lato_light";
 }
 
@@ -325,12 +321,10 @@ justify-content: center;
 }
 
 .Commentaire_image {
-  cursor: pointer;
   font-family: "lato_light";
 }
 
 .Commentaire_Link {
-  cursor: pointer;
   margin-left: 8em;
   font-family: "lato_light";
 }

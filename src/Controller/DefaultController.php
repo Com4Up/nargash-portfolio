@@ -67,10 +67,14 @@ class DefaultController extends Controller
     /**
      * @Route("/cms", name="cms")
      */
-    public function cms()
+    public function cms(RegistryInterface $doctrine)
     {
-        // replace this line with your own code!
-        return $this->render('cms_base/CMS.html.twig');
+        $skills = $doctrine->getRepository(Skill::class)->findAll();
+        $hobbie = $doctrine->getRepository(Hobbie::class)->findAll();
+        return $this->render('cms_base/CMS.html.twig', [
+            "skills" => $skills,
+            "hobbie" => $hobbie,
+            ]);
     }
 
     /**

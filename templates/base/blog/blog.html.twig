@@ -58,7 +58,14 @@
         <div class="article-case hidden"></div>
     </div>
 </div>
-<div id="pagination"></div></div></div>{% endblock %}{% block javascripts %}<script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="{{asset('js/moment.js')}}"></script><script src="{{asset('js/vue.js')}}"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script><script>var app = new Vue({
+<div id="pagination"></div></div></div>{% endblock %}
+{% block javascripts %}
+<script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{{asset('js/moment.js')}}"></script>
+<script src="{{asset('js/vue.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script>
+var app = new Vue({
     el: '#app',
     delimiters: [
         '{', '}'
@@ -126,7 +133,7 @@
                 data: {
                     page: this.page
                 }
-            }).then(response => { 
+            }).then(response => {
                 var getUrl = window.location;
                 var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
                 baseUrl = baseUrl.replace("annonce", "");

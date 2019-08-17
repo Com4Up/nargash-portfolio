@@ -25,16 +25,16 @@
 							<p class="CMS_Titre">Gestion Compétences</p>
 							<a class="boutonAjout" href="#">Ajouter Compétence</a>
 								<div class="Skills_list">
-
+  {% for skill  in skills %}
 							<div class="Skills_Line">
-								<div class="Skills_image">icone</div>
-								<div class="Skills_Link"> nom</div>
+								<div class="Skills_image"><i class="{{skill.icone}}"></i></div>
+								<div class="Skills_Link">{{skill.name}}</div>
 								<div class="Article_Interaction">
 									<i class="fal fa-edit"></i>
 									<i class="fal fa-times"></i>
 								</div>
 							</div>
-
+  {% endfor %}
 							</div>
 
 
@@ -62,7 +62,7 @@
 										<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
 										<p class="Hobbies_type">Type</p>
 										<div class="Article_Interaction">
-											<i class="fal fa-edit"></i>
+										<i class="fal fa-edit"></i>
 											<i class="fal fa-times"></i>
 										</div>
 									</div>
@@ -89,61 +89,55 @@
 
 								<div class="Hobbies_list">
 
-							<div class="Hobbies_Line">
-								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
-								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
-								<p class="Hobbies_type">Type</p>
+							<div class="Hobbies_Line"  v-for="hobbie in hobbies">
+								<div class="Hobbies_image">{hobbie.titre}</div>
+								<div class="Hobbies_Link"><i class="fal fa-link"></i> {hobbie.link}</div>
+								<p class="Hobbies_type">{hobbie.type}</p>
 								<div class="Article_Interaction">
-									<i class="fal fa-edit"></i>
-									<i class="fal fa-times"></i>
+									<a v-bind:href='"hobbie/" + hobbie.id + "/edit/"'>
+											<i class="fal fa-edit"></i>
+									</a>
+									<a v-bind:href='"hobbie/" + hobbie.id'>
+											<i class="fal fa-times"></i>
+									</a>
 								</div>
 							</div>
-							<div class="Hobbies_Line">
-								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
-								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
-								<p class="Hobbies_type">Type</p>
-								<div class="Article_Interaction">
-									<i class="fal fa-edit"></i>
-									<i class="fal fa-times"></i>
-								</div>
-							</div>
-							<div class="Hobbies_Line">
-								<div class="Hobbies_image"><i class="fal fa-upload"></i> Image.jpg</div>
-								<div class="Hobbies_Link"><i class="fal fa-link"></i> https://lienverslehobbies.fr/</div>
-								<p class="Hobbies_type">Type</p>
-								<div class="Article_Interaction">
-									<i class="fal fa-edit"></i>
-									<i class="fal fa-times"></i>
-								</div>
-							</div>
-
 							</div>
 						</div>
 
 				<div class="CMS_wrap" id="Blog_cms">
 						<p class="CMS_Titre">Gestion Articles</p>
 						<a class="boutonAjout" href="{{path('new-article')}}">Nouvel article</a>
+
 						<p class="CMS_Titre_2">Brouillons</p>
 						<div class="Article_list">
-							<div class="Article_line">
-								<p class="Article_date">14 Septembre 2017</p>
-								<p class="Article_nom">Site Web</p>
-								<a href="#" class="Article_lien">Lien</a>
+							<div class="Article_line"  v-for="article in articles">
+								<p class="Article_date">{article.date | moment}</p>
+								<p class="Article_nom">{article.titre}</p>
+								<a v-bind:href='"/lecture-article/" + article.path' class="Article_lien">{article.path}</a>
 								<div class="Article_Interaction">
-									<i class="fal fa-edit"></i>
-									<i class="fal fa-times"></i>
+									<a v-bind:href='"cms/edit-article/" + article.id'>
+											<i class="fal fa-edit"></i>
+									</a>
+									<a v-bind:href='"cms/article-delete/" + article.id'>
+											<i class="fal fa-times"></i>
+									</a>
 								</div>
 							</div>
-							</div>
+						</div>
 							<p class="CMS_Titre_2">Publiés</p>
 					<div class="Article_list">
-						<div class="Article_line">
-							<p class="Article_date">14 Septembre 2017</p>
-							<p class="Article_nom">Site Web</p>
-							<a href="#" class="Article_lien">Lien</a>
+						<div class="Article_line"  v-for="article in articles">
+							<p class="Article_date">{article.date | moment}</p>
+							<p class="Article_nom">{article.titre}</p>
+							<a v-bind:href='"/lecture-article/" + article.path'  class="Article_lien">{article.path}</a>
 							<div class="Article_Interaction">
-								<i class="fal fa-edit"></i>
-								<i class="fal fa-times"></i>
+								<a v-bind:href='"cms/edit-article/" + article.id'>
+										<i class="fal fa-edit"></i>
+								</a>
+								<a v-bind:href='"cms/article-delete/" + article.id'>
+										<i class="fal fa-times"></i>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -172,7 +166,9 @@
     {% endblock %}
     {% block javascripts %}
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script type="text/javascript" src="Fixe/javascript.js"></script>
+	<script src="{{asset('js/moment.js')}}"></script>
+	<script src="{{asset('js/vue.js')}}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 	<script>
 		function change(num) {
 			if (num == 1) {
@@ -193,4 +189,291 @@
 			}
 		}
 	</script>
+
+	<script>
+	    var appHobbies = new Vue({
+	        el: '#Hobbies_cms',
+	        delimiters: [
+	            '{', '}'
+	        ],
+	        data: {
+	            hobbies: [],
+	            select: "All",
+	            page: 1,
+	            count: 0,
+	            nbrPage: 0,
+	            onLoad: false
+	        },
+	        mounted() { // this.sayHello();
+	            this.getArticle();
+	            this.getCount();
+	        },
+	        methods: {
+	            setSelect(selection) {
+	                this.page = 1;
+	                this.select = selection;
+	                this.getArticleSelection();
+	            },
+	            setPage(page) {
+	                console.log('Set page');
+	                if (this.page != page) {
+	                    this.page = page;
+	                    console.log(this.page);
+
+	                    if (this.select == 'All') {
+	                        this.getArticle();
+	                    } else {
+	                        this.getArticleSelection();
+	                    }
+	                }
+	            },
+	            setLoad() {
+	                console.log('Set load');
+	                if (this.onLoad == false) {
+	                    this.onLoad = true;
+	                } else {
+	                    this.onLoad = false;
+	                }
+
+	            },
+	            getArticle() {
+	                console.log("get Article");
+	                this.onLoad = true;
+	                axios({
+	                    method: 'POST',
+	                    url: '/get-hobbie',
+	                    data: {
+	                        page: this.page
+	                    }
+	                }).then(response => {
+	                    var json = JSON.parse(response.data);
+	                    console.log(json);
+
+	                    var object = this;
+	                    this.hobbies = [];
+
+	                    $.each(json, function (key, value) {
+	                        object.hobbies.push({"id": value.id, "miniature": value.miniature.path, "titre": value.titre, "link": value.link, "type": value.type});
+	                    });
+	                    this.onLoad = false;
+
+	                })
+	            },
+	            getArticleSelection() {
+	                console.log("get Article Selection");
+	                axios({
+	                    method: 'POST',
+	                    url: '/get-hobbie-selection',
+	                    data: { // id :this.biens[0],
+	                        selection: this.select,
+	                        page: this.page
+	                    }
+	                }).then(response => {
+	                    var json = JSON.parse(response.data);
+	                    var object = this;
+	                    this.hobbies = [];
+	                    $.each(json, function (key, value) {
+	                        object.hobbies.push({"id": value.id, "miniature": value.miniature.path, "titre": value.titre, "link": value.link, "type": value.type});
+	                    });
+	                    this.getCount();
+	                })
+	            },
+	            getCount() {
+	                console.log("get Count");
+	                axios({
+	                    method: 'POST',
+	                    url: '/count-hobbie',
+	                    data: { // id :this.biens[0],
+	                        selection: this.select
+	                    }
+	                }).then(response => {
+	                    var json = JSON.parse(response.data);
+	                    this.count = json;
+	                    this.nbrPage = Math.ceil(this.count / 6)
+	                })
+	            }
+	        }
+	    })
+	</script>
+
+	<script>
+	var appBlog = new Vue({
+	    el: '#Blog_cms',
+	    delimiters: [
+	        '{', '}'
+	    ],
+	    data: {
+	        articles: [],
+	        select: "All",
+	        page: 1,
+	        count: 0,
+	        searchText: "",
+	        nbrPage: 0,
+	        onLoad: false
+	    },
+	    mounted() {
+	        this.sayHello();
+	        this.getArticle();
+	        this.getCount();
+	    },
+	    filters: {
+	        moment: function (date) {
+	            return moment(date).lang("fr").format('LL');
+	        }
+	    },
+	    methods: {
+	        moment: function () {
+	            return moment();
+	        },
+	        sayHello() {
+	            console.log("Hello");
+	        },
+	        setSelect(selection) {
+	            console.log("set Selection");
+	            this.page = 1;
+	            this.select = selection;
+	            this.getArticleSelection();
+	        },
+	        setPage(page) {
+	            console.log('Set page');
+	            if (this.page != page) {
+	                this.page = page;
+	                console.log(this.page);
+
+	                if (this.select == 'All') {
+	                    this.getArticle();
+	                } else {
+	                    this.getArticleSelection();
+	                }
+	            }
+	        },
+	        setLoad() {
+	            console.log('Set load');
+	            if (this.onLoad == false) {
+	                this.onLoad = true;
+	            } else {
+	                this.onLoad = false;
+	            }
+
+	        },
+	        getArticle() {
+	            console.log("get Article");
+	            this.onLoad = true;
+	            axios({
+	                method: 'POST',
+	                url: '/get-article',
+	                data: {
+	                    page: this.page
+	                }
+	            }).then(response => {
+	                var getUrl = window.location;
+	                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	                baseUrl = baseUrl.replace("annonce", "");
+	                var base_url = window.location.origin;
+	                var json = JSON.parse(response.data);
+	                var object = this;
+	                this.articles = [];
+	                console.log(baseUrl);
+
+	                $.each(json, function (key, value) {
+	                    console.log(value);
+	                    object.articles.push({
+												 "id": value.id,
+	                        "titre": value.titre,
+	                        "description": value.texte,
+	                        "date": value.date,
+	                        "path": value.path,
+	                        "image": base_url + "/" + value.image.path,
+	                        "type": value.type
+	                    });
+	                });
+	                this.onLoad = false;
+
+	            })
+	        },
+	        search() {
+	            console.log("search");
+	            axios({
+	                method: 'POST',
+	                url: '/search-article',
+	                data: {
+	                    searchText: this.searchText
+	                }
+	            }).then(response => {
+	                var getUrl = window.location;
+	                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	                baseUrl = baseUrl.replace("annonce", "");
+	                var base_url = window.location.origin;
+	                var json = JSON.parse(response.data);
+	                var object = this;
+	                this.articles = [];
+	                $.each(json, function (key, value) {
+	                    object.articles.push({
+													"id": value.id,
+	                        "titre": value.titre,
+	                        "description": value.texte,
+	                        "date": value.date,
+	                        "path": value.path,
+	                        "type": value.type,
+	                        "image": base_url + "/" + value.image.path
+	                    });
+	                });
+	            })
+	        },
+	        getArticleSelection() {
+	            console.log("get Article Selection");
+	            axios({
+	                method: 'POST',
+	                url: '/get-article-selection',
+	                data: { // id :this.biens[0],
+	                    selection: this.select,
+	                    page: this.page
+	                }
+	            }).then(response => {
+	                var getUrl = window.location;
+	                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	                baseUrl = baseUrl.replace("annonce", "");
+	                var base_url = window.location.origin;
+
+	                var json = JSON.parse(response.data);
+	                var object = this;
+	                console.log(json);
+	                this.articles = [];
+	                $.each(json, function (key, value) {
+	                    object.articles.push({
+													"id": value.id,
+	                        "titre": value.titre,
+	                        "description": value.texte,
+	                        "date": value.date,
+	                        "path": value.path,
+	                        "type": value.type,
+	                        "image": base_url + "/" + value.image.path
+	                    });
+	                });
+	                this.getCount();
+	            })
+	        },
+	        getCount() {
+	            console.log("get Count");
+	            axios({
+	                method: 'POST',
+	                url: '/count-article',
+	                data: { // id :this.biens[0],
+	                    selection: this.select
+	                }
+	            }).then(response => {
+	                var getUrl = window.location;
+	                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	                baseUrl = baseUrl.replace("annonce", "");
+	                var json = JSON.parse(response.data);
+	                var object = this;
+	                console.log(json);
+	                this.count = json;
+	                this.nbrPage = Math.ceil(this.count / 6)
+	            })
+	        }
+	    }
+	})
+</script>
+
 {% endblock %}

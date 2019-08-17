@@ -41,7 +41,7 @@ class HobbieController extends AbstractController
             $entityManager->persist($hobbie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('hobbie_index');
+            return $this->redirectToRoute('cms');
         }
 
         return $this->render('hobbie/new.html.twig', [
@@ -77,7 +77,7 @@ class HobbieController extends AbstractController
                 $data->getMiniature()->setFilename($saveHobbie);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('hobbie_index', [
+            return $this->redirectToRoute('cms', [
                 'id' => $hobbie->getId(),
             ]);
         }
@@ -99,6 +99,6 @@ class HobbieController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('hobbie_index');
+        return $this->redirectToRoute('cms');
     }
 }
