@@ -340,4 +340,16 @@ class User implements AdvancedUserInterface
 
         return $this;
     }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->is_active;
+    }
+
+    public function setIsActive(bool $is_active): self
+    {
+        $this->is_active = $is_active;
+
+        return $this;
+    }
 }

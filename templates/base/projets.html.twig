@@ -30,7 +30,7 @@
                     <i class="fal fa-browser"></i>Sites internet</button>
                 <button v-on:click="setSelect('video')">
                     <i class="fal fa-video"></i>Vidéo</button>
-                <button v-on:click="setSelect('autres')">
+                <button v-on:click="setSelect('autre')">
                     <i class="fal fa-ellipsis-h-alt"></i>Autres</button>
             </div>
             <div id="next">Click to slide down panel</div>
@@ -150,6 +150,7 @@
                             page: this.page
                         }
                     }).then(response => {
+                        console.log(response);
                         var getUrl = window.location;
                         var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
                         baseUrl = baseUrl.replace("annonce", "");

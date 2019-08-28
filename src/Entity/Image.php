@@ -39,6 +39,13 @@ class Image
      */
     private $alt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Projet", inversedBy="gallery", cascade={"persist" ,"remove"})
+     * @ORM\JoinColumn(nullable=true , onDelete="SET NULL")
+     */
+    private $projects;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,4 +86,33 @@ class Image
 
         return $this;
     }
+
+    public function getProjects(): ?Projet
+    {
+        return $this->projects;
+    }
+
+    public function setProjects(?Projet $projects): self
+    {
+        $this->projects = $projects;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getPath();
+    }
+
+    // public function getProject(): ?Projects
+    // {
+    //     return $this->project;
+    // }
+
+    // public function setProject(?Projects $project): self
+    // {
+    //     $this->project = $project;
+
+    //     return $this;
+    // }
 }

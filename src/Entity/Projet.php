@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
@@ -17,9 +20,46 @@ class Projet
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
-    private $titre;
+    private $title;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $client;
+
+    /**
+    * @ORM\Column(type="string", length=255)
+     */
+    private $categorie;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $URL_site;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Image", orphanRemoval=true, cascade={"persist" ,"remove"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+    private $miniature;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="projects", orphanRemoval=true,cascade={"persist" ,"remove"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+    private $gallery;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Skill" , inversedBy="projects")
+     */
+    private $skills;
 
     /**
      * @ORM\Column(type="date")
@@ -27,22 +67,15 @@ class Projet
     private $date;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
-    private $texte;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $type;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $path;
+    private $role;
 
     public function __construct()
     {
+        $this->gallery = new ArrayCollection();
+        $this->skills = new ArrayCollection();
+
         $date = \DateTime::createFromFormat('d-m-Y','now');
         $timeZone = new \DateTimeZone('Europe/Paris');
         $date2 = new \DateTime($date);
@@ -55,37 +88,137 @@ class Projet
         return $this->id;
     }
 
-    public function getTitre(): ?string
+    public function getTitle(): ?string
     {
-        return $this->titre;
+        return $this->title;
     }
 
-    public function setTitre(string $titre): self
+    public function getSlug(): ?string
     {
-        $this->titre = $titre;
-
-        return $this;
-    }
-    public function getType(): ?string
-    {
-        return $this->type;
+        return (new Slugify())->slugify($this->title);
     }
 
-    public function setType(string $type): self
+
+    public function setTitle(string $title): self
     {
-        $this->type = $type;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getPath(): ?string
+    public function getDescription(): ?string
     {
-        return $this->path;
+        return $this->description;
     }
 
-    public function setPath(string $path): self
+    public function setDescription(string $description): self
     {
-        $this->path = $path;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getClient(): ?string
+    {
+        return $this->client;
+    }
+
+    public function setClient(string $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+ 
+    public function getCategorie(): ?string
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(string $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+    
+    public function getURLSite(): ?string
+    {
+        return $this->URL_site;
+    }
+
+    public function setURLSite(?string $URL_site): self
+    {
+        $this->URL_site = $URL_site;
+
+        return $this;
+    }
+
+    public function getMiniature(): ?Image
+    {
+        return $this->miniature;
+    }
+
+    public function setMiniature(Image $miniature): self
+    {
+        $this->miniature = $miniature;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getGallery(): Collection
+    {
+        return $this->gallery;
+    }
+
+    public function addGallery(Image $gallery): self
+    {
+        $gallery->setProjects($this);
+        $this->gallery->add($gallery);
+        return $this;
+    }
+
+    public function removeGallery(Image $gallery): self
+    {
+        if ($this->gallery->contains($gallery)) {
+            $this->gallery->removeElement($gallery);
+            // set the owning side to null (unless already changed)
+            if ($gallery->getProjects() === $this) {
+                $gallery->setProjects(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Technologies[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+            $skill->addProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skills->contains($skill)) {
+            $this->skills->removeElement($skill);
+            $skill->removeProject($this);
+        }
 
         return $this;
     }
@@ -102,15 +235,14 @@ class Projet
         return $this;
     }
 
-    public function getTexte(): ?string
+    public function getRole(): ?string
     {
-        return $this->texte;
+        return $this->role;
     }
 
-    public function setTexte(string $texte): self
+    public function setRole(string $role): self
     {
-        $this->texte = $texte;
-
+        $this->role = $role;
         return $this;
     }
 }

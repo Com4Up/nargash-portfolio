@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+Nargash // Bio
+{% endblock %}
+{% block css %}
+<link type="text/css" rel="stylesheet" href={{asset("css/hobbies_edit.css")}} />
+{% endblock %}
+{% block body %}
+		<!-- CONTENU -->
+		<div id="Zone">
+			<div id="Zone_haut">
+				<div class="CMS_wrap" id="Hobbies_cms">
+							{{ form_start(form) }}
+								{{ form_widget(form)}}
+									{# {{ form_row(form.thumbnail) }} #}
+								<button>Confirm</button>
+							{{ form_end(form) }}
+
+				</div>
+		</div>
+
+    {% endblock %}
+    {% block js %}
+{% endblock %}

@@ -9,9 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Timeline;
 use App\Entity\Skill;
+use App\Entity\Bio;
 use App\Entity\Hobbie;
 use App\Entity\Article;
 use App\Form\HobbieType;
+use App\Form\BioType;
 use App\Repository\HobbieRepository;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -29,6 +31,7 @@ class DefaultController extends Controller
      */
     public function index(Request $request, RegistryInterface $doctrine)
     {
+        $bio = $doctrine->getRepository(Bio::class)->findFirst();
         $skills = $doctrine->getRepository(Skill::class)->findAll();
         $articles = $doctrine->getRepository(Article::class)->myLastArticle(3);
         // replace this line with your own code!
@@ -36,6 +39,7 @@ class DefaultController extends Controller
         return $this->render('base/index.html.twig', [
             "skills" => $skills,
             "articles" => $articles,
+            "bio" => $bio,
         ]);
     }
 
@@ -69,11 +73,39 @@ class DefaultController extends Controller
      */
     public function cms(RegistryInterface $doctrine)
     {
+
         $skills = $doctrine->getRepository(Skill::class)->findAll();
         $hobbie = $doctrine->getRepository(Hobbie::class)->findAll();
+        $bio = $doctrine->getRepository(Bio::class)->findFirst();
+
         return $this->render('cms_base/CMS.html.twig', [
             "skills" => $skills,
             "hobbie" => $hobbie,
+            "bio" => $bio,
+            ]);
+    }
+
+    /**
+     * @Route("/cms/edit-bio", name="edit-bio")
+     */
+    public function editBio(RegistryInterface $doctrine,Request $request)
+    {
+        $bio = $doctrine->getRepository(Bio::class)->findFirst();
+        if($bio == null)
+        {
+            $bio = new Bio();
+        }
+        $form = $this->createForm(BioType::class, $bio);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() && $form->isValid()) {
+            #$projet->setType($type);
+            $em->persist($bio);
+            $em->flush();
+            return $this->redirectToRoute('cms');
+        }
+        return $this->render('cms_base/editBio.html.twig', [
+            "form" => $form->createView(),
             ]);
     }
 

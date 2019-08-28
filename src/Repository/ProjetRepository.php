@@ -61,7 +61,7 @@ class ProjetRepository extends ServiceEntityRepository
     public function myGetProjetByType($type,$page)
     {
         $query =  $this->createQueryBuilder('b')
-        ->where('b.type = :type')
+        ->where('b.categorie = :type')
         ->setParameter('type', $type)
         ->setFirstResult(($page-1)*self::MAX_RESULT)
         ->setMaxResults(self::MAX_RESULT)
@@ -85,7 +85,7 @@ class ProjetRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('b')
             ->select('count(b)')
-            ->where("b.type like :type")
+            ->where("b.categorie like :type")
             ->setParameter("type" , $tri)
             ->getQuery()
             ->getSingleScalarResult()

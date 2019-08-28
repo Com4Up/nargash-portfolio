@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Projet;
 use App\Form\BlogType;
+use App\Form\ProjectType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
 
 class ProjetController extends Controller
 {
@@ -31,9 +34,12 @@ class ProjetController extends Controller
         return $this->render('base/projets.html.twig', array('projects' => $projects));
     }
 
+    /**
+     * @Route("/lecture-projet/{titre}", name="lecture-projet")
+     */
     public function lecture_projet($titre, RegistryInterface $doctrine)
     {
-        $projet = $doctrine->getRepository(Projet::class)->findOneByTitre($titre);
+        $projet = $doctrine->getRepository(Projet::class)->findOneByTitle($titre);
         return $this->render('base/lecture_projet.html.twig', array(
             "projet" => $projet,
         ));
@@ -44,41 +50,74 @@ class ProjetController extends Controller
      */
     public function new_projet(RegistryInterface $doctrine, Request $request)
     {
-
         $projet = new Projet();
-        $form = $this->createForm(ProjetType::class, $projet);
+        $form = $this->createForm(ProjectType::class, $projet);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
             #$projet->setType($type);
             $em->persist($projet);
             $em->flush();
-            return $this->redirectToRoute('cms-projet');
+            return $this->redirectToRoute('cms');
         }
-        return $this->render('CMS/new_projet.html.twig', array(
+        return $this->render('CMS/addProject.html.twig', array(
             "form" => $form->createView(),
         ));
     }
 
 
     /**
-     * @Route("/edit-project", name="edit-projet")
+     * @Route("/edit-projet/{id}", name="edit-projet")
      */
     public function edit_projet(RegistryInterface $doctrine, Request $request, $id)
     {
         $projet = $doctrine->getRepository(Projet::class)->find($id);
-        $form = $this->createForm(BlogType::class, $projet);
+        $saveGallery = new ArrayCollection();
+        $filenames = array();
+        foreach ($projet->getGallery() as $img) {
+            $img->setFilename(new File($this->getParameter('uploadDirectory') . '/' . $img->getFilename()));
+        }
+        foreach ($projet->getGallery() as $img) {
+            $filenames[$img->getId()] = $img->getFilename();
+            $saveGallery->add($img);
+        }
+        $projet->getMiniature()->setFilename(new File($this->getParameter('uploadDirectory') . '/' . $projet->getMiniature()->getFilename()));
+        $form = $this->createForm(ProjectType::class, $projet);
+        $saveMiniature = $projet->getMiniature()->getFilename();
         $form->handleRequest($request);
+       
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            foreach ($data->getGallery() as $img) {
+                if ($img->getFilename() == null) {
+                    if (!empty($filenames[$img->getId()])) {
+                        $img->setFilename($filenames[$img->getId()]);
+                    }
+                }
+            }
+            if ($data->getMiniature()->getFilename() == null)
+                $data->getMiniature()->setFilename($saveMiniature);
             #$projet->setType($type);
             $em->persist($projet);
             $em->flush();
-            return $this->redirectToRoute('cms-blog');
+            return $this->redirectToRoute('cms');
         }
-        return $this->render('CMS/new_projet.html.twig', array(
+        return $this->render('CMS/addProject.html.twig', array(
             "form" => $form->createView(),
         ));
+    }
+
+     /**
+     * @Route("/delete-projet/{id}",name="delete_project")
+     */
+    public function deleteProjets($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository(Projet::class)->findOneBy(array('id' => $id));
+        $em->remove($project);
+        $em->flush();
+        return $this->redirectToRoute('cms');
     }
 
     /**
@@ -87,13 +126,13 @@ class ProjetController extends Controller
 
     public function getProjet(Request $request, RegistryInterface $doctrine)
     {
-        $user1 = $this->getUser();
         $request_stack = $this->container->get('request_stack');
         $request = $request_stack->getCurrentRequest();
         $content = $request->getContent();
         $contentDecode = json_decode($content);
         $page = $contentDecode->page;
         $biens = $doctrine->getRepository(Projet::class)->myGetProjet($page);
+
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizer = new ObjectNormalizer();
         $normalizer->setCircularReferenceLimit(2);
@@ -103,6 +142,7 @@ class ProjetController extends Controller
         });
 
         $normalizers = array($normalizer);
+
         $serializer = new Serializer($normalizers, $encoders);
         $jsonContent = $serializer->serialize($biens, 'json');
 
@@ -121,7 +161,7 @@ class ProjetController extends Controller
         $request = $request_stack->getCurrentRequest();
         $content = $request->getContent();
         $contentDecode = json_decode($content);
-        // var_dump($content);
+        // var_dump($contentDecode->selection);
         $type = $contentDecode->selection;
         $page = $contentDecode->page;
         if ($type != "All") {

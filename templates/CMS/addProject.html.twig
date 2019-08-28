@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Lecture Projet
+{% endblock %}
+{% block css %}
+    <link type="text/css" rel="stylesheet" href={{asset("css/lecture_projet.css")}}/>
+{% endblock %}
+{% block body %}
+    {{form_start(form) }}
+    <div id="wrapper">
+        <div id="Padding_Wrapper">
+            <div id="Haut">
+                <h1>Titre :
+                    {{form_widget(form.title)}}</h1>
+                <div id="Seconde_Ligne">
+                    <h2>Date :{{form_widget(form.date)}}</h2>
+                    <div id="Categorie_Projet">
+                        <i class="fal fa-browser" aria-hidden></i>
+                        <h3>Catégorie :
+                            {{form_widget(form.categorie)}}</h3>
+                        <h3>Miniature :
+                            {{form_widget(form.miniature)}}</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Contenu">
+                <h3 id="Role">Rôle :&nbsp;<span>{{form_widget(form.role)}}</span>
+                </h3>
+                <h3 id="Client">Client :&nbsp;<span>{{form_widget(form.client)}}</span>
+                </h3>
+                <h3 id="Langages">Compétences :&nbsp;<span> {{ form_widget(form.skills) }}</span>
+                </h3>
+                <h3 id="Lien">Lien :&nbsp;{{form_widget(form.URL_site)}}</span>
+            </h3>
+            <h3 id="Description">Description :&nbsp;<span>{{form_widget(form.description)}}</span>
+            </h3>
+            <h3>Gallery</h3>
+            <ul
+                class="tags" data-prototype="{{ form_widget(form.gallery.vars.prototype)|e('html_attr') }}">
+                {# iterate over each existing tag and render its only field: name #}
+                {% for img in form.gallery %}
+                    <li>{{ form_widget(img) }}<a href="#" class="remove-tag">x</a>
+                    </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+        {{form_widget(form._token)}}
+        <input id="submit" type="submit" value="Submit"/>
+    </div>
+
+</div>{% endblock %}{% block javascripts %}
+<script>
+    // setup an "add a tag" link
+    var $addTagLink = $('<a href="#" class="add_tag_link">Ajouter une image</a>');
+    var $newLinkLi = $('<li></li>').append($addTagLink);
+    // handle the removal, just for this example
+    $('.remove-tag').click(function (e) {
+        e.preventDefault();
+
+        $(this).parent().remove();
+
+        return false;
+    });
+        var $collectionHolder = $('ul.tags');
+
+        // add the "add a tag" anchor and li to the tags ul
+        $collectionHolder.append($newLinkLi);
+
+        // count the current form inputs we have (e.g. 2), use that as the new
+        // index when inserting a new item (e.g. 2)
+        $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+        $addTagLink.on('click', function (e) { // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // add a new tag form (see code block below)
+            addTagForm($collectionHolder, $newLinkLi);
+        });
+
+    function addTagForm($collectionHolder, $newLinkLi) { // Get the data-prototype explained earlier
+        var prototype = $collectionHolder.data('prototype');
+
+        // get the new index
+        var index = $collectionHolder.data('index');
+
+        // Replace '$$name$$' in the prototype's HTML to
+        // instead be a number based on how many items we have
+        var newForm = prototype.replace(/__name__/g, index);
+
+        // increase the index with one for the next item
+        $collectionHolder.data('index', index + 1);
+
+        // Display the form in the page in an li, before the "Add a tag" link li
+        var $newFormLi = $('<li></li>').append(newForm);
+
+        // also add a remove button, just for this example
+        $newFormLi.append('<a href="#" class="remove-tag">x</a>');
+
+        $newLinkLi.before($newFormLi);
+
+        // handle the removal, just for this example
+        $('.remove-tag').click(function (e) {
+            e.preventDefault();
+
+            $(this).parent().remove();
+
+            return false;
+        });
+    }
+</script>{% endblock %}

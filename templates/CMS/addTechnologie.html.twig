@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter Projet{% endblock %}
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href={{asset("css/addProject.css")}} />
+{% endblock %}
+
+{% block body%}
+<div id="app">
+  {{ form_start(form) }}
+  <p> Nom de la compétence :{{form_widget(form.name)}}</p>
+  <p> Icon de la compétence (avec &lt;i&gt;) :{{form_widget(form.icon) }}</p>
+    <input id="submit" type="submit" value="Submit"/>
+  {{ form_end(form) }}
+</div>
+{% endblock %}
+{% block js %}
+{% endblock %}

@@ -18,6 +18,7 @@
     <i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)" id="arrow_desktop_up"></i>
     <div class="wrapper wrapper-1" onwheel="myScript">
         <div id="Presentation">
+        {% if bio is not defined or bio is null %}
             <div id="Image_Profil">
                 <img src={{asset("images/Profil_Sebastien.png")}}/>
                 <h1>
@@ -30,6 +31,17 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                                                                                                                                                                                                                                                                                                                       irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
+            {% else %}
+            <div id="Image_Profil">
+                <img src="{{ asset(bio.miniature.path) }}">
+                <h1>
+                    セバスチャン
+                </h1>
+            </div>
+            <p id="Description">
+                {{ bio.description }}                                                                                                                                                                                                                                                                                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+            {% endif %}
         </div>
         <div id="Derniers_Articles">
             <h2>

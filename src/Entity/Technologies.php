@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SkillRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TechnologiesRepository")
  */
-class Skill
+class Technologies
 {
     /**
      * @ORM\Id()
@@ -26,15 +26,10 @@ class Skill
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $icone;
+    private $icon;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $description;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Projet", mappedBy="skills")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Projet", mappedBy="technologies")
      */
     private $projects;
 
@@ -60,30 +55,17 @@ class Skill
         return $this;
     }
 
-    public function getIcone(): ?string
+    public function getIcon(): ?string
     {
-        return $this->icone;
+        return $this->icon;
     }
 
-    public function setIcone(string $icone): self
+    public function setIcon(string $icon): self
     {
-        $this->icone = $icone;
+        $this->icon = $icon;
 
         return $this;
     }
-    
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
 
     /**
      * @return Collection|Projects[]
