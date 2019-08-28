@@ -52,3 +52,5 @@
 \.vscode/
 
 public/uploads/Thumbnail/
+
+.env
