@@ -8,9 +8,11 @@
 <div id="app">
   {{ form_start(form) }}
   <p> Nom de la compétence :{{form_widget(form.name)}}</p>
-  <p> Icon de la compétence (avec &lt;i&gt;) :{{form_widget(form.icon) }}</p>
+  <p> Icon de la compétence (avec &lt;i&gt;) :{{form_widget(form.icone) }}</p>
+  <p> Description  la compétence (avec &lt;i&gt;) </p>:{{form_widget(form.description) }}
     <input id="submit" type="submit" value="Submit"/>
   {{ form_end(form) }}
+<a href="{{path('cms')}}"><p> back to the CMS </p></a>
 </div>
 {% endblock %}
 {% block js %}

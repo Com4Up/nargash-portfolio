@@ -18,29 +18,30 @@
     <i class="far fa-chevron-double-up chevron-up chevron-ghost" onclick="setPag(1)" id="arrow_desktop_up"></i>
     <div class="wrapper wrapper-1" onwheel="myScript">
         <div id="Presentation">
-        {% if bio is not defined or bio is null %}
-            <div id="Image_Profil">
-                <img src={{asset("images/Profil_Sebastien.png")}}/>
-                <h1>
-                    セバスチャン
-                </h1>
-            </div>
-            <p id="Description">
-                Développeur Web (Full Stack) et Vidéaste.
-                <br/>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                                                                                                                                                                                                                                                                                                      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
+            {% if bio is not defined or bio is null %}
+                <div id="Image_Profil">
+                    <img src={{asset("images/Profil_Sebastien.png")}}/>
+                    <h1>
+                        セバスチャン
+                    </h1>
+                </div>
+                <p id="Description">
+                    Développeur Web (Full Stack) et Vidéaste.
+                    <br/>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
             {% else %}
-            <div id="Image_Profil">
-                <img src="{{ asset(bio.miniature.path) }}">
-                <h1>
-                    セバスチャン
-                </h1>
-            </div>
-            <p id="Description">
-                {{ bio.description }}                                                                                                                                                                                                                                                                                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            </p>
+                <div id="Image_Profil">
+                    <img src="{{ asset(bio.miniature.path) }}">
+                    <h1>
+                        セバスチャン
+                    </h1>
+                </div>
+                <p id="Description">
+                    {{ bio.description }}
+                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
             {% endif %}
         </div>
         <div id="Derniers_Articles">
@@ -49,16 +50,16 @@
             </h2>
             <div id="Contenu_Accueil">
                 {% for article in articles %}
-                <div class="Contenu_Classe">
-                    <div class="article-case">
-                        <img src="{{asset(article.image.path)}}">
-                        <a href="{{path('lecture-article',{"path": article.path} )}}"></a>
+                    <div class="Contenu_Classe">
+                        <div class="article-case">
+                            <img src="{{asset(article.image.path)}}">
+                            <a href="{{path('lecture-article',{"path": article.path} )}}"></a>
+                        </div>
+                        <a href="{{path('lecture-article',{"path": article.path} )}}">
+                            <h3 class="Titre_Contenu">{{article.titre}}</h3>
+                            <h4 class="Date_Contenu">{{article.date|localizeddate('none', 'none', null, null, 'EEEE d ')|capitalize }}</h4>
+                        </a>
                     </div>
-                    <a href="{{path('lecture-article',{"path": article.path} )}}">
-                        <h3 class="Titre_Contenu">{{article.titre}}</h3>
-                        <h4 class="Date_Contenu">{{article.date|localizeddate('none', 'none', null, null, 'EEEE d ')|capitalize }}</h4>
-                    </a>
-                </div>
                 {% endfor %}
 
             </div>
@@ -71,8 +72,8 @@
                 <i class="fas fa-sort-up" id="chevron_post" v-on:click="direction('top')"></i>
                 <div id="timelineBar">
                     <div class="TimelineLoop" v-for="(event,key) in timeline">
-                        <div class="bar"></div>
-                        <div class="circle" v-bind:style=" event.isActive ? 'background: #37c8ae;' : 'background: white;' "  v-on:click="setKey(key)">
+                        <div v-if="key != 0" class="bar"></div>
+                        <div class="circle" v-bind:style=" event.isActive ? 'background: #37c8ae;' : 'background: white;' " v-on:click="setKey(key)">
                             { event.id }
                             <div class="insideCircle"></div>
                         </div>
@@ -94,32 +95,32 @@
     <div class="wrapper wrapper-3 pagActive">
         <h2>Compétences</h2>
         <hr/>
-<div id="container">
-  <i class="far fa-angle-left icone-awesome button-prev" aria-hidden v-on:click="directionSkill('left')"></i>
-              <div id="flip-content">
+        <div id="container">
+            <i class="far fa-angle-left icone-awesome button-prev" aria-hidden v-on:click="directionSkill('left')"></i>
+            <div id="flip-content">
 
-            {% for skill  in skills %}
-                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                    <div class="flipper">
-                        <div class="front">
-                            <span class="name">
-                                <i class="{{skill.icone}}"></i>
-                            </span>
-                        </div>
-                        <div class="back">
-                            <div class="back-logo">
-                                <p>{{skill.name}}</p>
+                {% for skill  in skills %}
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper">
+                            <div class="front">
+                                <span class="name">
+                                    <i class="{{skill.icone}}"></i>
+                                </span>
                             </div>
-                            <p>{{skill.description}}</p>
+                            <div class="back">
+                                <div class="back-logo">
+                                    <p>{{skill.name}}</p>
+                                </div>
+                                <p>{{skill.description}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
 
-          </div>
-<i class="far fa-angle-right icone-awesome button-next" aria-hidden v-on:click="directionSkill('right')"></i>
-</div>
-      </div>
+            </div>
+            <i class="far fa-angle-right icone-awesome button-next" aria-hidden v-on:click="directionSkill('right')"></i>
+        </div>
+    </div>
 
 
     <div class="wrapper wrapper-4 pagActive" onwheel="myScript">
@@ -134,7 +135,7 @@
             </a>
         </div>
     </div>
-    <i class="far fa-chevron-double-down chevron-down" onclick="setPag(0)"  id="arrow_desktop_down"></i>
+    <i class="far fa-chevron-double-down chevron-down" onclick="setPag(0)" id="arrow_desktop_down"></i>
 {% endblock %}
 
 {% block javascripts %}
@@ -197,27 +198,26 @@
 
 
         function MouseWheelHandler(e) {
-          var larg = (window.innerWidth);
-          if (larg > 1024) {// cross-browser wheel delta
-            var e = window.event || e; // old IE support
-            var delta = (e.wheelDelta || - e.detail);
+            var larg = (window.innerWidth);
+            if (larg > 1024) { // cross-browser wheel delta
+                var e = window.event || e; // old IE support
+                var delta = (e.wheelDelta || - e.detail);
 
-            if (delta > 0) {
-                setPag(1);
-            } else if (delta < 0) {
-                setPag(0);
+                if (delta > 0) {
+                    setPag(1);
+                } else if (delta < 0) {
+                    setPag(0);
+                }
+                return false;
             }
-            return false;
-          }
         }
-
-
     </script>
     <script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src={{asset("js/vue.js") }}></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
     <script>
+
         var app = new Vue({
             el: '#app',
             delimiters: [
@@ -226,22 +226,40 @@
             data: {
                 timeline: [],
                 key: 0,
+                tLength: 0,
                 c: 1,
                 d: 1
             },
             methods: {
-                sayHello() {
-                    alert("hello");
-                },
                 direction(direction) {
-                    if (direction == "bottom")
-                        this.c ++;
-                     else if (direction == "top")
+                    // && this.c != -2
+                    console.log(this.tLength * -1)
+                    if (direction == "bottom" && this.c != (this.tLength * -1)) 
                         this.c --;
+                     else if (direction == "top" && this.c != this.tLength) 
+                        this.c ++;
+                     else if (this.c == 1 && direction == "start") {
+                          var object = this;
+                        setTimeout(function () { 
+                             object.direction("start");// do what you need here
+                        }, 2000); 
+                    }
+                    else if (this.c < 5 && direction == "start") {
+                        console.log("this.c < 5 && direction == 'start'");
+                        this.c = -1;
+                        this.tLength = 1;
+                    }
+                     else if (direction == "start") {
+                        console.log("direction == 'start'");
+                        this.c = (this.c -5)/2;
+                        this.tLength = this.c;
+                    }
+                     
+
+
                     $('#timelineBar>div').css({
                         top: 'calc(7.35em * ' + this.c + ')'
-                    });
-
+                    })
                     // $('#timelineBar>div').css( { left: '20px' } );
                     // alert(direction);
                 },
@@ -259,16 +277,23 @@
 
                         $.each(json, function (key, value) {
                             isActive = false;
-                            if(key == 0)
+                            if (key == 0) 
                                 isActive = true;
-                            object.timeline.push({"titre": value.titre, "description": value.description, "date": value.date, "isActive": isActive});
-                        });
+                            
 
+                            object.tLength ++;
+                            object.timeline.push({"titre": value.titre, "description": value.description, "date": value.date, "isActive": isActive});
+                            object.c = key + 1;
+                        });
                     })
+                    this.direction("start");
                 }
             },
             mounted: function () {
-                this.getTimeline();
+                window.addEventListener('load', () => { // run after everything is in-place
+                    this.getTimeline();
+                })
+
             }
         })
 
@@ -281,22 +306,25 @@
                 d: 1
             },
             methods: {
-              directionSkill(direction) {
-                if (direction == "left")
-                  this.d ++;
-               else if (direction == "right")
-                  this.d --;
-                $('#flip-content>div').css({
-                  right: 'calc(23em * ' + this.d + ')'
-              });
+                directionSkill(direction) {
+                    if (direction == "left") 
+                        this.d ++;
+                     else if (direction == "right") 
+                        this.d --;
+                    
+
+
+                    $('#flip-content>div').css({
+                        right: 'calc(23em * ' + this.d + ')'
+                    });
+                }
             }
-          }
         })
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function (event) {
-            console.log(document.getElementById('chevron_past'))
-        });
-    </script>
+    {# <script>
+                document.addEventListener("DOMContentLoaded", function (event) {
+                    console.log(document.getElementById('chevron_past'))
+                });
+            </script> #}
 {% endblock %}

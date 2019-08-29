@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Timeline;
 use App\Entity\Skill;
 use App\Entity\Bio;
+use App\Entity\Commentaire;
 use App\Entity\Hobbie;
 use App\Entity\Article;
 use App\Form\HobbieType;
@@ -21,6 +22,8 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 
 
@@ -76,29 +79,36 @@ class DefaultController extends Controller
 
         $skills = $doctrine->getRepository(Skill::class)->findAll();
         $hobbie = $doctrine->getRepository(Hobbie::class)->findAll();
+        $articles = $doctrine->getRepository(Article::class)->findAll();
+        $commentaires = $doctrine->getRepository(Commentaire::class)->findAll();
         $bio = $doctrine->getRepository(Bio::class)->findFirst();
-
         return $this->render('cms_base/CMS.html.twig', [
             "skills" => $skills,
             "hobbie" => $hobbie,
+            "articles" => $articles,
             "bio" => $bio,
-            ]);
+            "commentaires" => $commentaires,
+        ]);
     }
 
     /**
      * @Route("/cms/edit-bio", name="edit-bio")
      */
-    public function editBio(RegistryInterface $doctrine,Request $request)
+    public function editBio(RegistryInterface $doctrine, Request $request)
     {
         $bio = $doctrine->getRepository(Bio::class)->findFirst();
-        if($bio == null)
-        {
+        if ($bio == null) {
             $bio = new Bio();
         }
+        $bio->getMiniature()->setFilename(new File($this->getParameter('uploadDirectory') . '/' . $bio->getMiniature()->getFilename()));
+        $saveBio = $bio->getMiniature()->getFilename();
         $form = $this->createForm(BioType::class, $bio);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            if ($data->getMiniature()->getFilename() == null)
+                $data->getMiniature()->setFilename($saveBio);
             #$projet->setType($type);
             $em->persist($bio);
             $em->flush();
@@ -106,7 +116,7 @@ class DefaultController extends Controller
         }
         return $this->render('cms_base/editBio.html.twig', [
             "form" => $form->createView(),
-            ]);
+        ]);
     }
 
     /**
@@ -174,7 +184,7 @@ class DefaultController extends Controller
             $selection = $doctrine->getRepository(Hobbie::class)->myGetProjetByType($type, intval($page));
         } else {
             $selection = $doctrine->getRepository(Hobbie::class)->myGetProjet(intval($page));
-         }
+        }
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizer = new ObjectNormalizer();
         $normalizer->setCircularReferenceLimit(2);

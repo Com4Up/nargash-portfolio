@@ -51,7 +51,7 @@ class ArticleController extends Controller
             $em->flush();
             return $this->redirectToRoute('lecture-article', ["path" => $path]);
         }
-        return $this->render('base/blog/lecture.html.twig', array(
+        return $this->render('base/lecture_article.html.twig', array(
             "article" => $article,
             'form' => $form->createView()
         ));
@@ -268,6 +268,19 @@ class ArticleController extends Controller
     }
 
     /**
+     * @Route("cms/delete-comment-cms/{id}", name="delete-comment-cms")
+     */
+    public function delete_comment_cms($id, RegistryInterface $doctrine, Request $request)
+    {
+        $comment = $doctrine->getRepository(Commentaire::class)->find($id);
+        $em = $this->getDoctrine()->getManager();
+        //  $em->remove($timeline);
+        $em->remove($comment);
+        $em->flush();
+        return $this->redirectToRoute('cms');
+    }
+
+    /**
      * @Route("/upload-image", name="upload-image")
      */
     public function upload_image(RegistryInterface $doctrine, Request $request)
@@ -303,7 +316,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("cms/article-delete/{id}", name="article-delete")
+     * @Route("delete-article/{id}", name="delete-article")
      */
     public function delete_article(RegistryInterface $doctrine, $id)
     {

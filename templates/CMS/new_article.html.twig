@@ -17,10 +17,13 @@
     {{form_row(form.texte, {'id' : 'content'})}}
     {{form_row(form.type)}}
     {{form_row(form.path)}}
+    {{form_row(form.status)}}
+    {{form_row(form.tag)}}
     <button>
         Confirm
     </button>
     {{ form_end(form) }}
+    <p><a href="{{path('cms')}}">Back to the CMS </a></p>
 
     {% if commentaires is defined %}
         <div id="Total_com">

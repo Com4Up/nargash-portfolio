@@ -4,8 +4,9 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Skill;
 use App\Entity\Projet;
-use App\Form\BlogType;
+use App\Form\SkillType;
 use App\Form\ProjectType;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -43,6 +44,60 @@ class ProjetController extends Controller
         return $this->render('base/lecture_projet.html.twig', array(
             "projet" => $projet,
         ));
+    }
+
+    /**
+     * @Route("/new-skill", name="new-skill")
+     */
+    public function new_skill(RegistryInterface $doctrine, Request $request)
+    {
+        $skill = new Skill();
+        $form = $this->createForm(SkillType::class, $skill);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() && $form->isValid()) {
+            #$projet->setType($type);
+            $em->persist($skill);
+            $em->flush();
+            return $this->redirectToRoute('cms');
+        }
+        return $this->render('CMS/addTechnologie.html.twig', array(
+            "form" => $form->createView(),
+        ));
+    }
+
+
+    /**
+     * @Route("/edit-skill/{id}", name="edit-skill")
+     */
+    public function edit_skill(RegistryInterface $doctrine, Request $request, $id)
+    {
+        $skill = $doctrine->getRepository(Skill::class)->find($id);
+        $form = $this->createForm(SkillType::class, $skill);
+        $form->handleRequest($request);
+       
+        $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() && $form->isValid()) {
+            #$projet->setType($type);
+            $em->persist($skill);
+            $em->flush();
+            return $this->redirectToRoute('cms');
+        }
+        return $this->render('CMS/addTechnologie.html.twig', array(
+            "form" => $form->createView(),
+        ));
+    }
+
+     /**
+     * @Route("/delete-skill/{id}",name="delete-skill")
+     */
+    public function deleteSkill($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $skill = $em->getRepository(Skill::class)->findOneBy(array('id' => $id));
+        $em->remove($skill);
+        $em->flush();
+        return $this->redirectToRoute('cms');
     }
 
     /**

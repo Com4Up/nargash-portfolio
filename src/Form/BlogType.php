@@ -36,6 +36,13 @@ class BlogType extends AbstractType
                 ]
             ])
             ->add('path', TextType::class)
+            ->add('tag')
+            ->add('status', ChoiceType::class, [
+                "choices" => [
+                    'fini' => 'fini',
+                    'brouillon' => 'brouillon',
+                ]
+            ])
             ->add('image', ImageType::class, [
                 "required" => false,
             ])
