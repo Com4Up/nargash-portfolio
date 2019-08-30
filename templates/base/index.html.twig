@@ -232,12 +232,10 @@
             },
             methods: {
                 direction(direction) {
-                    // && this.c != -2
-                    console.log(this.tLength * -1)
-                    if (direction == "bottom" && this.c != (this.tLength * -1)) 
-                        this.c --;
-                     else if (direction == "top" && this.c != this.tLength) 
+                    if (direction == "bottom" && this.c != this.tLength) 
                         this.c ++;
+                     else if (direction == "top" && this.c != (this.tLength * -1)) 
+                        this.c --;
                      else if (this.c == 1 && direction == "start") {
                           var object = this;
                         setTimeout(function () { 
