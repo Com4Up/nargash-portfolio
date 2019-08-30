@@ -81,6 +81,7 @@ class DefaultController extends Controller
         $hobbie = $doctrine->getRepository(Hobbie::class)->findAll();
         $articles = $doctrine->getRepository(Article::class)->findAll();
         $commentaires = $doctrine->getRepository(Commentaire::class)->findAll();
+        $timelines = $doctrine->getRepository(Timeline::class)->findAll();
         $bio = $doctrine->getRepository(Bio::class)->findFirst();
         return $this->render('cms_base/CMS.html.twig', [
             "skills" => $skills,
@@ -88,6 +89,7 @@ class DefaultController extends Controller
             "articles" => $articles,
             "bio" => $bio,
             "commentaires" => $commentaires,
+            "timelines" => $timelines,
         ]);
     }
 

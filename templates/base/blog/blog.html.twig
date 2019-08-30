@@ -58,14 +58,7 @@
         <div class="article-case hidden"></div>
     </div>
 </div>
-<div id="pagination"></div></div></div>{% endblock %}
-{% block javascripts %}
-<script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="{{asset('js/moment.js')}}"></script>
-<script src="{{asset('js/vue.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script>
-var app = new Vue({
+<div id="pagination"></div></div></div>{% endblock %}{% block javascripts %}<script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script src="{{asset('js/moment.js')}}"></script><script src="{{asset('js/vue.js')}}"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script><script>var app = new Vue({
     el: '#app',
     delimiters: [
         '{', '}'
@@ -86,7 +79,8 @@ var app = new Vue({
     },
     filters: {
         moment: function (date) {
-            return moment(date).lang("fr").format('LL');
+            var d = new Date((date["timestamp"] * 1000));
+            return moment(d).locale("fr").format('LL');
         }
     },
     methods: {

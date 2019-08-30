@@ -61,6 +61,28 @@
                         </div>
                     {% endfor %}
                 </div>
+                <p class="CMS_Titre">Gestion Timeline</p>
+                <a class="boutonAjout" href="{{path('new-timeline')}}">Ajouter une Timeline</a>
+                <div class="Skills_list">
+                    {% for timeline  in timelines %}
+                        <div class="Skills_Line">
+                            <div class="Skills_image">
+                               {{timeline.date|localizeddate('none', 'none', null, null, 'MMMM Y ')|capitalize }}
+                            </div>
+                            <div class="Skills_Link">{{timeline.titre}}</div>
+                            <div class="Skills_Link">{{timeline.description}}</div>
+                            <div class="Skills_Link"><img src="{{asset(timeline.miniature.path)}}"></div>
+                            <div class="Article_Interaction">
+                                <a href="{{path('edit-timeline', {id : timeline.id})}}">
+                                    <i class="fal fa-edit"></i>
+                                </a>
+                                <a href="{{path('delete-timeline', {id : timeline.id})}}">
+                                    <i class="fal fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
 
 
             </div>

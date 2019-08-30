@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Timeline index{% endblock %}
+
+{% block body %}
+    <h1>Timeline index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for timeline in timelines %}
+            <tr>
+                <td>{{ timeline.id }}</td>
+                <td>{{ timeline.titre }}</td>
+                <td>{{ timeline.date }}</td>
+                <td>{{ timeline.description }}</td>
+                <td>
+                    <a href="{{ path('timeline_show', {'id': timeline.id}) }}">show</a>
+                    <a href="{{ path('edit-timeline', {'id': timeline.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cms') }}">Create new</a>
+{% endblock %}

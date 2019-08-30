@@ -22,7 +22,7 @@ class Timeline
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="date")
      */
     private $date;
 
@@ -30,6 +30,12 @@ class Timeline
      * @ORM\Column(type="string", length=255)
      */
     private $description;
+
+     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Image", orphanRemoval=true, cascade={"persist" ,"remove"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+    private $miniature;
 
     public function getId(): ?int
     {
@@ -48,12 +54,12 @@ class Timeline
         return $this;
     }
 
-    public function getDate(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
         return $this->date;
     }
 
-    public function setDate(string $date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
@@ -72,6 +78,18 @@ class Timeline
         return $this;
     }
 
+    public function getMiniature(): ?Image
+    {
+        return $this->miniature;
+    }
+
+    public function setMiniature(Image $miniature): self
+    {
+        $this->miniature = $miniature;
+
+        return $this;
+    }
+
     public function toArray()
     {
         return [
@@ -80,4 +98,5 @@ class Timeline
             'date' => $this->getDate(),
         ];
     }
+    
 }
